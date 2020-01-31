@@ -249,7 +249,7 @@ def creat():
     
     while True:
         
-        sleep(33)
+        sleep(45)
         try:
             driver.find_element_by_class_name('svg-icon-next').click()
             n=n+1
