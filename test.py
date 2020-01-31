@@ -142,8 +142,8 @@ def creat():
     capabilities = {
     "browserName": "chrome",
     "version": "79.0",
-    "enableVNC": False,
-    "enableVideo": True
+    "enableVNC": True,
+    "enableVideo": False
     
 }
     ip=socket.gethostbyname(socket.gethostname())
