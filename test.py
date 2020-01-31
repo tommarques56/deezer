@@ -232,7 +232,7 @@ def creat():
         driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
     except:
         print("4")
-        
+    driver.implicitly_wait(15)   
     print("test play")   
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
@@ -250,7 +250,7 @@ def creat():
         print("s") 
    
     
-    
+    driver.implicitly_wait(30)
     n=0    
     
     while True:
