@@ -152,7 +152,7 @@ def creat():
     # options.add_argument(f'user-agent={user()}')
     options.add_extension('/root/deezer/AC.zip')
     # driver = webdriver.Chrome(options=options)
-    driver = webdriver.Remote(command_executor="http://{}/wd/hub".format(ip), desired_capabilities=capabilities, options=options)
+    driver = webdriver.Remote(command_executor="http://{}:4444/wd/hub".format(ip), desired_capabilities=capabilities, options=options)
     driver.implicitly_wait(80)
     driver.get("https://www.deezer.com/fr/register") 
     
