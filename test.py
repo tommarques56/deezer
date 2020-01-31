@@ -169,7 +169,7 @@ def creat():
     email.send_keys(al())
     sleep(1)
     name =  driver.find_element_by_xpath('//*[@id="register_form_username_input"]')
-    name.send_keys("tom")
+    name.send_keys(random_char(9))
     sleep(1)
     mdp =  driver.find_element_by_xpath('//*[@id="register_form_password_input"]')
     mdp.send_keys("0571Zezette")
@@ -193,7 +193,7 @@ def creat():
                 break
         break
     
-    
+    driver.implicitly_wait(5)
     try:
         driver.find_element_by_class_name('onboarding-channel').click() #style
         sleep(3)
@@ -235,6 +235,8 @@ def creat():
         driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
     except:
         print("4")
+        
+        
     driver.implicitly_wait(15)   
     print("test play")   
     play = ActionChains(driver) 
