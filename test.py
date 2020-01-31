@@ -150,7 +150,7 @@ def creat():
     print(ip)
     options = webdriver.ChromeOptions()
     # options.add_argument(f'user-agent={user()}')
-    options.add_extension('/root/AC.zip')
+    options.add_extension('/root/deezer/AC.zip')
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor="http://{}/wd/hub".format(ip), desired_capabilities=capabilities, options=options)
     driver.implicitly_wait(80)
