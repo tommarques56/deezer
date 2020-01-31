@@ -191,6 +191,7 @@ def creat():
                 driver.quit()
                 Thread(target = creat).start()
                 break
+        break
     
     
     try:
