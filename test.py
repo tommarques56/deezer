@@ -237,7 +237,7 @@ def creat():
         print("4")
         
         
-    
+    sleep(5)
     print("test play")   
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
@@ -282,7 +282,7 @@ def creat():
     driver.quit()
 
 
-while i<1:
+while i<8:
     Thread(target = creat).start()
     
     i=i+1
