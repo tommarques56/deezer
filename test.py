@@ -183,12 +183,14 @@ def creat():
     # genre.send_keys(Keys.ENTER)
     genre.perform()
     
-    captcha(driver)    
-    try:
-        driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
-    except:
-            driver.quit()
-            Thread(target = creat).start()
+    captcha(driver) 
+    while True:
+        try:
+            driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
+        except:
+                driver.quit()
+                Thread(target = creat).start()
+                break
     
     
     try:
