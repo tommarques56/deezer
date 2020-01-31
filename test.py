@@ -290,7 +290,7 @@ def creat():
     driver.quit()
 
 
-while i<3:
+while i<8:
     Thread(target = creat).start()
     
     i=i+1
