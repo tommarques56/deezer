@@ -15,6 +15,7 @@ from time import sleep
 from selenium.webdriver.common.by import By 
 from random import randrange
 import json, requests
+import socket
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.firefox.options import Options
@@ -145,12 +146,12 @@ def creat():
     "enableVideo": True
     
 }
-    
+    ip=socket.gethostbyname(socket.gethostname())
     options = webdriver.ChromeOptions()
     # options.add_argument(f'user-agent={user()}')
     options.add_extension('/home/root/AC.zip')
     # driver = webdriver.Chrome(options=options)
-    driver = webdriver.Remote(command_executor="http://192.168.1.219:4444/wd/hub", desired_capabilities=capabilities, options=options)
+    driver = webdriver.Remote(command_executor="http://{}/wd/hub";format(ip), desired_capabilities=capabilities, options=options)
     driver.implicitly_wait(80)
     driver.get("https://www.deezer.com/fr/register") 
     
