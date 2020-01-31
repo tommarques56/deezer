@@ -249,6 +249,13 @@ def creat():
         driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
     except:
         print("5")
+        
+    try:
+        driver.find_element_by_class_name('svg-icon svg-icon-shuffle').click()  #launch musique
+    except:
+        print("SHUFFLE")   
+        
+        
     try:
         driver.find_element_by_class_name('states-button-action is-active').click()  #launch musique
     except:
