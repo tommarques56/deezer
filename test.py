@@ -262,7 +262,7 @@ def creat():
         print("s") 
    
     
-    driver.implicitly_wait(40)
+    driver.implicitly_wait(45)
     n=0    
     
     while True:
