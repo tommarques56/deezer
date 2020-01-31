@@ -232,6 +232,12 @@ def creat():
         driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
     except:
         print("4")
+        
+    print("test play")   
+    play = ActionChains(driver) 
+    play.send_keys(Keys.SPACE)
+    play.perform()
+    prit("test play ok")
     
     
     try:
@@ -271,7 +277,7 @@ def creat():
     driver.quit()
 
 
-while i<8:
+while i<1:
     Thread(target = creat).start()
     
     i=i+1
