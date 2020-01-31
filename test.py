@@ -147,6 +147,7 @@ def creat():
     
 }
     ip=socket.gethostbyname(socket.gethostname())
+    print(ip)
     options = webdriver.ChromeOptions()
     # options.add_argument(f'user-agent={user()}')
     options.add_extension('/home/root/AC.zip')
