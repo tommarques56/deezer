@@ -137,7 +137,7 @@ def user():
     return userAgent
 
         
-def creat(i):
+def creat():
     t=0
     capabilities = {
     "browserName": "chrome",
@@ -272,7 +272,7 @@ def creat(i):
             
             driver.find_element_by_class_name('svg-icon-next').click()
             n=n+1
-            t="NOMBRE DE VUE pour {}: {}".format(i,n)
+            t="NOMBRE DE VUE: {}".format(n)
             sleep(40)
             print(t)
             
@@ -293,6 +293,6 @@ def creat(i):
 
 
 while i<8:
-    Thread(target = creat, args=(i,)).start()
+    Thread(target = creat).start()
     sleep(2)
     i=i+1
