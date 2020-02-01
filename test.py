@@ -275,8 +275,11 @@ def creat():
             t="NOMBRE DE VUE: {}".format(n)
             sleep(40)
             duree = driver.find_elements_by_class_name("slider-counter-current")
+            sleep(2)
             x = len(duree)
             print("secondes: {}".format(x))
+            sleep(2)
+            
             print(t)
             
         except:
