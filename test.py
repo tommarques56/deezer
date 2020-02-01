@@ -237,7 +237,7 @@ def creat():
         print("4")
         
         
-    sleep(5)
+    driver.implicitly_wait(20)
     print("test play")   
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
