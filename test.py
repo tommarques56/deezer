@@ -269,6 +269,8 @@ def creat():
         
         
         try:
+            duree = driver.find_elements_by_class_name("slider-counter slider-counter-current")
+            print len(duree)
             driver.find_element_by_class_name('svg-icon-next').click()
             n=n+1
             t="NOMBRE DE VUE: {}".format(n)
@@ -291,7 +293,7 @@ def creat():
     driver.quit()
 
 
-while i<8:
+while i<1:
     Thread(target = creat).start()
     sleep(2)
     i=i+1
