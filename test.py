@@ -251,13 +251,13 @@ def creat():
         print("5")
         
     try:
-        driver.find_element_by_class_name('svg-icon svg-icon-shuffle').click()  #launch musique
+        driver.find_element_by_class_name('svg-icon-shuffle').click()  #launch musique
     except:
         print("SHUFFLE")   
         
         
     try:
-        driver.find_element_by_class_name('states-button-action is-active').click()  #launch musique
+        driver.find_element_by_class_name('states-button-action').click()  #launch musique
     except:
         print("s") 
    
@@ -269,7 +269,7 @@ def creat():
         
         
         try:
-            duree = driver.find_elements_by_class_name("slider-counter slider-counter-current")
+            duree = driver.find_elements_by_class_name("slider-counter-current")
             x = len(duree)
             print(x)
             driver.find_element_by_class_name('svg-icon-next').click()
