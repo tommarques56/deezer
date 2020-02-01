@@ -293,6 +293,6 @@ def creat(i):
 
 
 while i<8:
-    Thread(target = creat, args=(i)).start()
+    Thread(target = creat, args=(i,)).start()
     sleep(2)
     i=i+1
