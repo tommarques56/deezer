@@ -193,7 +193,7 @@ def creat():
                 break
         break
     
-    driver.implicitly_wait(50)
+    driver.implicitly_wait(25)
     try:
         driver.find_element_by_class_name('onboarding-channel').click() #style
         sleep(3)
@@ -237,7 +237,7 @@ def creat():
         print("4")
         
         
-    driver.implicitly_wait(20)
+    driver.implicitly_wait(10)
     print("test play")   
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
@@ -278,6 +278,7 @@ def creat():
         except:
             driver.quit()
             Thread(target = creat).start()
+            break
        
         
             
@@ -292,5 +293,5 @@ def creat():
 
 while i<8:
     Thread(target = creat).start()
-    
+    sleep(2)
     i=i+1
