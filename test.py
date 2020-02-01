@@ -269,13 +269,14 @@ def creat():
         
         
         try:
-            duree = driver.find_elements_by_class_name("slider-counter-current")
-            x = len(duree)
-            print("secondes: {}".format(x))
+            
             driver.find_element_by_class_name('svg-icon-next').click()
             n=n+1
             t="NOMBRE DE VUE: {}".format(n)
             sleep(40)
+            duree = driver.find_elements_by_class_name("slider-counter-current")
+            x = len(duree)
+            print("secondes: {}".format(x))
             print(t)
             
         except:
