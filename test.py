@@ -193,7 +193,7 @@ def creat():
                 break
         break
     
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(50)
     try:
         driver.find_element_by_class_name('onboarding-channel').click() #style
         sleep(3)
