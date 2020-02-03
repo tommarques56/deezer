@@ -278,6 +278,11 @@ def creat(nb):
     driver.implicitly_wait(45)
     n=0    
     
+    if nb>0:
+        i=nb-1
+        Thread(target = creat, args=[i]).start()
+        
+    
     while True:
         
         
@@ -290,10 +295,7 @@ def creat(nb):
         t="NOMBRE DE VUE pour {}: {}".format(m,n)
         sleep(40)
         print(t)
-        i=nb
-        if i<1:
-            Thread(target = creat, args=[i]).start()
-            i=i+1
+        
      
        
         
@@ -308,5 +310,5 @@ def creat(nb):
 
 
 
-Thread(target = creat, args=[0]).start()
+Thread(target = creat, args=[20]).start()
 
