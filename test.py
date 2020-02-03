@@ -292,7 +292,7 @@ def creat():
     driver.quit()
 
 
-while i<28:
+while i<25:
     Thread(target = creat).start()
     sleep(2)
     i=i+1
