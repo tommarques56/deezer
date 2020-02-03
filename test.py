@@ -281,9 +281,9 @@ def creat(nb):
     driver.implicitly_wait(45)
     n=0    
     
-    if nb>0:
-        i=nb-1
-        Thread(target = creat, args=[i]).start()
+    # if nb>0:
+        # i=nb-1
+        # Thread(target = creat, args=[i]).start()
         
     
     while True:
@@ -301,8 +301,7 @@ def creat(nb):
         e = driver.find_element_by_class_name("slider-counter-current").text
         print(t)
         s=e.split(':')
-        print(s)
-        print(s[0])
+        
         print(s[1])
   
         
