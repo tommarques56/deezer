@@ -284,7 +284,7 @@ def creat():
             
             driver.find_element_by_class_name('svg-icon-next').click()
             n=n+1
-            m=threading.get_ident()
+           
             t="NOMBRE DE VUE pour {}: {}".format(m,n)
             sleep(40)
             print(t)
@@ -305,7 +305,7 @@ def creat():
     driver.quit()
 
 
-while i<20:
+while i<18:
     Thread(target = creat).start()
-    sleep(5)
+    sleep(15)
     i=i+1
