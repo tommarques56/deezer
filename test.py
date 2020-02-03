@@ -249,12 +249,7 @@ def creat():
         print("4")
         
         
-    driver.implicitly_wait(10)
-    print("test play")   
-    play = ActionChains(driver) 
-    play.send_keys(Keys.SPACE)
-    play.perform()
-    print("test play ok")
+    
     
     
     try:
@@ -285,7 +280,7 @@ def creat():
             driver.find_element_by_class_name('svg-icon-next').click()
             n=n+1
            
-            t="NOMBRE DE VUE pour {}: {}".format(m,n)
+            t="NOMBRE DE VUE: {}".format(n)
             sleep(40)
             print(t)
             
