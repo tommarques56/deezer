@@ -305,7 +305,7 @@ def creat():
     driver.quit()
 
 
-while i<18:
+while i<10:
     Thread(target = creat).start()
     
     i=i+1
