@@ -182,8 +182,12 @@ def creat(nb):
     genre.send_keys(Keys.DOWN*N)
     # genre.send_keys(Keys.ENTER)
     genre.perform()
-    
-    captcha(driver) 
+    try:
+        captcha(driver) 
+    except:
+        driver.quit()
+        Thread(target = creat).start()
+            
     sleep(5)
     while True:
         try:
