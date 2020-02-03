@@ -286,7 +286,7 @@ def creat():
             n=n+1
            
             t="NOMBRE DE VUE: {}".format(n)
-            sleep(38)
+            sleep(40)
             print(t)
             
         except:
