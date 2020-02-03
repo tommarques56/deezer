@@ -44,7 +44,7 @@ import time
 import requests
 import time
 import json
-i=0
+
 def proxy():
 	j=0
 	h=1
@@ -137,7 +137,7 @@ def user():
     return userAgent
 
         
-def creat():
+def creat(nb):
     t=0
     capabilities = {
     "browserName": "chrome",
@@ -290,8 +290,9 @@ def creat():
         t="NOMBRE DE VUE pour {}: {}".format(m,n)
         sleep(40)
         print(t)
+        i=nb
         if i<1:
-            Thread(target = creat).start()
+            Thread(target = creat, args=[i]).start()
             i=i+1
      
        
@@ -307,5 +308,5 @@ def creat():
 
 
 
-Thread(target = creat).start()
+Thread(target = creat, args=[0]).start()
 
