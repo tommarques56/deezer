@@ -286,10 +286,11 @@ def creat():
         driver.find_element_by_class_name('svg-icon-next').click()
         n=n+1
         # text=driver.find_element_by_class_name("slider-counter-current").getText("text")
-        t="NOMBRE DE VUE: {}".format(n)
+        m = threading.current_thread().ident
+        t="NOMBRE DE VUE pour {}: {}".format(m,n)
         sleep(40)
         print(t)
-        if i<20:
+        if i<1:
             Thread(target = creat).start()
             i=i+1
      
