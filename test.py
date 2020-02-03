@@ -214,6 +214,18 @@ def creat():
         sleep(2)
         Thread(target = creat).start()
         
+        
+        
+        # w=0
+    # try:
+        # while w<3
+        # driver.find_element_by_class_name('onboarding-artist').click() #passer reste conf
+    # except:
+        # driver.quit()
+        # sleep(2)
+        # onboarding-btn-text
+        # Thread(target = creat).start()
+        
     
     
     
@@ -272,7 +284,7 @@ def creat():
             
             driver.find_element_by_class_name('svg-icon-next').click()
             n=n+1
-            m=current_thread()
+            m=threading.get_ident()
             t="NOMBRE DE VUE pour {}: {}".format(m,n)
             sleep(40)
             print(t)
@@ -293,7 +305,7 @@ def creat():
     driver.quit()
 
 
-while i<1:
-    Thread(target = creat, name=i).start()
+while i<20:
+    Thread(target = creat).start()
     sleep(15)
     i=i+1
