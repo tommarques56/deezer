@@ -284,10 +284,11 @@ def creat():
             
             driver.find_element_by_class_name('svg-icon-next').click()
             n=n+1
-           
+            text=driver.find_element_by_class_name("slider-counter-current").getText("text")
             t="NOMBRE DE VUE: {}".format(n)
             sleep(40)
             print(t)
+            print(text)
             
         except:
             driver.quit()
