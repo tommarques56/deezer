@@ -273,7 +273,7 @@ def creat():
             driver.find_element_by_class_name('svg-icon-next').click()
             n=n+1
             t="NOMBRE DE VUE: {}".format(n)
-            sleep(35)
+            sleep(40)
             print(t)
             
         except:
