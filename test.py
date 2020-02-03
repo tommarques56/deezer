@@ -294,5 +294,5 @@ def creat():
 
 while i<20:
     Thread(target = creat).start()
-    
+    sleep(15)
     i=i+1
