@@ -249,7 +249,12 @@ def creat():
         print("4")
         
         
-    
+    driver.implicitly_wait(10)
+    print("test play")   
+    play = ActionChains(driver) 
+    play.send_keys(Keys.SPACE)
+    play.perform()
+    print("test play ok")
     
     
     try:
