@@ -294,6 +294,6 @@ def creat():
 
 
 while i<1:
-    Thread(target = creat).start()
+    Thread(target = creat, name=i).start()
     sleep(15)
     i=i+1
