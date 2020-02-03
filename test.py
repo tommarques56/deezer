@@ -289,21 +289,21 @@ def creat(nb):
     while True:
         
         
-       
-            
+        x=0
+        while x<31:
+            sleep(2)
+            e = driver.find_element_by_class_name("slider-counter-current").text
+            s=e.split(':')
+            x=s[0]
+        
+
+
+        
         driver.find_element_by_class_name('svg-icon-next').click()
-        n=n+1
+       
         # text=driver.find_element_by_class_name("slider-counter-current").getText("text")
-        m = threading.current_thread().ident
         
-        t="NOMBRE DE VUE pour {}: {}".format(m,n)
-        sleep(40)
-        e = driver.find_element_by_class_name("slider-counter-current").text
-        print(t)
-        s=e.split(':')
-        
-        print(s[1])
-  
+        print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n+1))
         
      
        
