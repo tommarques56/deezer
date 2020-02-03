@@ -199,13 +199,16 @@ def creat(nb):
         driver.find_element_by_class_name('onboarding-channel').click() #style
         sleep(3)
     except:
-        print("onboarding-channel")
+        driver.quit()
+        Thread(target = creat).start()
+         
     
     
     try:
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
     except:
-        print("onboarding-btn")
+        driver.quit()
+        Thread(target = creat).start()
     
    
     try:
