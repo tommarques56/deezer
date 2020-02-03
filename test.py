@@ -101,7 +101,7 @@ N = random.randrange(18,45)
 
 def al():
     e = "{}@gmail.com".format(random_char(20))    
-    print(e)
+    
     return e
     
     
@@ -147,9 +147,9 @@ def creat(nb):
     
 }
     ip=socket.gethostbyname(socket.gethostname())
-    print(ip)
+    
     command = "http://{}:4444/wd/hub".format(ip)
-    print(command)
+   
     options = webdriver.ChromeOptions()
     # options.add_argument(f'user-agent={user()}')
     options.add_extension('/root/deezer/AC.zip')
@@ -164,7 +164,7 @@ def creat(nb):
     try:
         driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     except:
-        print("no cookies")
+        print("")
     email = driver.find_element_by_xpath('//*[@id="register_form_mail_input"]')
     email.send_keys(al())
     sleep(1)
@@ -247,32 +247,32 @@ def creat(nb):
     try:
         driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
     except:
-        print("4")
+        print("")
         
         
     driver.implicitly_wait(10)
-    print("test play")   
+   
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
     play.perform()
-    print("test play ok")
+    
     
     
     try:
         driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
     except:
-        print("5")
+        print("")
         
     try:
         driver.find_element_by_class_name('svg-icon-shuffle').click()  #launch musique
     except:
-        print("SHUFFLE")   
+        print("")   
         
         
     try:
         driver.find_element_by_class_name('states-button-action').click()  #launch musique
     except:
-        print("s") 
+        print("") 
    
     
     driver.implicitly_wait(45)
