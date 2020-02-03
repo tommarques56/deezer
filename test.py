@@ -123,7 +123,7 @@ def acp_api_send_request(driver, message_type, data={}):
 
 def captcha(driver):
     try:
-        WebDriverWait(driver, 200).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))
+        WebDriverWait(driver, 120).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))
         print('t')
     except:
         driver.quit()
@@ -184,6 +184,7 @@ def creat():
     genre.perform()
     
     captcha(driver) 
+    sleep(5)
     while True:
         try:
             driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
