@@ -139,6 +139,7 @@ def user():
         
 def creat(nb):
     t=0
+    nb=nb
     capabilities = {
     "browserName": "chrome",
     "version": "79.0",
@@ -286,8 +287,7 @@ def creat(nb):
     n=0    
     
     if nb>0:
-        i=nb-1
-        Thread(target = creat, args=[i]).start()
+        Thread(target = creat, args=[nb-1]).start()
         
     sleep(5)
     while True:
