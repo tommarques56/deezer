@@ -285,7 +285,7 @@ def creat(nb):
         # i=nb-1
         # Thread(target = creat, args=[i]).start()
         
-    
+    sleep(5)
     while True:
         
         
@@ -295,6 +295,7 @@ def creat(nb):
             e = driver.find_element_by_class_name("slider-counter-current").text
             s=e.split(':')
             x=int(s[0])
+            print(x)
         
 
 
