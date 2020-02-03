@@ -187,7 +187,7 @@ def creat(nb):
         captcha(driver) 
     except:
         driver.quit()
-        Thread(target = creat).start()
+        Thread(target = creat, args=[nb]).start()
             
     sleep(5)
     while True:
@@ -195,7 +195,7 @@ def creat(nb):
             driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
         except:
                 driver.quit()
-                Thread(target = creat).start()
+                Thread(target = creat, args=[nb]).start()
                 break
         break
     
@@ -205,7 +205,7 @@ def creat(nb):
         sleep(3)
     except:
         driver.quit()
-        Thread(target = creat).start()
+        Thread(target = creat, args=[nb]).start()
          
     
     
@@ -213,15 +213,14 @@ def creat(nb):
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
     except:
         driver.quit()
-        Thread(target = creat).start()
+        Thread(target = creat, args=[nb]).start()
     
    
     try:
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
     except:
         driver.quit()
-        sleep(2)
-        Thread(target = creat).start()
+        Thread(target = creat, args=[nb]).start()
         
         
         
