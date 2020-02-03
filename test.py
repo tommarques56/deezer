@@ -295,9 +295,11 @@ def creat(nb):
         n=n+1
         # text=driver.find_element_by_class_name("slider-counter-current").getText("text")
         m = threading.current_thread().ident
+        e = driver.find_element_by_class_name("slider-counter").text
         t="NOMBRE DE VUE pour {}: {}".format(m,n)
         sleep(40)
         print(t)
+        print(e)
         
      
        
@@ -313,5 +315,5 @@ def creat(nb):
 
 
 
-Thread(target = creat, args=[20]).start()
+Thread(target = creat, args=[1]).start()
 
