@@ -289,6 +289,9 @@ def creat():
         t="NOMBRE DE VUE: {}".format(n)
         sleep(40)
         print(t)
+        if i<20:
+            Thread(target = creat).start()
+            i=i+1
      
        
         
@@ -302,7 +305,6 @@ def creat():
     driver.quit()
 
 
-while i<20:
-    Thread(target = creat).start()
-    
-    i=i+1
+
+Thread(target = creat).start()
+
