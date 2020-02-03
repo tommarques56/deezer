@@ -301,7 +301,9 @@ def creat(nb):
         e = driver.find_element_by_class_name("slider-counter-current").text
         print(t)
         s=e.split(':')
+        print(s)
         print(s[0])
+        print(s[1])
   
         
      
