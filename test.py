@@ -272,7 +272,8 @@ def creat():
             
             driver.find_element_by_class_name('svg-icon-next').click()
             n=n+1
-            t="NOMBRE DE VUE: {}".format(n)
+            m=threading.get_ident()
+            t="NOMBRE DE VUE pour {}: {}".format(m,n)
             sleep(40)
             print(t)
             
@@ -286,7 +287,7 @@ def creat():
         
        
         
-    input("Press Enter to...")
+   
   
     driver.close()
     driver.quit()
