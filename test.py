@@ -42,7 +42,7 @@ import pandas as pd
 import os
 import time
 import requests
-import time
+
 import json
 
 def proxy():
@@ -135,7 +135,7 @@ def user():
 
         
 def creat(nb):
-    time = time.asctime()
+    
     t=0
     nb=nb
     capabilities = {
@@ -185,7 +185,7 @@ def creat(nb):
     try:
         captcha(driver) 
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime())
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
@@ -195,7 +195,7 @@ def creat(nb):
     try:
         driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime())
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
@@ -206,7 +206,7 @@ def creat(nb):
         sleep(3)
         
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime())
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
@@ -215,7 +215,7 @@ def creat(nb):
     try:
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime())
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
@@ -224,7 +224,7 @@ def creat(nb):
     try:
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime())
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
@@ -307,7 +307,7 @@ def creat(nb):
                 s=e.split(':')
                 x=int(s[1])
             except:
-                print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
+                print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime())
                 driver.quit()
                 Thread(target = creat, args=[nb]).start()    
                 
