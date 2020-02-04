@@ -181,13 +181,14 @@ def creat(nb):
     genre.send_keys(Keys.DOWN*N)
     # genre.send_keys(Keys.ENTER)
     genre.perform()
+    
     try:
         captcha(driver) 
     except:
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
-            
+   
     sleep(5)
    
     try:
