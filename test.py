@@ -307,7 +307,7 @@ def creat(nb):
                 s=e.split(':')
                 x=int(s[1])
             except:
-                print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime()))
+                print("ERROR THREAD {} à {} avec {} vue(s)".format(threading.current_thread().ident,time.asctime(),n))
                 driver.quit()
                 Thread(target = creat, args=[nb]).start()    
                 
@@ -337,6 +337,7 @@ def creat(nb):
 
 
 
+Thread(target = creat, args=[5]).start()
 Thread(target = creat, args=[5]).start()
 Thread(target = creat, args=[5]).start()
 Thread(target = creat, args=[5]).start()
