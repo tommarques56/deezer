@@ -122,13 +122,10 @@ def acp_api_send_request(driver, message_type, data={}):
     
 
 def captcha(driver):
-    try:
-        WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))
-        print('t')
-    except:
-        driver.quit()
-        sleep(2)
-        Thread(target = creat).start()
+    
+    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))
+    
+    
    
 def user():
     ua = UserAgent()
