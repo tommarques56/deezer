@@ -321,7 +321,7 @@ def creat(nb):
        
         # text=driver.find_element_by_class_name("slider-counter-current").getText("text")
         n=n+1
-        print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident.ident,n))
+        print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
         
      
        
