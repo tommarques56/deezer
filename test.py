@@ -185,18 +185,20 @@ def creat(nb):
     try:
         captcha(driver) 
     except:
+        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
         driver.quit()
         Thread(target = creat, args=[nb]).start()
-        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+        
    
     sleep(5)
    
     try:
         driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
     except:
+        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
         driver.quit()
         Thread(target = creat, args=[nb]).start()
-        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+        
        
     driver.implicitly_wait(25)
     try:
@@ -204,26 +206,28 @@ def creat(nb):
         sleep(3)
         
     except:
+        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
         driver.quit()
         Thread(target = creat, args=[nb]).start()
-        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
-         
+        
     
     
     try:
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
     except:
+        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
         driver.quit()
         Thread(target = creat, args=[nb]).start()
-        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+        
     
    
     try:
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
     except:
+        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
         driver.quit()
         Thread(target = creat, args=[nb]).start()
-        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+        
         
         
         
@@ -303,9 +307,10 @@ def creat(nb):
                 s=e.split(':')
                 x=int(s[1])
             except:
+                print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
                 driver.quit()
                 Thread(target = creat, args=[nb]).start()    
-                print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+                
 
 
         
