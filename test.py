@@ -185,7 +185,7 @@ def creat(nb):
     try:
         captcha(driver) 
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime())))
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime()))
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
