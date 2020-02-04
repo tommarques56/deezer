@@ -185,7 +185,7 @@ def creat(nb):
     try:
         captcha(driver) 
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
@@ -195,7 +195,7 @@ def creat(nb):
     try:
         driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
@@ -206,7 +206,7 @@ def creat(nb):
         sleep(3)
         
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
@@ -215,7 +215,7 @@ def creat(nb):
     try:
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
@@ -224,7 +224,7 @@ def creat(nb):
     try:
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
         driver.quit()
         Thread(target = creat, args=[nb]).start()
         
@@ -307,7 +307,7 @@ def creat(nb):
                 s=e.split(':')
                 x=int(s[1])
             except:
-                print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+                print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time)
                 driver.quit()
                 Thread(target = creat, args=[nb]).start()    
                 
@@ -321,7 +321,7 @@ def creat(nb):
        
         # text=driver.find_element_by_class_name("slider-counter-current").getText("text")
         n=n+1
-        print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
+        print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident.ident,n))
         
      
        
