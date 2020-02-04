@@ -339,5 +339,3 @@ def creat(nb):
 
 Thread(target = creat, args=[5]).start()
 Thread(target = creat, args=[5]).start()
-Thread(target = creat, args=[5]).start()
-Thread(target = creat, args=[5]).start()
