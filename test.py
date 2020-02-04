@@ -135,6 +135,7 @@ def user():
 
         
 def creat(nb):
+    time = time.asctime()
     t=0
     nb=nb
     capabilities = {
@@ -185,24 +186,26 @@ def creat(nb):
     except:
         driver.quit()
         Thread(target = creat, args=[nb]).start()
+        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
             
     sleep(5)
-    while True:
-        try:
-            driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
-        except:
-                driver.quit()
-                Thread(target = creat, args=[nb]).start()
-                break
-        break
-    
+   
+    try:
+        driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
+    except:
+        driver.quit()
+        Thread(target = creat, args=[nb]).start()
+        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+       
     driver.implicitly_wait(25)
     try:
         driver.find_element_by_class_name('onboarding-channel').click() #style
         sleep(3)
+        
     except:
         driver.quit()
         Thread(target = creat, args=[nb]).start()
+        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
          
     
     
@@ -211,6 +214,7 @@ def creat(nb):
     except:
         driver.quit()
         Thread(target = creat, args=[nb]).start()
+        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
     
    
     try:
@@ -218,6 +222,7 @@ def creat(nb):
     except:
         driver.quit()
         Thread(target = creat, args=[nb]).start()
+        print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
         
         
         
@@ -299,6 +304,9 @@ def creat(nb):
             except:
                 driver.quit()
                 Thread(target = creat, args=[nb]).start()    
+                print("ERROR THREAD {} à {}".format(threading.current_thread(),time)
+
+
         
 
 
