@@ -211,58 +211,26 @@ def creat(nb):
         driver.find_element_by_class_name('onboarding-channel').click() #style
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
-        
-        
-   
 
-    
-    
 
     try:
+        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
         driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
     except:
         print("4")
-    try:
-        driver.get("https://www.deezer.com/fr/album/60566312")
-    except:
-        sleep(2)
-    
    
-    
-    try:
-        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
-    except:
-        print("")
-        
-        
+    driver.get("https://www.deezer.com/fr/album/60566312")
+
     driver.implicitly_wait(10)
    
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
     play.perform()
     
-    
-    
-    try:
-        driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
-    except:
-        print("")
-        
-    try:
-        driver.find_element_by_class_name('svg-icon-shuffle').click()  #launch musique
-    except:
-        print("")   
-        
-        
-    try:
-        driver.find_element_by_class_name('states-button-action').click()  #launch musique
-    except:
-        print("") 
+
+    driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
+    driver.find_element_by_class_name('states-button-action').click()  #launch musique
    
-    
-    driver.implicitly_wait(60)
-    n=0    
-    
     if nb>0:
         Thread(target = creat, args=[nb-1]).start()
         
@@ -277,22 +245,20 @@ def creat(nb):
                 e = driver.find_element_by_class_name("slider-counter-current").text
                 s=e.split(':')
                 x=int(s[1])
+                driver.find_element_by_class_name('svg-icon-next').click()
+                print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
+                n=n+1
+                
             except:
                 print("ERROR THREAD {} à {} avec {} vue(s)".format(threading.current_thread().ident,time.asctime(),n))
                 driver.quit()
                 Thread(target = creat, args=[nb]).start()    
-                
-
 
         
-
-
         
-        driver.find_element_by_class_name('svg-icon-next').click()
        
-        # text=driver.find_element_by_class_name("slider-counter-current").getText("text")
-        n=n+1
-        print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
+        
+        
         
      
        
