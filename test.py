@@ -233,13 +233,6 @@ def creat(nb):
     play.send_keys(Keys.SPACE)
     play.perform()
     
-    sleep(5)
-    
-    try:
-        driver.find_element_by_class_name('states-button-label').click()  #launch musique
-    except:
-        driver.find_element_by_class_name('states-button-label').click()  #launch musique  
-
 
     
     if nb>0:
