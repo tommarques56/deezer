@@ -235,6 +235,7 @@ def creat(nb):
         Thread(target = creat, args=[nb-1]).start()
         
     sleep(5)
+    n=0
     while True:
         
         
@@ -254,23 +255,7 @@ def creat(nb):
                 driver.quit()
                 Thread(target = creat, args=[nb]).start()    
 
-        
-        
-       
-        
-        
-        
-     
-       
-        
-            
-        
-       
-        
-   
-  
-    driver.close()
-    driver.quit()
+
 
 
 
