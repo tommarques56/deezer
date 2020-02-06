@@ -216,28 +216,28 @@ def launch():
    
 
 def play(nb):
-n=0
-driver.find_element_by_class_name('svg-icon-next').click()
-while True:
-        
-        
-        x=0
-        while x<31:
-            sleep(5)
-            e = driver.find_element_by_class_name("slider-counter-current").text
-            s=e.split(':')
-            x=int(s[1])
-        try:
-                
-            driver.find_element_by_class_name('svg-icon-next').click()
-            n=n+1
-            print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
+    n=0
+    driver.find_element_by_class_name('svg-icon-next').click()
+    while True:
             
+            
+            x=0
+            while x<31:
+                sleep(5)
+                e = driver.find_element_by_class_name("slider-counter-current").text
+                s=e.split(':')
+                x=int(s[1])
+            try:
+                    
+                driver.find_element_by_class_name('svg-icon-next').click()
+                n=n+1
+                print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
                 
-        except:
-            print("ERROR THREAD {} à {} avec {} vue(s)".format(threading.current_thread().ident,time.asctime(),n))
-            driver.quit()
-            Thread(target = creat, args=[nb]).start()    
+                    
+            except:
+                print("ERROR THREAD {} à {} avec {} vue(s)".format(threading.current_thread().ident,time.asctime(),n))
+                driver.quit()
+                Thread(target = creat, args=[nb]).start()    
 
 
 
