@@ -201,8 +201,8 @@ def creat(nb):
     driver.implicitly_wait(25)
     try:
         driver.find_element_by_class_name('onboarding-screen-artist-item').click() #love artist
-        driver.find_element_by_class_name('onboarding-screen-search-btn').click() #love artist ok
-        sleep(3)
+        driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div[2]/div[1]/div[3]/div/button').click() #love artist ok
+        
         
     except:
         driver.find_element_by_class_name('onboarding-channel').click() #style
@@ -227,9 +227,9 @@ def creat(nb):
     sleep(5)
     
     try:
-        driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
+        driver.find_element_by_class_name('states-button-action').click()  #launch musique
     except:
-        driver.find_element_by_class_name('svg-icon-play').click()  #launch musique  
+        driver.find_element_by_class_name('states-button-action').click()  #launch musique  
 
 
     
