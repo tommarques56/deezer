@@ -201,54 +201,19 @@ def creat(nb):
         
        
     driver.implicitly_wait(25)
-    
-    driver.find_element_by_class_name('onboarding-screen-search-label').click() #love artist
-     
+    try:
+        driver.find_element_by_class_name('onboarding-screen-search-label').click() #love artist
+        driver.find_element_by_class_name('onboarding-screen-search-label').click() #love artist ok
+        sleep(3)
+        
+    except:
+        driver.find_element_by_class_name('onboarding-channel').click() #style
+        driver.find_element_by_class_name('onboarding-btn').click() #valide style
+        driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
         
         
-    driver.find_element_by_class_name('onboarding-screen-search-label').click() #love artist ok
-     
-        
-        
-        
-        
-    
-    driver.find_element_by_class_name('onboarding-channel').click() #style
-    
-        
-        
-        
-    
-    
-    
-    driver.find_element_by_class_name('onboarding-btn').click() #valide style
-    
-        
-        
-    
    
-    
-    driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
-    
-       
-        
-        
-        
-        
-        
-        # w=0
-    # try:
-        # while w<3
-        # driver.find_element_by_class_name('onboarding-artist').click() #passer reste conf
-    # except:
-        # driver.quit()
-        # sleep(2)
-        # onboarding-btn-text
-        # Thread(target = creat).start()
-        
-    
-    
-    
+
     
     
 
