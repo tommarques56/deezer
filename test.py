@@ -178,13 +178,14 @@ def creat_account(driver):
         
 def style1(driver):
     try:
+        sleep(10)
         driver.find_element_by_class_name('onboarding-screen-artist-item').click() #love artist
         sleep(5)
         driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div[2]/div[1]/div[3]/div/button').click() #love artist ok
         
         
     except:
-       style2()
+       style2(driver)
 
 def style2(driver):
     try:
