@@ -193,12 +193,9 @@ def creat(nb):
    
     sleep(5)
    
-    try:
-        driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
-    except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime()))
-        driver.quit()
-        Thread(target = creat, args=[nb]).start()
+    
+    driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
+   
         
        
     driver.implicitly_wait(25)
@@ -229,9 +226,10 @@ def creat(nb):
     
     sleep(5)
     
-    
-    driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
-  
+    try:
+        driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
+    except:
+        driver.find_element_by_class_name('svg-icon-play').click()  #launch musique  
 
 
     
@@ -266,4 +264,4 @@ def creat(nb):
 Thread(target = creat, args=[5]).start()
 Thread(target = creat, args=[5]).start()
 Thread(target = creat, args=[5]).start()
-Thread(target = creat, args=[5]).start()
+Thread(target = creat, args=[100]).start()
