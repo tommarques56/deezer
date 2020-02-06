@@ -227,7 +227,7 @@ def creat(nb):
    
     driver.get("https://www.deezer.com/fr/album/60566312")
 
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(40)
    
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
@@ -252,11 +252,12 @@ def creat(nb):
         
         x=0
         while x<31:
-            sleep(8)
+            sleep(5)
+            e = driver.find_element_by_class_name("slider-counter-current").text
+            s=e.split(':')
+            x=int(s[1])
             try:
-                e = driver.find_element_by_class_name("slider-counter-current").text
-                s=e.split(':')
-                x=int(s[1])
+                
                 driver.find_element_by_class_name('svg-icon-next').click()
                 print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
                 n=n+1
