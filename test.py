@@ -198,16 +198,25 @@ def creat(nb):
    
         
        
-    driver.implicitly_wait(25)
+    driver.implicitly_wait(60)
     try:
         driver.find_element_by_class_name('onboarding-screen-artist-item').click() #love artist
         driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div[2]/div[1]/div[3]/div/button').click() #love artist ok
         
         
     except:
+       print("")
+       
+       
+       
+       
+    try:
         driver.find_element_by_class_name('onboarding-channel').click() #style
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
+        
+    except:
+        print("")
 
 
     try:
