@@ -227,9 +227,9 @@ def creat(nb):
     sleep(5)
     
     try:
-        driver.find_element_by_class_name('states-button-action').click()  #launch musique
+        driver.find_element_by_class_name('states-button-label').click()  #launch musique
     except:
-        driver.find_element_by_class_name('states-button-action').click()  #launch musique  
+        driver.find_element_by_class_name('states-button-label').click()  #launch musique  
 
 
     
