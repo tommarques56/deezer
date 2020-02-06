@@ -195,7 +195,7 @@ def style2(driver):
     except:
         driver.get("https://www.deezer.com/fr/album/60566312")
         driver.refresh()
-        style1()
+        style1(driver)
 
 
 def launch(driver):
@@ -212,7 +212,7 @@ def launch(driver):
         
     except:
         print("ERROR LAUNCH")
-        launch()
+        launch(driver)
    
 
 def play(nb,driver):
