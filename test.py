@@ -227,10 +227,16 @@ def creat(nb):
     play.send_keys(Keys.SPACE)
     play.perform()
     
+    sleep(5)
+    
+    try:
+        driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
+        driver.find_element_by_class_name('states-button-action').click()  #launch musique
+    except:
+        print("")
 
-    driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
-    driver.find_element_by_class_name('states-button-action').click()  #launch musique
-   
+
+    
     if nb>0:
         Thread(target = creat, args=[nb-1]).start()
         
