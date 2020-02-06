@@ -267,10 +267,9 @@ def creat(nb):
                 Thread(target = creat, args=[nb]).start()    
 
 
+p=0
 
+while p<20:
+    Thread(target = creat, args=[0]).start()
+    p=p+1
 
-
-Thread(target = creat, args=[5]).start()
-Thread(target = creat, args=[5]).start()
-Thread(target = creat, args=[5]).start()
-Thread(target = creat, args=[100]).start()
