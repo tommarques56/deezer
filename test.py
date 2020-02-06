@@ -206,7 +206,7 @@ def creat(nb):
         sleep(3)
         
     except:
-        print("ERROR style")
+        print("ERROR style {}".format(threading.current_thread().ident))
         
         
     
@@ -214,14 +214,14 @@ def creat(nb):
     try:
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
     except:
-        print("ERROR valide style")
+        print("ERROR valide style {}".format(threading.current_thread().ident))
         
     
    
     try:
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
     except:
-        print("ERROR ligne 227")
+        print("ERROR ligne 227 {}".format(threading.current_thread().ident))
         
         
         
