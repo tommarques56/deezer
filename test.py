@@ -151,9 +151,9 @@ def creat(nb):
    
     options = webdriver.ChromeOptions()
     # options.add_argument(f'user-agent={user()}')
-    options.add_extension('/root/deezer/AC.zip')
-    # driver = webdriver.Chrome(options=options)
-    driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
+    options.add_extension('D:\\androiddeezerapp\\AC.zip')
+    driver = webdriver.Chrome(options=options)
+    # driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
     driver.implicitly_wait(80)
     driver.get("https://www.deezer.com/fr/register") 
     
@@ -202,8 +202,8 @@ def creat(nb):
        
     driver.implicitly_wait(25)
     try:
-        driver.find_element_by_class_name('onboarding-screen-search-label').click() #love artist
-        driver.find_element_by_class_name('onboarding-screen-search-label').click() #love artist ok
+        driver.find_element_by_class_name('onboarding-screen-artist-item').click() #love artist
+        driver.find_element_by_class_name('onboarding-screen-search-btn').click() #love artist ok
         sleep(3)
         
     except:
@@ -307,6 +307,5 @@ def creat(nb):
 
 
 
-Thread(target = creat, args=[5]).start()
-Thread(target = creat, args=[5]).start()
-Thread(target = creat, args=[4]).start()
+Thread(target = creat, args=[1]).start()
+
