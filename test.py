@@ -169,7 +169,7 @@ def creat_account():
     try:
         driver.find_element_by_xpath('//*[@id="register_form_password_input"]')
     except:
-        f = open("login.txt","a+")
+        f = open("/root/deezer/login.txt","a+")
         f.write("{}:{}".format(em,md))
         f.close()
         
