@@ -133,10 +133,120 @@ def user():
     print(userAgent)
     return userAgent
 
+def creat_account():
+    driver.get("https://www.deezer.com/fr/register") 
+    
+    sleep(2)
+    em = al()
+    md = random_char(15)
+    
+    try:
+        driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
+    except:
+        print("")
+    email = driver.find_element_by_xpath('//*[@id="register_form_mail_input"]')
+    email.send_keys(em)
+    name =  driver.find_element_by_xpath('//*[@id="register_form_username_input"]')
+    name.send_keys(random_char(9))
+    mdp =  driver.find_element_by_xpath('//*[@id="register_form_password_input"]')
+    mdp.send_keys(md)
+    genre = ActionChains(driver) 
+    genre.send_keys(Keys.TAB)
+    genre.send_keys(Keys.DOWN)
+    genre.send_keys(Keys.TAB)
+    genre.send_keys(Keys.DOWN*N)
+    # genre.send_keys(Keys.ENTER)
+    genre.perform()
+    
+    try:
+        captcha(driver) 
+    except:
+        driver.quit()
+        Thread(target = creat, args=[nb]).start()
+
+    sleep(2)
+    driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
+    try:
+        driver.find_element_by_xpath('//*[@id="register_form_password_input"]')
+    except:
+        f = open("login.txt","a+")
+        f.write("{}:{}".format(em,md))
+        f.close()
         
+        
+        
+        
+def style1():
+    try:
+        driver.find_element_by_class_name('onboarding-screen-artist-item').click() #love artist
+        sleep(5)
+        driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div[2]/div[1]/div[3]/div/button').click() #love artist ok
+        
+        
+    except:
+       style2()
+
+def style2():
+    try:
+        driver.find_element_by_class_name('onboarding-channel').click() #style
+        driver.find_element_by_class_name('onboarding-btn').click() #valide style
+        driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
+        
+    except:
+        driver.get("https://www.deezer.com/fr/album/60566312")
+        driver.refresh()
+        style1()
+
+
+def launch():
+    driver.get("https://www.deezer.com/fr/album/60566312")
+
+    driver.implicitly_wait(40)
+    play = ActionChains(driver) 
+    play.send_keys(Keys.SPACE)
+    play.perform()
+    
+    try:
+        driver.find_element_by_class_name('action-item-btn').click()
+        
+        
+    except:
+        print("ERROR LAUNCH")
+        launch()
+   
+
+def play(nb):
+n=0
+driver.find_element_by_class_name('svg-icon-next').click()
+while True:
+        
+        
+        x=0
+        while x<31:
+            sleep(5)
+            e = driver.find_element_by_class_name("slider-counter-current").text
+            s=e.split(':')
+            x=int(s[1])
+        try:
+                
+            driver.find_element_by_class_name('svg-icon-next').click()
+            n=n+1
+            print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
+            
+                
+        except:
+            print("ERROR THREAD {} à {} avec {} vue(s)".format(threading.current_thread().ident,time.asctime(),n))
+            driver.quit()
+            Thread(target = creat, args=[nb]).start()    
+
+
+
+
+ 
 def creat(nb):
     
     t=0
+   
     nb=nb
     capabilities = {
     "browserName": "chrome",
@@ -155,122 +265,29 @@ def creat(nb):
     options.add_extension('/root/deezer/AC.zip')
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
-    driver.implicitly_wait(80)
-    driver.get("https://www.deezer.com/fr/register") 
-    
-    sleep(2)
     
     
-    try:
-        driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
-    except:
-        print("")
-    email = driver.find_element_by_xpath('//*[@id="register_form_mail_input"]')
-    email.send_keys(al())
-    sleep(1)
-    name =  driver.find_element_by_xpath('//*[@id="register_form_username_input"]')
-    name.send_keys(random_char(9))
-    sleep(1)
-    mdp =  driver.find_element_by_xpath('//*[@id="register_form_password_input"]')
-    mdp.send_keys("0571Zezette")
-    sleep(1)
-    genre = ActionChains(driver) 
-    genre.send_keys(Keys.TAB)
-    genre.send_keys(Keys.DOWN)
-    sleep(1)
-    genre.send_keys(Keys.TAB)
-    genre.send_keys(Keys.DOWN*N)
-    # genre.send_keys(Keys.ENTER)
-    genre.perform()
-    
-    try:
-        captcha(driver) 
-    except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime()))
-        driver.quit()
-        Thread(target = creat, args=[nb]).start()
-        
-   
-    sleep(5)
-   
-    
-    driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()
-   
-        
-       
-    driver.implicitly_wait(60)
-    try:
-        driver.find_element_by_class_name('onboarding-screen-artist-item').click() #love artist
-        driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div[2]/div[1]/div[3]/div/button').click() #love artist ok
-        
-        
-    except:
-       print("")
-       
-       
-       
-       
-    try:
-        driver.find_element_by_class_name('onboarding-channel').click() #style
-        driver.find_element_by_class_name('onboarding-btn').click() #valide style
-        driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
-        
-    except:
-        print("")
-
+    creat_account()
+    style1()   
 
     try:
         driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
         
     except:
         print("")
-   
-    driver.get("https://www.deezer.com/fr/album/60566312")
-
-    driver.implicitly_wait(40)
-    sleep(10)
-    play = ActionChains(driver) 
-    play.send_keys(Keys.SPACE)
-    play.perform()
+                
+    launch()
     
-    try:
-        driver.find_element_by_class_name('action-item-btn').click()
-        
-        
-    except:
-        print("")
-
     
     if nb>0:
         Thread(target = creat, args=[nb-1]).start()
-        
-    sleep(5)
-    n=0
-    driver.find_element_by_class_name('svg-icon-next').click()
-    while True:
-        
-        
-        x=0
-        while x<31:
-            sleep(5)
-            e = driver.find_element_by_class_name("slider-counter-current").text
-            s=e.split(':')
-            x=int(s[1])
-        try:
-                
-            driver.find_element_by_class_name('svg-icon-next').click()
-            print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
-            n=n+1
-                
-        except:
-            print("ERROR THREAD {} à {} avec {} vue(s)".format(threading.current_thread().ident,time.asctime(),n))
-            driver.quit()
-            Thread(target = creat, args=[nb]).start()    
+
+    play(nb)
 
 
 p=0
 
-while p<20:
+while p<1:
     Thread(target = creat, args=[0]).start()
     p=p+1
 
