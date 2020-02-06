@@ -202,12 +202,30 @@ def creat(nb):
        
     driver.implicitly_wait(25)
     try:
+        driver.find_element_by_class_name('onboarding-screen-search-label').click() #love artist
+        sleep(3)
+        
+    except:
+        print("ERROR love artist {}".format(threading.current_thread().ident))
+        
+        
+    try:
+        driver.find_element_by_class_name('onboarding-screen-search-label').click() #love artist ok
+        sleep(3)
+        
+    except:
+        print("ERROR love artist ok{}".format(threading.current_thread().ident))
+        
+        
+        
+        
+    try:
         driver.find_element_by_class_name('onboarding-channel').click() #style
         sleep(3)
         
     except:
         print("ERROR style {}".format(threading.current_thread().ident))
-        driver.quit()
+        
         
         
     
@@ -216,7 +234,7 @@ def creat(nb):
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
     except:
         print("ERROR valide style {}".format(threading.current_thread().ident))
-        driver.quit()
+        
         
     
    
@@ -224,7 +242,7 @@ def creat(nb):
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
     except:
         print("ERROR ligne 227 {}".format(threading.current_thread().ident))
-        driver.quit()
+       
         
         
         
