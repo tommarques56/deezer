@@ -206,27 +206,23 @@ def creat(nb):
         sleep(3)
         
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime()))
-        driver.quit()
-        Thread(target = creat, args=[nb]).start()
+        print("ERROR style")
+        
         
     
     
     try:
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime()))
-        driver.quit()
-        Thread(target = creat, args=[nb]).start()
+        print("ERROR valide style")
         
     
    
     try:
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
     except:
-        print("ERROR THREAD {} à {}".format(threading.current_thread().ident,time.asctime()))
-        driver.quit()
-        Thread(target = creat, args=[nb]).start()
+        print("ERROR ligne 227")
+        
         
         
         
@@ -339,5 +335,4 @@ def creat(nb):
 
 Thread(target = creat, args=[5]).start()
 Thread(target = creat, args=[5]).start()
-Thread(target = creat, args=[5]).start()
-Thread(target = creat, args=[3]).start()
+Thread(target = creat, args=[4]).start()
