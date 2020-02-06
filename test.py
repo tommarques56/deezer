@@ -133,7 +133,7 @@ def user():
     print(userAgent)
     return userAgent
 
-def creat_account():
+def creat_account(driver):
     driver.get("https://www.deezer.com/fr/register") 
     
     sleep(2)
@@ -176,7 +176,7 @@ def creat_account():
         
         
         
-def style1():
+def style1(driver):
     try:
         driver.find_element_by_class_name('onboarding-screen-artist-item').click() #love artist
         sleep(5)
@@ -186,7 +186,7 @@ def style1():
     except:
        style2()
 
-def style2():
+def style2(driver):
     try:
         driver.find_element_by_class_name('onboarding-channel').click() #style
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
@@ -198,7 +198,7 @@ def style2():
         style1()
 
 
-def launch():
+def launch(driver):
     driver.get("https://www.deezer.com/fr/album/60566312")
 
     driver.implicitly_wait(40)
@@ -215,7 +215,7 @@ def launch():
         launch()
    
 
-def play(nb):
+def play(nb,driver):
     n=0
     driver.find_element_by_class_name('svg-icon-next').click()
     while True:
@@ -267,8 +267,8 @@ def creat(nb):
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
     
     
-    creat_account()
-    style1()   
+    creat_account(driver)
+    style1(driver)   
 
     try:
         driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
@@ -276,13 +276,13 @@ def creat(nb):
     except:
         print("")
                 
-    launch()
+    launch(driver)
     
     
     if nb>0:
         Thread(target = creat, args=[nb-1]).start()
 
-    play(nb)
+    play(nb,driver)
 
 
 p=0
