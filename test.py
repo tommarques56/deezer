@@ -228,11 +228,17 @@ def creat(nb):
     driver.get("https://www.deezer.com/fr/album/60566312")
 
     driver.implicitly_wait(40)
-   
+    sleep(10)
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
     play.perform()
     
+    try:
+        driver.find_element_by_class_name('action-item-btn').click()
+        
+        
+    except:
+        print("")
 
     
     if nb>0:
