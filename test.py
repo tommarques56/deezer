@@ -215,9 +215,9 @@ def creat(nb):
 
     try:
         driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
-        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
+        
     except:
-        print("4")
+        print("")
    
     driver.get("https://www.deezer.com/fr/album/60566312")
 
@@ -229,11 +229,9 @@ def creat(nb):
     
     sleep(5)
     
-    try:
-        driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
-        driver.find_element_by_class_name('states-button-action').click()  #launch musique
-    except:
-        print("")
+    
+    driver.find_element_by_class_name('svg-icon-play').click()  #launch musique
+  
 
 
     
