@@ -248,7 +248,7 @@ def play(nb,driver):
     driver.implicitly_wait(40)
     driver.find_element_by_class_name('svg-icon-next').click()
     sleep(15)
-    while n<=15:        
+    while n<=5:        
         x=0
         while x<32:
             sleep(3)
