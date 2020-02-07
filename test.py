@@ -241,6 +241,7 @@ def rand(driver):
 def play(nb,driver):
     v=0
     n=0
+    p=0
     try:
         driver.find_element_by_class_name('svg-icon-next').click()
     except:
