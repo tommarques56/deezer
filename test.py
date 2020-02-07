@@ -231,8 +231,17 @@ def add(driver):
     except:
         print("ERROR LOVE")
             
-   
+def rand(driver):
 
+    driver.implicitly_wait(40)
+    try:
+        driver.find_element_by_xpath('svg-icon-shuffle').click()
+        
+        
+    except:
+        print("ERROR random")
+        
+        
 def play(nb,driver):
     v=0
     n=0
@@ -305,7 +314,9 @@ def creat(nb):
                 
     launch(driver)
 
-    add(driver)   
+    add(driver) 
+
+    rand(driver)
     
     
     if nb>0:
