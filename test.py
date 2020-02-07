@@ -270,6 +270,12 @@ def play(nb,driver):
             Thread(target = creat, args=[nb]).start() 
                  
         p=p+1
+    try:
+        driver.find_element_by_class_name('svg-icon-pause').click()
+        
+        
+    except:
+        play(nb,driver)
     launch(driver)
 
 
