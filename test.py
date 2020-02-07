@@ -255,6 +255,8 @@ def play(nb,driver):
                 x=int(s[1])
             except:
                 sleep(20)
+                x=35
+                n=n-1
         try:
                       
             driver.find_element_by_class_name('svg-icon-next').click()
