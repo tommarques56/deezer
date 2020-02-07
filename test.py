@@ -217,6 +217,8 @@ def launch(driver):
         
     except:
         print("ERROR LAUNCH")
+        driver.refresh()
+        sleep(5)
         
      
         
@@ -307,7 +309,7 @@ def creat(nb):
 
 p=0
 
-while p<20:
+while p<10:
     Thread(target = creat, args=[0]).start()
     p=p+1
 
