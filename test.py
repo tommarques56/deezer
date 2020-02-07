@@ -166,6 +166,7 @@ def creat_account(driver):
 
     sleep(2)
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
+    driver.implicitly_wait(20)
     try:
         driver.find_element_by_xpath('//*[@id="register_form_password_input"]')
     except:
@@ -173,7 +174,7 @@ def creat_account(driver):
         f.write("{}:{}".format(em,md))
         f.close()
         
-        
+       
         
         
 def style1(driver):
@@ -211,12 +212,22 @@ def launch(driver):
     play.perform()
     
     try:
-        driver.find_element_by_class_name('action-item-btn').click()
+        driver.find_element_by_xpath('/html/body/div[1]/div/main/div[5]/div[1]/div[2]/div[1]/div/div[2]/div[1]/div[1]/div[1]/button').click()
         
         
     except:
         print("ERROR LAUNCH")
-        launch(driver)
+        
+    add(driver)    
+        
+def add(driver):
+    try:
+        driver.find_element_by_xpath('/html/body/div[1]/div/main/div[5]/div[1]/div[2]/div[1]/div/div[2]/div[1]/div[1]/div[2]/button').click()
+        
+        
+    except:
+        print("ERROR LOVE")
+            
    
 
 def play(nb,driver):
