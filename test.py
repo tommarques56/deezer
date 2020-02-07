@@ -310,7 +310,7 @@ def creat(nb):
 
 p=0
 
-while p<1:
-    Thread(target = creat, args=[15]).start()
+while p<3:
+    Thread(target = creat, args=[5]).start()
     p=p+1
 
