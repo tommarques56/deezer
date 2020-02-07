@@ -178,7 +178,7 @@ def creat_account(driver):
         
         
 def style1(driver):
-    driver.implicitly_wait(40)
+    driver.implicitly_wait(10)
     
     try:
         
@@ -191,7 +191,7 @@ def style1(driver):
        style2(driver)
 
 def style2(driver):
-    driver.implicitly_wait(40)
+    driver.implicitly_wait(10)
     try:
         driver.find_element_by_class_name('onboarding-channel').click() #style
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
@@ -204,7 +204,7 @@ def style2(driver):
 
 
 def launch(driver):
-    driver.implicitly_wait(40)
+    driver.implicitly_wait(10)
     driver.get("https://www.deezer.com/fr/album/60566312")
     sleep(3)
     
@@ -223,7 +223,7 @@ def launch(driver):
      
         
 def add(driver):
-    driver.implicitly_wait(40)
+    driver.implicitly_wait(10)
     try:
         driver.find_element_by_xpath('/html/body/div[1]/div/main/div[5]/div[1]/div[2]/div[1]/div/div[2]/div[1]/div[1]/div[2]/button').click()
         
@@ -233,7 +233,7 @@ def add(driver):
             
 def rand(driver):
 
-    driver.implicitly_wait(40)
+    driver.implicitly_wait(10)
     try:
         driver.find_element_by_class_name('svg-icon-shuffle').click()
         
@@ -302,7 +302,7 @@ def creat(nb):
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
     
-    driver.implicitly_wait(40)
+    driver.implicitly_wait(10)
     creat_account(driver)
     style1(driver)   
 
