@@ -219,11 +219,11 @@ def launch(driver):
     except:
         print("ERROR LAUNCH")
         driver.refresh()
-        sleep(5)
-        
+       
      
         
 def add(driver):
+    driver.implicitly_wait(40)
     try:
         driver.find_element_by_xpath('/html/body/div[1]/div/main/div[5]/div[1]/div[2]/div[1]/div/div[2]/div[1]/div[1]/div[2]/button').click()
         
@@ -243,9 +243,12 @@ def play(nb,driver):
         x=0
         while x<32:
             sleep(3)
-            e = driver.find_element_by_class_name("slider-counter-current").text
-            s=e.split(':')
-            x=int(s[1])
+            try:
+                e = driver.find_element_by_class_name("slider-counter-current").text
+                s=e.split(':')
+                x=int(s[1])
+            except:
+                sleep(20)
         try:
                       
             driver.find_element_by_class_name('svg-icon-next').click()
@@ -301,6 +304,7 @@ def creat(nb):
         print("")
                 
     launch(driver)
+
     add(driver)   
     
     
