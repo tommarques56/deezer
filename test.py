@@ -272,11 +272,13 @@ def play(nb,driver):
                  
         p=p+1
     try:
-        driver.find_element_by_xpath('/html/body/div[1]/div/div[5]/div/div[1]/ul/li[3]/button').click()
+        driver.find_element_by_xpath('/html/body/div[1]/div/main/div[5]/div[1]/div[2]/div[1]/div/div[2]/div[1]/div[1]/div[1]/button').click()
+        
         
         
     except:
         play(nb,driver)
+        print("error pause")
     launch(driver)
 
 
