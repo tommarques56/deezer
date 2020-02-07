@@ -273,7 +273,7 @@ def creat(nb):
     "browserName": "chrome",
     "version": "79.0",
     "enableVNC": True,
-    "enableVideo": False
+    "enableVideo": True
     
 }
     ip=socket.gethostbyname(socket.gethostname())
