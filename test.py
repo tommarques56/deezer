@@ -204,7 +204,7 @@ def style2(driver):
 
 
 def launch(driver):
-    
+    n=0
     driver.get("https://www.deezer.com/fr/playlist/7224589804")
     sleep(3)
     try:
@@ -216,7 +216,7 @@ def launch(driver):
         print("ERROR LAUNCH")
         
        
-     
+    play(nb,driver,n)
         
 def add(driver):
     
@@ -238,15 +238,15 @@ def rand(driver):
         print("ERROR random")
         
         
-def play(nb,driver):
+def play(nb,driver,n):
     v=0
-    n=0
+    n=n
     p=0
     try:
         driver.find_element_by_class_name('svg-icon-next').click()
     except:
         launch(driver)
-    while p<=5:        
+    while p<=15:        
         x=0
         while x<32:
             sleep(3)
@@ -279,7 +279,7 @@ def play(nb,driver):
     except:
         play(nb,driver)
         print("error pause")
-    launch(driver)
+    launch(driver,n)
 
 
 
@@ -331,7 +331,7 @@ def creat(nb):
     if nb>0:
         Thread(target = creat, args=[nb-1]).start()
 
-    play(nb,driver)
+    
 
 
 p=0
