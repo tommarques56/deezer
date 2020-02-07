@@ -206,7 +206,7 @@ def style2(driver):
 def launch(driver):
     driver.implicitly_wait(40)
     driver.get("https://www.deezer.com/fr/album/60566312")
-    sleep(5)
+    sleep(3)
     
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
@@ -235,7 +235,7 @@ def rand(driver):
 
     driver.implicitly_wait(40)
     try:
-        driver.find_element_by_xpath('svg-icon-shuffle').click()
+        driver.find_element_by_class_name('svg-icon-shuffle').click()
         
         
     except:
@@ -245,9 +245,9 @@ def rand(driver):
 def play(nb,driver):
     v=0
     n=0
-    driver.implicitly_wait(40)
+    driver.implicitly_wait(10)
     driver.find_element_by_class_name('svg-icon-next').click()
-    sleep(15)
+    
     while n<=5:        
         x=0
         while x<32:
@@ -286,7 +286,7 @@ def creat(nb):
     "browserName": "chrome",
     "version": "79.0",
     "enableVNC": True,
-    "enableVideo": True
+    "enableVideo": False
     
 }
     ip=socket.gethostbyname(socket.gethostname())
