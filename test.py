@@ -177,8 +177,9 @@ def creat_account(driver):
         
         
 def style1(driver):
+    driver.implicitly_wait(40)
     try:
-        sleep(10)
+        
         driver.find_element_by_class_name('onboarding-screen-artist-item').click() #love artist
         sleep(5)
         driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div[2]/div[1]/div[3]/div/button').click() #love artist ok
@@ -188,6 +189,7 @@ def style1(driver):
        style2(driver)
 
 def style2(driver):
+    driver.implicitly_wait(40)
     try:
         driver.find_element_by_class_name('onboarding-channel').click() #style
         driver.find_element_by_class_name('onboarding-btn').click() #valide style
@@ -200,6 +202,7 @@ def style2(driver):
 
 
 def launch(driver):
+    driver.implicitly_wait(40)
     driver.get("https://www.deezer.com/fr/album/60566312")
 
     driver.implicitly_wait(40)
@@ -217,6 +220,7 @@ def launch(driver):
    
 
 def play(nb,driver):
+    driver.implicitly_wait(40)
     n=0
     driver.find_element_by_class_name('svg-icon-next').click()
     while True:
@@ -267,7 +271,7 @@ def creat(nb):
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
     
-    
+    driver.implicitly_wait(40)
     creat_account(driver)
     style1(driver)   
 
