@@ -206,7 +206,7 @@ def launch(driver):
     driver.implicitly_wait(40)
     driver.get("https://www.deezer.com/fr/album/60566312")
 
-    driver.implicitly_wait(40)
+    
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
     play.perform()
@@ -218,7 +218,7 @@ def launch(driver):
     except:
         print("ERROR LAUNCH")
         
-    add(driver)    
+     
         
 def add(driver):
     try:
@@ -231,29 +231,32 @@ def add(driver):
    
 
 def play(nb,driver):
-    driver.implicitly_wait(40)
+    v=0
     n=0
+    driver.implicitly_wait(40)
     driver.find_element_by_class_name('svg-icon-next').click()
-    while True:
-            
-            
-            x=0
-            while x<31:
-                sleep(5)
-                e = driver.find_element_by_class_name("slider-counter-current").text
-                s=e.split(':')
-                x=int(s[1])
-            try:
+   
+    while v<10:        
+        x=0
+        while x<32:
+            sleep(8)
+            e = driver.find_element_by_class_name("slider-counter-current").text
+            s=e.split(':')
+            x=int(s[1])
+        try:
+                      
+            driver.find_element_by_class_name('svg-icon-next').click()
+            n=n+1
+            print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
                     
-                driver.find_element_by_class_name('svg-icon-next').click()
-                n=n+1
-                print("NOMBRE DE VUE pour {}: {}".format(threading.current_thread().ident,n))
-                
-                    
-            except:
-                print("ERROR THREAD {} à {} avec {} vue(s)".format(threading.current_thread().ident,time.asctime(),n))
-                driver.quit()
-                Thread(target = creat, args=[nb]).start()    
+                        
+        except:
+            print("ERROR THREAD {} à {} avec {} vue(s)".format(threading.current_thread().ident,time.asctime(),n))
+            driver.quit()
+            Thread(target = creat, args=[nb]).start() 
+        v=v+1            
+    
+    launch(driver)
 
 
 
@@ -293,6 +296,7 @@ def creat(nb):
         print("")
                 
     launch(driver)
+    add(driver)   
     
     
     if nb>0:
