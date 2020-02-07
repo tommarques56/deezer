@@ -232,11 +232,11 @@ def add(driver):
 
 def play(nb,driver):
     v=0
-    n=8
+    n=0
     driver.implicitly_wait(40)
     driver.find_element_by_class_name('svg-icon-next').click()
     sleep(15)
-    while n<=10:        
+    while n<=15:        
         x=0
         while x<32:
             sleep(3)
@@ -307,7 +307,7 @@ def creat(nb):
 
 p=0
 
-while p<1:
+while p<20:
     Thread(target = creat, args=[0]).start()
     p=p+1
 
