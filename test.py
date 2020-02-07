@@ -179,6 +179,8 @@ def creat_account(driver):
         
 def style1(driver):
     driver.implicitly_wait(40)
+    sleep(30)
+    driver.findElement(By.tagName("body")).sendKeys("Keys.ESCAPE");
     try:
         
         driver.find_element_by_class_name('onboarding-screen-artist-item').click() #love artist
@@ -198,8 +200,7 @@ def style2(driver):
         
     except:
         driver.refresh()
-        sleep(30)
-        driver.findElement(By.tagName("body")).sendKeys("Keys.ESCAPE");
+        
         style1(driver)
 
 
@@ -274,7 +275,7 @@ def creat(nb):
     "browserName": "chrome",
     "version": "79.0",
     "enableVNC": True,
-    "enableVideo": True
+    "enableVideo": False
     
 }
     ip=socket.gethostbyname(socket.gethostname())
@@ -310,7 +311,7 @@ def creat(nb):
 
 p=0
 
-while p<3:
+while p<2:
     Thread(target = creat, args=[5]).start()
     p=p+1
 
