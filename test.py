@@ -204,7 +204,8 @@ def style2(driver):
 
 
 def launch(driver,nb,n):
-    
+    nb=nb
+    n=n
     driver.get("https://www.deezer.com/fr/playlist/7224589804")
     sleep(3)
     try:
@@ -245,7 +246,7 @@ def play(nb,driver,n):
     try:
         driver.find_element_by_class_name('svg-icon-next').click()
     except:
-        launch(driver)
+        launch(driver,n)
     while p<=15:        
         x=0
         while x<32:
