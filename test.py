@@ -208,9 +208,9 @@ def launch(driver):
     driver.get("https://www.deezer.com/fr/album/60566312")
     sleep(3)
     try:
-        play = ActionChains(driver) 
-        play.send_keys(Keys.SPACE)
-        play.perform()
+        # play = ActionChains(driver) 
+        # play.send_keys(Keys.SPACE)
+        # play.perform()
         driver.find_element_by_xpath('/html/body/div[1]/div/main/div[5]/div[1]/div[2]/div[1]/div/div[2]/div[1]/div[1]/div[1]/button').click()
     except:
         print("ERROR LAUNCH")
@@ -241,9 +241,10 @@ def rand(driver):
 def play(nb,driver):
     v=0
     n=0
-    
-    driver.find_element_by_class_name('svg-icon-next').click()
-    
+    try:
+        driver.find_element_by_class_name('svg-icon-next').click()
+    except:
+        launch(driver)
     while n<=5:        
         x=0
         while x<32:
@@ -271,7 +272,12 @@ def play(nb,driver):
 
 
 
-
+def close(driver):
+    try:
+        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
+        
+    except:
+        print("")
  
 def creat(nb):
     
@@ -302,11 +308,7 @@ def creat(nb):
     creat_account(driver,nb)
     style1(driver)   
 
-    try:
-        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
-        
-    except:
-        print("")
+    close(driver)
                 
     launch(driver)
 
