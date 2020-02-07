@@ -205,7 +205,7 @@ def style2(driver):
 def launch(driver):
     driver.implicitly_wait(40)
     driver.get("https://www.deezer.com/fr/album/60566312")
-
+    sleep(5)
     
     play = ActionChains(driver) 
     play.send_keys(Keys.SPACE)
@@ -232,14 +232,14 @@ def add(driver):
 
 def play(nb,driver):
     v=0
-    n=0
+    n=8
     driver.implicitly_wait(40)
     driver.find_element_by_class_name('svg-icon-next').click()
-   
-    while v<10:        
+    sleep(15)
+    while n<=10:        
         x=0
         while x<32:
-            sleep(8)
+            sleep(3)
             e = driver.find_element_by_class_name("slider-counter-current").text
             s=e.split(':')
             x=int(s[1])
@@ -254,7 +254,7 @@ def play(nb,driver):
             print("ERROR THREAD {} à {} avec {} vue(s)".format(threading.current_thread().ident,time.asctime(),n))
             driver.quit()
             Thread(target = creat, args=[nb]).start() 
-        v=v+1            
+                 
     
     launch(driver)
 
@@ -307,7 +307,7 @@ def creat(nb):
 
 p=0
 
-while p<1:
+while p<20:
     Thread(target = creat, args=[0]).start()
     p=p+1
 
