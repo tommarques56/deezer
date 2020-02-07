@@ -197,8 +197,9 @@ def style2(driver):
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
         
     except:
-        driver.get("https://www.deezer.com/fr/album/60566312")
         driver.refresh()
+        sleep(30)
+        driver.findElement(By.tagName("body")).sendKeys("Keys.ESCAPE");
         style1(driver)
 
 
