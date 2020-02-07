@@ -272,7 +272,7 @@ def play(nb,driver):
                  
         p=p+1
     try:
-        driver.find_element_by_class_name('svg-icon-pause').click()
+        driver.find_element_by_xpath('/html/body/div[1]/div/div[5]/div/div[1]/ul/li[3]/button').click()
         
         
     except:
