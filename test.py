@@ -198,7 +198,7 @@ def style2(driver):
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
         
     except:
-        driver.refresh()
+        
         
         style1(driver)
 
@@ -218,7 +218,7 @@ def launch(driver):
         
     except:
         print("ERROR LAUNCH")
-        driver.refresh()
+        
        
      
         
