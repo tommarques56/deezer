@@ -203,8 +203,8 @@ def style2(driver):
         style1(driver)
 
 
-def launch(driver,nb):
-    n=0
+def launch(driver,nb,n):
+    
     driver.get("https://www.deezer.com/fr/playlist/7224589804")
     sleep(3)
     try:
@@ -293,7 +293,7 @@ def close(driver):
 def creat(nb):
     
     t=0
-   
+    n=0
     
     capabilities = {
     "browserName": "chrome",
@@ -321,7 +321,7 @@ def creat(nb):
 
     close(driver)
                 
-    launch(driver,nb)
+    launch(driver,nb,n)
 
     add(driver) 
 
