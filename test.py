@@ -133,7 +133,7 @@ def user():
     print(userAgent)
     return userAgent
 
-def creat_account(driver):
+def creat_account(driver,nb):
     driver.get("https://www.deezer.com/fr/register") 
     
     sleep(2)
@@ -207,15 +207,11 @@ def launch(driver):
     
     driver.get("https://www.deezer.com/fr/album/60566312")
     sleep(3)
-    
-    play = ActionChains(driver) 
-    play.send_keys(Keys.SPACE)
-    play.perform()
-    
     try:
+        play = ActionChains(driver) 
+        play.send_keys(Keys.SPACE)
+        play.perform()
         driver.find_element_by_xpath('/html/body/div[1]/div/main/div[5]/div[1]/div[2]/div[1]/div/div[2]/div[1]/div[1]/div[1]/button').click()
-        
-        
     except:
         print("ERROR LAUNCH")
         
@@ -303,7 +299,7 @@ def creat(nb):
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
     
     driver.implicitly_wait(10)
-    creat_account(driver)
+    creat_account(driver,nb)
     style1(driver)   
 
     try:
