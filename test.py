@@ -285,7 +285,7 @@ def creat(nb):
     # options.add_argument(f'user-agent={user()}')
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     options.add_extension('/root/deezer/AC.zip')
-    chrome_options.add_argument('{}'.format(proxy()))
+    options.add_argument('{}'.format(proxy()))
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
