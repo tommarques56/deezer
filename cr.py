@@ -103,8 +103,9 @@ def music(driver,em,md):
     f = open("/root/login.txt","a+")
     f.write("{}:{}\n".format(em,md))
     f.close() 
-    driver.quit()
     Thread(target = driver).start()
+    driver.quit()
+    
     
     
     
