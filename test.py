@@ -91,23 +91,17 @@ def launch(driver):
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
-    
-    
-    try:
-        driver.find_element_by_id('register_form_global_error')
-        driver.delete_all_cookies()
-        driver.refresh()
-        print("launch")
-        launch()
-    except:    
-        print("ok1")
-    
+
     try:
         driver.find_element_by_class_name('onboarding-screen-artist-item')
         print("ok2")
         driver.quit()
     except:
-        print("error")    
+        driver.find_element_by_id('register_form_global_error')
+        driver.delete_all_cookies()
+        driver.refresh()
+        print("launch")
+        launch()   
         
 
 
