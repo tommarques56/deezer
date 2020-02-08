@@ -113,8 +113,11 @@ def music(driver,v):
                 close(driver)
                 music(driver,v)
                            
-              
-        driver.find_element_by_class_name('svg-icon-next').click()
+        try:      
+            driver.find_element_by_class_name('svg-icon-next').click()
+        except:
+            sleep(40)
+            driver.find_element_by_class_name('svg-icon-next').click()
         v=v+1
         print(v)
         
@@ -172,6 +175,7 @@ def launch(driver):
 
 while p<5:
     Thread(target = driver).start()
+    sleep(50)
     p=p+1
 
 
