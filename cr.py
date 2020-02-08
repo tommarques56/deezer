@@ -74,7 +74,7 @@ def close(driver):
         return False
 
 def style(driver):
-   
+    v=0
    
     driver.find_element_by_class_name('onboarding-screen-search-btn').click()
 
@@ -90,7 +90,7 @@ def style(driver):
     
     
     
-def music(driver,v):
+def music(driver,em,md):
     
     p=0
     driver.implicitly_wait(50)
@@ -100,34 +100,11 @@ def music(driver,v):
     
     driver.find_element_by_class_name('svg-icon-next').click()
     
- 
-    while p<200:
-        x=0
-        while x<32:
-            try:
-                e = driver.find_element_by_class_name("slider-counter-current").text
-                s=e.split(':')
-                x=int(s[1])
-                sleep(1)
-            except:
-                close(driver)
-                music(driver,v)
-                           
-        try:      
-            driver.find_element_by_class_name('svg-icon-next').click()
-        except:
-            sleep(40)
-            driver.find_element_by_class_name('svg-icon-next').click()
-        v=v+1
-        print(v)
-        
-        p=p+1
-        
-    try:
-        driver.find_element_by_class_name('states-button-action').click()
-    except:
-     return True
-    music(driver,v)
+    f= open("/root/login.txt","a+")
+    f.write("{}:{}\n".format(em,md)
+    f.close()
+    driver.quit()
+    Thread(target = driver).start()
     
     
     
@@ -135,7 +112,7 @@ def music(driver,v):
 
 def launch(driver):
     
-    v=0
+    
     driver.get("https://www.deezer.com/fr/register")
     driver.implicitly_wait(10)
 
@@ -166,14 +143,14 @@ def launch(driver):
         driver.refresh()
         print("launch")
         launch(driver)   
-    music(driver,v)   
+        
+    music(driver,em,md)
 
 
 
 
 
-
-while p<9:
+while p<1:
     Thread(target = driver).start()
     
     p=p+1
