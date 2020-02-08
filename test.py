@@ -106,11 +106,12 @@ def music(driver,v):
             s=e.split(':')
             x=int(s[1])
             sleep(1)
-            print(x)
+            
                            
               
         driver.find_element_by_class_name('svg-icon-next').click()
-        v=v+1
+      
+        print(v+1)
         p=p+1
         
     try:
