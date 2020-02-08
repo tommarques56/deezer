@@ -84,6 +84,7 @@ def launch():
     # WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
+    sleep(5)
     
     
     try:
