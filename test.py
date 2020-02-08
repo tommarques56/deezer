@@ -84,16 +84,23 @@ def launch():
     WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
-    if driver.find_element_by_class_name('register_form_global_error'):
+    
+    
+    try:
+        driver.find_element_by_class_name('register_form_global_error')
         driver.delete_all_cookies()
         driver.refresh()
+        print("launch")
         launch()
-    else:
-        if driver.find_element_by_class_name('onboarding-screen-artist-item'):
-            print("ok")
-            driver.quit()
-        else:
-            print("error")    
+    except:    
+        return True
+    
+    try:
+        driver.find_element_by_class_name('onboarding-screen-artist-item'):
+        print("ok")
+        driver.quit()
+    except:
+        print("error")    
         
 
 
