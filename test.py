@@ -66,7 +66,12 @@ def driver():
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
     launch(driver)
 
-
+def close(driver):
+    try:
+        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
+        
+    except:
+        return False
 
 def style(driver):
     v=0
@@ -74,11 +79,7 @@ def style(driver):
     driver.find_element_by_class_name('onboarding-screen-search-btn').click()
 
 
-    try:
-        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
-        
-    except:
-        return False
+    close(driver)
         
     try:
         driver.find_element_by_class_name('sidebar-nav-item')
@@ -103,11 +104,14 @@ def music(driver,v):
     while p<200:
         x=0
         while x<32:
-            e = driver.find_element_by_class_name("slider-counter-current").text
-            s=e.split(':')
-            x=int(s[1])
-            sleep(1)
-            
+            try;
+                e = driver.find_element_by_class_name("slider-counter-current").text
+                s=e.split(':')
+                x=int(s[1])
+                sleep(1)
+            except:
+                close(driver)
+                music(driver,v)
                            
               
         driver.find_element_by_class_name('svg-icon-next').click()
