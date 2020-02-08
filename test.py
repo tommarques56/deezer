@@ -96,7 +96,7 @@ def launch():
         return True
     
     try:
-        driver.find_element_by_class_name('onboarding-screen-artist-item'):
+        driver.find_element_by_class_name('onboarding-screen-artist-item')
         print("ok")
         driver.quit()
     except:
