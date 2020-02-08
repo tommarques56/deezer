@@ -198,7 +198,7 @@ def style2(driver):
         driver.find_element_by_class_name('onboarding-btn-next').click() #passer reste conf
         
     except:
-        
+       
         
         style1(driver)
 
@@ -243,6 +243,10 @@ def play(nb,driver,n):
     v=0
     n=n
     p=0
+    if nb>0:
+        nb=nb-1
+        Thread(target = creat, args=[nb]).start()
+        
     try:
         driver.find_element_by_class_name('svg-icon-next').click()
     except:
@@ -329,15 +333,14 @@ def creat(nb):
     rand(driver)
     
     
-    if nb>0:
-        Thread(target = creat, args=[nb-1]).start()
+    
 
     
 
 
 p=0
 
-while p<5:
-    Thread(target = creat, args=[3]).start()
+while p<15:
+    Thread(target = creat, args=[0]).start()
     p=p+1
 
