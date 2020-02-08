@@ -32,7 +32,7 @@ import re
 import pandas as pd
 import os
 import time
-
+p=0
 def random_char(y):
        return ''.join(random.choice(string.ascii_letters) for x in range(y))
 
