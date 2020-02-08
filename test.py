@@ -43,51 +43,55 @@ def al():
     
     return e
 
-capabilities = {
-    "browserName": "chrome",
-    "version": "79.0",
-    "enableVNC": True,
-    "enableVideo": True
-    
-}
-ip=socket.gethostbyname(socket.gethostname())
-command = "http://{}:4444/wd/hub".format(ip)
-   
-options = webdriver.ChromeOptions()
-options.add_extension('D:\\androiddeezerapp\\AC.zip')
-# options.add_extension('/root/deezer/AC.zip')
-   
 
-driver = webdriver.Chrome(options=options)
-# driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
+def launch():
+    capabilities = {
+        "browserName": "chrome",
+        "version": "79.0",
+        "enableVNC": True,
+        "enableVideo": True
+        
+    }
+    ip=socket.gethostbyname(socket.gethostname())
+    command = "http://{}:4444/wd/hub".format(ip)
+       
+    options = webdriver.ChromeOptions()
+    # options.add_extension('D:\\androiddeezerapp\\AC.zip')
+    options.add_extension('/root/deezer/AC.zip')
+       
 
-
-
-driver.get("https://www.deezer.com/fr/register")
-
-em = al()
-md = random_char(15)
-driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
-driver.find_element_by_xpath('//*[@id="register_form_mail_input"]').send_keys(em)
-driver.find_element_by_xpath('//*[@id="register_form_username_input"]').send_keys(random_char(9))
-driver.find_element_by_xpath('//*[@id="register_form_password_input"]').send_keys(md)
-genre = ActionChains(driver) 
-genre.send_keys(Keys.TAB)
-genre.send_keys(Keys.DOWN)
-genre.send_keys(Keys.TAB)
-genre.send_keys(Keys.DOWN*N)
-genre.perform()
-
-WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
-driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
-driver.quit()
+    # driver = webdriver.Chrome(options=options)
+    driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
 
 
 
+    driver.get("https://www.deezer.com/fr/register")
+
+    em = al()
+    md = random_char(15)
+    driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
+    driver.find_element_by_xpath('//*[@id="register_form_mail_input"]').send_keys(em)
+    driver.find_element_by_xpath('//*[@id="register_form_username_input"]').send_keys(random_char(9))
+    driver.find_element_by_xpath('//*[@id="register_form_password_input"]').send_keys(md)
+    genre = ActionChains(driver) 
+    genre.send_keys(Keys.TAB)
+    genre.send_keys(Keys.DOWN)
+    genre.send_keys(Keys.TAB)
+    genre.send_keys(Keys.DOWN*N)
+    genre.perform()
+
+    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+    driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
+    driver.quit()
 
 
 
 
+
+
+while p<10:
+    Thread(target = launch).start()
+    p=p+1
 
 
 
