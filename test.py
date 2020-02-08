@@ -173,7 +173,7 @@ def launch(driver):
 
 
 
-while p<15:
+while p<9:
     Thread(target = driver).start()
     
     p=p+1
