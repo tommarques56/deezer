@@ -72,6 +72,42 @@ def style(driver):
     driver.find_element_by_class_name('onboarding-screen-search-btn').click()
 
 
+    try:
+        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
+        
+    except:
+        return False
+        
+    try:
+        driver.find_element_by_class_name('sidebar-nav-item')
+    except:
+        style(driver)
+        print("style")
+    music(driver)
+    
+    
+def music(driver):
+    driver.implicitly_wait(50)
+    driver.get("https://www.deezer.com/fr/album/60566312")
+    driver.find_element_by_class_name('states-button-label').click()
+    driver.find_element_by_class_name('svg-icon-next').click()
+    
+ 
+
+    while x<32:
+        e = driver.find_element_by_class_name("slider-counter-current").text
+        s=e.split(':')
+        x=int(s[1])
+        sleep(1)
+                       
+          
+    driver.find_element_by_class_name('svg-icon-next').click()
+
+    music(driver)
+    
+    
+    
+    
 
 def launch(driver):
     
