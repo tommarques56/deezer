@@ -111,8 +111,8 @@ def music(driver,v):
                            
               
         driver.find_element_by_class_name('svg-icon-next').click()
-      
-        print(v+1)
+        v=v+1
+        print(v)
         print(psutil.cpu_percent())
         print(psutil.virtual_memory())
         p=p+1
