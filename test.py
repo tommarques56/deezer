@@ -44,7 +44,8 @@ def al():
     return e
 
 
-def launch():
+
+def driver():
     capabilities = {
         "browserName": "chrome",
         "version": "79.0",
@@ -62,9 +63,14 @@ def launch():
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
+    launch(driver)
 
 
 
+
+def launch(driver):
+    
+    
     driver.get("https://www.deezer.com/fr/register")
     driver.implicitly_wait(10)
 
@@ -110,7 +116,7 @@ def launch():
 
 
 while p<1:
-    Thread(target = launch).start()
+    Thread(target = driver).start()
     p=p+1
 
 
