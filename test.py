@@ -66,6 +66,7 @@ def launch():
 
 
     driver.get("https://www.deezer.com/fr/register")
+    driver.implicitly_wait(10)
 
     em = al()
     md = random_char(15)
@@ -81,15 +82,23 @@ def launch():
     genre.perform()
 
     WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+    
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
-    driver.quit()
+    if register_form_global_error:
+        driver.delete_all_cookies()
+        driver.refresh()
+        launch()
+        
+    if driver.find_element_by_class_name('onboarding-screen-artist-item'):
+        driver.quit()
+    else:
+        print("error")
 
 
 
 
 
-
-while p<10:
+while p<5:
     Thread(target = launch).start()
     p=p+1
 
