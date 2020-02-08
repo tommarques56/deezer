@@ -68,6 +68,7 @@ def driver():
 
 
 def style(driver):
+    v=0
     driver.find_element_by_class_name('onboarding-screen-artist-item').click()
     driver.find_element_by_class_name('onboarding-screen-search-btn').click()
 
@@ -83,29 +84,37 @@ def style(driver):
     except:
         style(driver)
         print("style")
-    music(driver)
+    driver.get("https://www.deezer.com/fr/album/60566312")    
+    music(driver,v)
     
     
-def music(driver):
+def music(driver,v):
     x=0
+    p=0
     driver.implicitly_wait(50)
-    driver.get("https://www.deezer.com/fr/album/60566312")
+    
     driver.find_element_by_class_name('states-button-label').click()
     driver.find_element_by_class_name('svg-icon-next').click()
     
  
-
-    while x<32:
-        e = driver.find_element_by_class_name("slider-counter-current").text
-        s=e.split(':')
-        x=int(s[1])
-        sleep(1)
-        print(x)
-                       
-          
-    driver.find_element_by_class_name('svg-icon-next').click()
-
-    music(driver)
+    while p<200:
+        while x<32:
+            e = driver.find_element_by_class_name("slider-counter-current").text
+            s=e.split(':')
+            x=int(s[1])
+            sleep(1)
+            print(x)
+                           
+              
+        driver.find_element_by_class_name('svg-icon-next').click()
+        v=v+1
+        p=p+1
+        
+    try:
+        driver.find_element_by_class_name('states-button-action').click()
+    except:
+     return True
+    music(driver,v)
     
     
     
