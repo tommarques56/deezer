@@ -89,15 +89,18 @@ def style(driver):
     
     
 def music(driver,v):
-    x=0
+    
     p=0
     driver.implicitly_wait(50)
     
     driver.find_element_by_class_name('states-button-label').click()
+    driver.find_element_by_class_name('svg-icon-shuffle').click()
+    
     driver.find_element_by_class_name('svg-icon-next').click()
     
  
     while p<200:
+        x=0
         while x<32:
             e = driver.find_element_by_class_name("slider-counter-current").text
             s=e.split(':')
