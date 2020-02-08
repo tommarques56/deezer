@@ -31,6 +31,7 @@ from python_anticaptcha import AnticaptchaClient, NoCaptchaTaskProxylessTask
 import re
 import pandas as pd
 import os
+import psutil
 import time
 p=0
 def random_char(y):
@@ -112,6 +113,8 @@ def music(driver,v):
         driver.find_element_by_class_name('svg-icon-next').click()
       
         print(v+1)
+        print(psutil.cpu_percent())
+        print(psutil.virtual_memory())
         p=p+1
         
     try:
