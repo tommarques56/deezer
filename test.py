@@ -88,11 +88,14 @@ def launch():
         driver.delete_all_cookies()
         driver.refresh()
         launch()
-        
-    if driver.find_element_by_class_name('onboarding-screen-artist-item'):
-        driver.quit()
     else:
-        print("error")
+        if driver.find_element_by_class_name('onboarding-screen-artist-item'):
+            print("ok")
+            driver.quit()
+        else:
+            print("error")    
+        
+
 
 
 
