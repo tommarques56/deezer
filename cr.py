@@ -100,7 +100,7 @@ def music(driver,em,md):
     
     driver.find_element_by_class_name('svg-icon-next').click()
     
-    f= open("/root/login.txt","a+")
+    f = open("/root/login.txt","a+")
     f.write("{}:{}\n".format(em,md))
     f.close() 
     driver.quit()
