@@ -101,7 +101,7 @@ def launch(driver):
         driver.delete_all_cookies()
         driver.refresh()
         print("launch")
-        launch()   
+        launch(driver)   
         
 
 
