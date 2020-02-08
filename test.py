@@ -88,7 +88,7 @@ def launch():
     
     
     try:
-        driver.find_element_by_class_name('register_form_global_error')
+        driver.find_element_by_id('register_form_global_error')
         driver.delete_all_cookies()
         driver.refresh()
         print("launch")
