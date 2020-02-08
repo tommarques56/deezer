@@ -57,7 +57,7 @@ def launch():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    options.add_extension('/root/deezer/AC.zip')
+    # options.add_extension('/root/deezer/AC.zip')
        
 
     # driver = webdriver.Chrome(options=options)
@@ -93,11 +93,11 @@ def launch():
         print("launch")
         launch()
     except:    
-        print("ok")
+        print("ok1")
     
     try:
         driver.find_element_by_class_name('onboarding-screen-artist-item')
-        print("ok")
+        print("ok2")
         driver.quit()
     except:
         print("error")    
@@ -108,7 +108,7 @@ def launch():
 
 
 
-while p<5:
+while p<1:
     Thread(target = launch).start()
     p=p+1
 
