@@ -87,6 +87,7 @@ def style(driver):
     
     
 def music(driver):
+    x=0
     driver.implicitly_wait(50)
     driver.get("https://www.deezer.com/fr/album/60566312")
     driver.find_element_by_class_name('states-button-label').click()
@@ -99,6 +100,7 @@ def music(driver):
         s=e.split(':')
         x=int(s[1])
         sleep(1)
+        print(x)
                        
           
     driver.find_element_by_class_name('svg-icon-next').click()
