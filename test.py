@@ -104,7 +104,7 @@ def music(driver,v):
     while p<200:
         x=0
         while x<32:
-            try;
+            try:
                 e = driver.find_element_by_class_name("slider-counter-current").text
                 s=e.split(':')
                 x=int(s[1])
