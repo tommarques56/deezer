@@ -58,13 +58,18 @@ def driver():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    # options.add_extension('/root/deezer/AC.zip')
+    options.add_extension('/root/deezer/AC.zip')
        
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
     launch(driver)
 
+
+
+def style(driver):
+    driver.find_element_by_class_name('onboarding-screen-artist-item').click()
+    driver.find_element_by_class_name('onboarding-screen-search-btn').click()
 
 
 
@@ -87,15 +92,14 @@ def launch(driver):
     genre.send_keys(Keys.DOWN*N)
     genre.perform()
 
-    # WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
 
     try:
         driver.find_element_by_class_name('onboarding-screen-artist-item')
-        print("ok2")
-        driver.quit()
+        style(driver)
     except:
         driver.find_element_by_id('register_form_global_error')
         driver.delete_all_cookies()
