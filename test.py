@@ -75,7 +75,7 @@ def close(driver):
 
 def style(driver):
     v=0
-    driver.find_element_by_class_name('onboarding-screen-artist-item').click()
+   
     driver.find_element_by_class_name('onboarding-screen-search-btn').click()
 
 
@@ -158,7 +158,7 @@ def launch(driver):
     sleep(5)
 
     try:
-        driver.find_element_by_class_name('onboarding-screen-artist-item')
+        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
         style(driver)
     except:
         driver.find_element_by_id('register_form_global_error')
@@ -173,9 +173,9 @@ def launch(driver):
 
 
 
-while p<5:
+while p<15:
     Thread(target = driver).start()
-    sleep(50)
+    
     p=p+1
 
 
