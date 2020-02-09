@@ -164,7 +164,7 @@ def launch(driver,em,md):
     driver.find_element_by_id('login_password').send_keys(md)
     WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
     
-    driver.find_element_by_class_name('unlogged-btn-label').click()  
+    # driver.find_element_by_class_name('unlogged-btn-label').click()  
    
 
     driver.get("https://www.deezer.com/fr/album/60566312")    
