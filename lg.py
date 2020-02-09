@@ -113,6 +113,7 @@ def count():
     print(count)
     N = random.randrange(0,count-1)
     print(f.readline(5))
+    f.close()
     
     
     
