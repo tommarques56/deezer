@@ -112,6 +112,7 @@ def count():
     # count = len(f.readlines())
     # print(count)
     N = random.randrange(0,20)
+    print(N)
     print(f.readline(N))
     f.close()
     
