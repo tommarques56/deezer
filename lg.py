@@ -152,8 +152,9 @@ def count():
     
     N = random.randrange(0,25)
     lines=f.readlines()
+    l=lines[N]
    
-    s=lines.split(':')
+    s=l.split(':')
     x=int(s[1])
     y=int(s[0])   
     print(x)
