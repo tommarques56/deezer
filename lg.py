@@ -108,12 +108,12 @@ def music(driver,em,md):
     
     
 def count():
-    f = open("/root/login.txt","r")
+    f = open("/root/login.txt","rw+")
     # count = len(f.readlines())
     # print(count)
     N = random.randrange(0,20)
     print(N)
-    print(f.readline(N))
+    print(f.readline()[N])
     f.close()
     
     
