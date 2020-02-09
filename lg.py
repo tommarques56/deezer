@@ -113,7 +113,7 @@ def count():
     
     N = random.randrange(0,count-1)
     lines=f.readlines()
-    print lines[N]
+    print(lines[N])
     
     f.close()
     
