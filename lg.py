@@ -101,6 +101,7 @@ def music(driver,v):
         
         driver.find_element_by_class_name('svg-icon-next').click()
     except:
+        driver.refresh()
         close(driver)
         music(driver,v)
  
