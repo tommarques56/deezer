@@ -64,7 +64,7 @@ def driver():
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
-    launch(driver)
+    count(driver)
 
 def close(driver):
     try:
@@ -110,12 +110,14 @@ def music(driver,v):
     
     p=0
     driver.implicitly_wait(50)
-    
-    driver.find_element_by_class_name('states-button-label').click()
-    driver.find_element_by_class_name('svg-icon-shuffle').click()
-    
-    driver.find_element_by_class_name('svg-icon-next').click()
-    
+    try:
+        driver.find_element_by_class_name('states-button-label').click()
+        driver.find_element_by_class_name('svg-icon-shuffle').click()
+        
+        driver.find_element_by_class_name('svg-icon-next').click()
+    except:
+        close(driver)
+        music(driver,v)
  
     while p<200:
         x=0
@@ -146,61 +148,43 @@ def music(driver,v):
     music(driver,v)
 
     
-def count():
+def count(driver):
+    
     f = open("/root/login.txt","r")
-    
-    
     N = random.randrange(0,25)
     lines=f.readlines()
     l=lines[N]
-   
     s=l.split(':')
-
-    print("email : {}  mdp : {}".format(s[0],s[1]))
-    print(y)
-    
+    em =s[0]
+    md=s[1]
+    print("email : {}  mdp : {}".format(em,md))
     f.close()
+    launch(driver,em,md)
     
     
     
     
     
 
-def launch(driver):
+def launch(driver,em,md):
+    v=0
     count(driver)
     
-    driver.get("https://www.deezer.com/fr/register")
+    driver.get("https://www.deezer.com/fr/login")
     driver.implicitly_wait(10)
 
     em = al()
     md = random_char(15)
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
-    driver.find_element_by_xpath('//*[@id="register_form_mail_input"]').send_keys(em)
-    driver.find_element_by_xpath('//*[@id="register_form_username_input"]').send_keys(random_char(9))
-    driver.find_element_by_xpath('//*[@id="register_form_password_input"]').send_keys(md)
-    genre = ActionChains(driver) 
-    genre.send_keys(Keys.TAB)
-    genre.send_keys(Keys.DOWN)
-    genre.send_keys(Keys.TAB)
-    genre.send_keys(Keys.DOWN*N)
-    genre.perform()
-
+    driver.find_element_by_id('login_mail').send_keys(em)
+    driver.find_element_by_id('login_password').send_keys(md)
     WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
     
-    driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
-    sleep(5)
+    driver.find_element_by_class('unlogged-btn-label').click()  
+   
 
-    try:
-        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
-        style(driver)
-    except:
-        driver.find_element_by_id('register_form_global_error')
-        driver.delete_all_cookies()
-        driver.refresh()
-        print("launch")
-        launch(driver)   
-        
-    music(driver,em,md)
+    driver.get("https://www.deezer.com/fr/album/60566312")    
+    music(driver,v)
 
 def new():
     Thread(target = driver).start()
