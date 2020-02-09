@@ -89,22 +89,7 @@ def style(driver):
     driver.get("https://www.deezer.com/fr/album/60566312")    
     
     
-    
-def music(driver,em,md):
-    
-    p=0
-    driver.implicitly_wait(50)
-    
-    driver.find_element_by_class_name('states-button-label').click()
-    driver.find_element_by_class_name('svg-icon-shuffle').click()
-    
-    driver.find_element_by_class_name('svg-icon-next').click()
-    
-    
-    f.write("{}:{}\n".format(em,md))
-    f.close() 
-    new()
-    driver.quit()
+
     
 def music(driver,v):
     
