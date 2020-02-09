@@ -59,7 +59,7 @@ def driver():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    options.add_extension('/root/deezer/AC.zip')
+    # options.add_extension('/root/deezer/AC.zip')
        
 
     # driver = webdriver.Chrome(options=options)
@@ -136,7 +136,7 @@ def music(driver,v):
 def count(driver):
     
     f = open("/root/login.txt","r")
-    N = random.randrange(0,25)
+    N = random.randrange(0,3)
     lines=f.readlines()
     l=lines[N]
     s=l.split(':')
