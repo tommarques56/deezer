@@ -158,8 +158,7 @@ def launch(driver,em,md):
     driver.get("https://www.deezer.com/fr/login")
     driver.implicitly_wait(10)
 
-    em = al()
-    md = random_char(15)
+    
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(md)
