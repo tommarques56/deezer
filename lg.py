@@ -114,7 +114,7 @@ def count():
     N = random.randrange(0,count-1)
     print(N)
     l=f.readline(N)
-    print(f)
+    print(l)
     
     
     
