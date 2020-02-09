@@ -153,7 +153,7 @@ def count(driver):
 
 def launch(driver,em,md):
     v=0
-    count(driver)
+    
     
     driver.get("https://www.deezer.com/fr/login")
     driver.implicitly_wait(10)
