@@ -191,7 +191,7 @@ def new():
 
 
 while p<1:
-    Thread(target = count).start()
+    Thread(target = driver).start()
     
     p=p+1
 
