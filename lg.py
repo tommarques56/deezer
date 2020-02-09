@@ -155,20 +155,26 @@ def count(driver):
 def launch(driver,em,md):
     v=0
     
-    
-    driver.get("https://www.deezer.com/fr/login")
-    driver.implicitly_wait(10)
+    try:
+        driver.get("https://www.deezer.com/fr/login")
+        driver.implicitly_wait(10)
 
-    
-    driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
-    driver.find_element_by_id('login_mail').send_keys(em)
-    driver.find_element_by_id('login_password').send_keys(md)
-    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
-    
-    # driver.find_element_by_class_name('unlogged-btn-label').click()  
-   
+        
+        driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
+        driver.find_element_by_id('login_mail').send_keys(em)
+        driver.find_element_by_id('login_password').send_keys(md)
+        WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+        
+        # driver.find_element_by_class_name('unlogged-btn-label').click()  
+       
 
-    driver.get("https://www.deezer.com/fr/album/60566312")    
+        driver.get("https://www.deezer.com/fr/album/60566312")
+    except:
+        driver.quit()
+    try:
+        driver.find_element_by_class_name('states-button-label')
+    except:
+        driver.quit()
     music(driver,v)
 
 def new():
