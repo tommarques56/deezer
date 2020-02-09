@@ -155,9 +155,8 @@ def count():
     l=lines[N]
    
     s=l.split(':')
-    x=s[1]
-    y=s[0]
-    print(x)
+
+    print("email : {}  mdp : {}".format(s[0],s[1]))
     print(y)
     
     f.close()
