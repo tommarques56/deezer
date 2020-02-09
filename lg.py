@@ -115,7 +115,6 @@ def count():
     print(N)
     l=f.readline(N)
     print(f)
-    Thread(target = count).start()
     
     
     
