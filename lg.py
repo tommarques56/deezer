@@ -106,6 +106,45 @@ def music(driver,em,md):
     new()
     driver.quit()
     
+def music(driver,v):
+    
+    p=0
+    driver.implicitly_wait(50)
+    
+    driver.find_element_by_class_name('states-button-label').click()
+    driver.find_element_by_class_name('svg-icon-shuffle').click()
+    
+    driver.find_element_by_class_name('svg-icon-next').click()
+    
+ 
+    while p<200:
+        x=0
+        while x<32:
+            try:
+                e = driver.find_element_by_class_name("slider-counter-current").text
+                s=e.split(':')
+                x=int(s[1])
+                sleep(1)
+            except:
+                close(driver)
+                music(driver,v)
+                           
+        try:      
+            driver.find_element_by_class_name('svg-icon-next').click()
+        except:
+            sleep(40)
+            driver.find_element_by_class_name('svg-icon-next').click()
+        v=v+1
+        print(v)
+        
+        p=p+1
+        
+    try:
+        driver.find_element_by_class_name('states-button-action').click()
+    except:
+     return True
+    music(driver,v)
+
     
 def count():
     f = open("/root/login.txt","r")
@@ -113,7 +152,12 @@ def count():
     
     N = random.randrange(0,25)
     lines=f.readlines()
-    print(lines[N])
+   
+    s=lines.split(':')
+    x=int(s[1])
+    y=int(s[0])   
+    print(x)
+    print(y)
     
     f.close()
     
