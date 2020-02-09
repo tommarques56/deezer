@@ -136,9 +136,9 @@ def music(driver,v):
 def count(driver):
     
     f = open("/root/login.txt","r")
-    N = random.randrange(0,3)
+    N = random.randrange(0,59)
     lines=f.readlines()
-    l=lines[0]
+    l=lines[N]
     s=l.split(':')
     em =s[0]
     md=s[1]
