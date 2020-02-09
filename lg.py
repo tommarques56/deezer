@@ -155,8 +155,8 @@ def count():
     l=lines[N]
    
     s=l.split(':')
-    x=int(s[1])
-    y=int(s[0])   
+    x=s[1]
+    y=s[0]
     print(x)
     print(y)
     
