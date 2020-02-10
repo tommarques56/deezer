@@ -137,22 +137,22 @@ def music(driver,v):
     
 def count(driver):
     
-    # f = open("/root/login.txt","r")
-    # N = random.randrange(0,59)
-    # lines=f.readlines()
-    # l=lines[N]
-    # s=l.split(':')
-    # em =s[0]
-    # md=s[1]
-    # print("email : {}  mdp : {}".format(em,md))
-    # f.close()
-    # launch(driver,em,md)
+    f = open("/root/login.txt","r")
+    N = random.randrange(0,59)
+    lines=f.readlines()
+    l=lines[N]
+    s=l.split(':')
+    em =s[0]
+    md=s[1]
+    print("email : {}  mdp : {}".format(em,md))
+    f.close()
+    launch(driver,em,md)
    
-    driver.get("https://www.deezer.com/fr")
-    for cookie in pickle.load(open("/root/QuoraCookies.pkl", "rb")):
-        driver.add_cookie(cookie)
-    sleep(5)
-    driver.refresh()
+    # driver.get("https://www.deezer.com/fr")
+    # for cookie in pickle.load(open("/root/QuoraCookies.pkl", "rb")):
+        # driver.add_cookie(cookie)
+    # sleep(5)
+    # driver.refresh()
     driver.get("https://www.deezer.com/fr/album/60566312")
     
     

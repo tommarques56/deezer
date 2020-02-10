@@ -99,21 +99,21 @@ def music(driver,em,md):
     driver.find_element_by_class_name('states-button-label').click()
     
     
-    # f = open("/root/login.txt","a+")
-    # f.write("{}:{}\n".format(em,md))
-    # f.close() 
-    driver.get("https://www.deezer.com/fr")   
-    pickle.dump( driver.get_cookies() , open("/root/cookies.pkl","wb"))
-    driver.get("https://www.deezer.com/fr/signout")
-    sleep(8)
-    driver.get("https://www.deezer.com/fr")
-    sleep(5)
-    cookies = pickle.load(open("/root/cookies.pkl", "rb"))
-    sleep(2)
-    for cookie in cookies:
-        driver.add_cookie(cookie)
-    sleep(5)
-    driver.refresh()
+    f = open("/root/login.txt","a+")
+    f.write("{}:{}\n".format(em,md))
+    f.close() 
+    # driver.get("https://www.deezer.com/fr")   
+    # pickle.dump( driver.get_cookies() , open("/root/cookies.pkl","wb"))
+    # driver.get("https://www.deezer.com/fr/signout")
+    # sleep(8)
+    # driver.get("https://www.deezer.com/fr")
+    # sleep(5)
+    # cookies = pickle.load(open("/root/cookies.pkl", "rb"))
+    # sleep(2)
+    # for cookie in cookies:
+        # driver.add_cookie(cookie)
+    # sleep(5)
+    # driver.refresh()
     
     
     
