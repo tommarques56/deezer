@@ -108,7 +108,7 @@ def music(driver,em,md):
     sleep(8)
     driver.get("https://www.deezer.com/fr")
     sleep(5)
-    cookies = pickle.load(open("cookies.pkl", "rb"))
+    cookies = pickle.load(open("/root/cookies.pkl", "rb"))
     sleep(2)
     for cookie in cookies:
         driver.add_cookie(cookie)
