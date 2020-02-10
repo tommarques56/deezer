@@ -105,6 +105,7 @@ def music(driver,em,md):
     # f.write("{}:{}\n".format(em,md))
     # f.close() 
     pickle.dump(driver.get_cookies() , open("/root/QuoraCookies.pkl","wb"))
+    driver.quit()
     
     
     
