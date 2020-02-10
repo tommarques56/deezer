@@ -189,8 +189,7 @@ def launch(driver,em,md):
        
 
     driver.get("https://www.deezer.com/fr/album/60566312")
-    except:
-        driver.quit()
+   
     try:
         driver.find_element_by_class_name('login_error')
     except:
