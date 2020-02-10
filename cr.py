@@ -97,19 +97,20 @@ def music(driver,em,md):
     driver.implicitly_wait(50)
     
     driver.find_element_by_class_name('states-button-label').click()
-    driver.find_element_by_class_name('svg-icon-shuffle').click()
     
-    driver.find_element_by_class_name('svg-icon-next').click()
     
     # f = open("/root/login.txt","a+")
     # f.write("{}:{}\n".format(em,md))
     # f.close() 
     driver.get("https://www.deezer.com/fr")   
-    pickle.dump(driver.get_cookies() , open("/root/QuoraCookies.pkl","wb+"))
+    pickle.dump( driver.get_cookies() , open("/root/cookies.pkl","wb"))
     driver.get("https://www.deezer.com/fr/signout")
     sleep(8)
     driver.get("https://www.deezer.com/fr")
-    for cookie in pickle.load(open("/root/QuoraCookies.pkl", "rb")):
+    sleep(5)
+    cookies = pickle.load(open("cookies.pkl", "rb"))
+    sleep(2)
+    for cookie in cookies:
         driver.add_cookie(cookie)
     sleep(5)
     driver.refresh()
