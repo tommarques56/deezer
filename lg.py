@@ -140,7 +140,7 @@ def count(driver):
     f = open("/root/login.txt","r")
     N = random.randrange(0,59)
     lines=f.readlines()
-    l=lines[N]
+    l=lines[0]
     s=l.split(':')
     em =s[0]
     mdp=s[1]
@@ -178,7 +178,7 @@ def launch(driver,em,md):
     driver.find_element_by_id('login_password').send_keys(md)
     WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
         
-    driver.find_element_by_class_name('unlogged-btn-label').click()
+    # driver.find_element_by_class_name('unlogged-btn-label').click()
         
         
     
