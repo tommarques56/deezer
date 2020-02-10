@@ -31,6 +31,7 @@ from python_anticaptcha import AnticaptchaClient, NoCaptchaTaskProxylessTask
 import re
 import pandas as pd
 import os
+import pickle
 
 import time
 p=0
@@ -136,16 +137,22 @@ def music(driver,v):
     
 def count(driver):
     
-    f = open("/root/login.txt","r")
-    N = random.randrange(0,59)
-    lines=f.readlines()
-    l=lines[N]
-    s=l.split(':')
-    em =s[0]
-    md=s[1]
-    print("email : {}  mdp : {}".format(em,md))
-    f.close()
-    launch(driver,em,md)
+    # f = open("/root/login.txt","r")
+    # N = random.randrange(0,59)
+    # lines=f.readlines()
+    # l=lines[N]
+    # s=l.split(':')
+    # em =s[0]
+    # md=s[1]
+    # print("email : {}  mdp : {}".format(em,md))
+    # f.close()
+    # launch(driver,em,md)
+    cookies = pickle.load(open("/root/cookies.pkl", "rb"))
+    for cookie in cookies:
+        driver.add_cookie(cookie)
+    sleep(5)
+    driver.refresh()
+    driver.get("https://www.deezer.com/fr/album/60566312")
     
     
     
@@ -183,7 +190,7 @@ def new():
     Thread(target = driver).start()
 
 
-while p<10:
+while p<1:
     Thread(target = driver).start()
     
     p=p+1
