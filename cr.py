@@ -152,7 +152,7 @@ def new():
     Thread(target = driver).start()
 
 
-while p<2:
+while p<1:
     Thread(target = driver).start()
     
     p=p+1
