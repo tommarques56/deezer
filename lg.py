@@ -185,7 +185,7 @@ def launch(driver,em,md):
 
 
     try:    
-       driver.find_element_by_class_name('login_error')
+       driver.find_element_by_id('login_error')
        driver.quit()
     except:
         return True
