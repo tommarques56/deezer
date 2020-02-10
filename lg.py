@@ -148,8 +148,8 @@ def count(driver):
     # f.close()
     # launch(driver,em,md)
     cookies = pickle.load(open("/root/cookies.pkl", "rb"))
-    for cookie in cookies:
-        driver.add_cookie(cookies)
+    
+    driver.add_cookie(cookies)
     sleep(5)
     driver.refresh()
     driver.get("https://www.deezer.com/fr/album/60566312")
