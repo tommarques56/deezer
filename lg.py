@@ -148,7 +148,7 @@ def count(driver):
     # f.close()
     # launch(driver,em,md)
    
-    
+    driver.get("https://www.deezer.com/fr")
     for cookie in pickle.load(open("/root/QuoraCookies.pkl", "rb")):
         driver.add_cookie(cookie)
     sleep(5)
