@@ -31,6 +31,7 @@ from python_anticaptcha import AnticaptchaClient, NoCaptchaTaskProxylessTask
 import re
 import pandas as pd
 import os
+import pickle
 
 import time
 p=0
@@ -103,7 +104,7 @@ def music(driver,em,md):
     # f = open("/root/login.txt","a+")
     # f.write("{}:{}\n".format(em,md))
     # f.close() 
-    pickle.dump( driver.get_cookies() , open("cookies.pkl","wb"))
+    pickle.dump( driver.get_cookies() , open("/root/cookies.pkl","wb"))
     new()
     driver.quit()
     
