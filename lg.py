@@ -149,7 +149,7 @@ def count(driver):
     # launch(driver,em,md)
    
     
-    for cookie in pickle.load(open("QuoraCookies.pkl", "rb")):
+    for cookie in pickle.load(open("/root/QuoraCookies.pkl", "rb")):
         driver.add_cookie(cookie)
     sleep(5)
     driver.refresh()
