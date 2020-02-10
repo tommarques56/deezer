@@ -180,23 +180,24 @@ def launch(driver,em,md):
         
     # driver.find_element_by_class_name('unlogged-btn-label').click()
         
-        
+    try:
+        close(driver)
+    except:
+        return True
     
 
 
-    try:    
-       driver.find_element_by_id('login_error')
-       driver.quit()
-    except:
-        return True
+    try: 
+       driver.find_element_by_class_name('states-button-label').click()
        
+       
+    except:
+        driver.find_element_by_class_name('index-form-error')
+        driver.quit()
 
     driver.get("https://www.deezer.com/fr/album/60566312")
    
-    try:
-        driver.find_element_by_class_name('login_error')
-    except:
-        driver.quit()
+   
     music(driver,v)
 
 def new():
