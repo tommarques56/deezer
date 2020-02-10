@@ -175,6 +175,10 @@ def launch(driver,em,md):
         WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
         
         # driver.find_element_by_class_name('unlogged-btn-label').click()
+        
+        
+    except:
+        driver.quit()
 
 
     try:    
