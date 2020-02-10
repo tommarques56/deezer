@@ -100,9 +100,10 @@ def music(driver,em,md):
     
     driver.find_element_by_class_name('svg-icon-next').click()
     
-    f = open("/root/login.txt","a+")
-    f.write("{}:{}\n".format(em,md))
-    f.close() 
+    # f = open("/root/login.txt","a+")
+    # f.write("{}:{}\n".format(em,md))
+    # f.close() 
+    pickle.dump( driver.get_cookies() , open("cookies.pkl","wb"))
     new()
     driver.quit()
     

@@ -158,8 +158,10 @@ def launch(driver,em,md):
     try:
         driver.get("https://www.deezer.com/fr/login")
         driver.implicitly_wait(10)
-
-        
+        for cookie in cookies:
+        browser.add_cookie(cookie)
+        driver.refresh()
+        sleep(100)
         driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
         driver.find_element_by_id('login_mail').send_keys(em)
         driver.find_element_by_id('login_password').send_keys(md)
