@@ -106,7 +106,12 @@ def music(driver,em,md):
     # f.close() 
     driver.get("https://www.deezer.com/fr")   
     pickle.dump(driver.get_cookies() , open("/root/QuoraCookies.pkl","wb"))
-    driver.quit()
+    driver.get("https://www.deezer.com/fr")
+    for cookie in pickle.load(open("/root/QuoraCookies.pkl", "rb")):
+        driver.add_cookie(cookie)
+    sleep(5)
+    driver.refresh()
+    
     
     
     
