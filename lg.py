@@ -183,7 +183,11 @@ def launch(driver,em,md):
         close(driver)
     except:
         return True
-    
+    driver.get("https://www.deezer.com/fr/album/60566312")
+    try:
+        close(driver)
+    except:
+        return True
     print(driver.title)    
     
   
