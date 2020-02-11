@@ -77,7 +77,12 @@ def close(driver):
 def style(driver):
     v=0
    
-    driver.find_element_by_class_name('onboarding-screen-search-btn').click()
+    screen = driver.find_element_by_class_name('onboarding-screen-search-btn')
+    if screen.is_displayed():
+        screen.click()
+    else:
+        driver.get("https://www.deezer.com/fr/album/60566312")
+        music(driver,v)
 
 
     close(driver)
@@ -91,35 +96,75 @@ def style(driver):
     
     
     
-def music(driver,em,md):
+# def music(driver,em,md):
+    
+    # p=0
+    # driver.implicitly_wait(50)
+    
+    # driver.find_element_by_class_name('states-button-label').click()
+    
+    
+    # f = open("/root/login.txt","a+")
+    # f.write("{}:{}\n".format(em,md))
+    # f.close() 
+    # # driver.get("https://www.deezer.com/fr")   
+    # # pickle.dump( driver.get_cookies() , open("/root/cookies.pkl","wb"))
+    # # driver.get("https://www.deezer.com/fr/signout")
+    # # sleep(8)
+    # # driver.get("https://www.deezer.com/fr")
+    # # sleep(5)
+    # # cookies = pickle.load(open("/root/cookies.pkl", "rb"))
+    # # sleep(2)
+    # # for cookie in cookies:
+        # # driver.add_cookie(cookie)
+    # # sleep(5)
+    # # driver.refresh()
+    # driver.quit()
+    # new()
+    
+    
+    
+def music(driver,v):
     
     p=0
     driver.implicitly_wait(50)
-    
-    driver.find_element_by_class_name('states-button-label').click()
-    
-    
-    f = open("/root/login.txt","a+")
-    f.write("{}:{}\n".format(em,md))
-    f.close() 
-    # driver.get("https://www.deezer.com/fr")   
-    # pickle.dump( driver.get_cookies() , open("/root/cookies.pkl","wb"))
-    # driver.get("https://www.deezer.com/fr/signout")
-    # sleep(8)
-    # driver.get("https://www.deezer.com/fr")
-    # sleep(5)
-    # cookies = pickle.load(open("/root/cookies.pkl", "rb"))
-    # sleep(2)
-    # for cookie in cookies:
-        # driver.add_cookie(cookie)
-    # sleep(5)
-    # driver.refresh()
-    driver.quit()
-    new()
-    
-    
-    
-    
+    try:
+        driver.find_element_by_class_name('states-button-label').click()
+        driver.find_element_by_class_name('svg-icon-shuffle').click()
+        
+        driver.find_element_by_class_name('svg-icon-next').click()
+    except:
+        driver.refresh()
+        close(driver)
+        music(driver,v)
+ 
+    while p<200:
+        x=0
+        while x<32:
+            try:
+                e = driver.find_element_by_class_name("slider-counter-current").text
+                s=e.split(':')
+                x=int(s[1])
+                sleep(1)
+            except:
+                close(driver)
+                music(driver,v)
+                           
+        try:      
+            driver.find_element_by_class_name('svg-icon-next').click()
+        except:
+            sleep(40)
+            driver.find_element_by_class_name('svg-icon-next').click()
+        v=v+1
+        print(v)
+        
+        p=p+1
+        
+    try:
+        driver.find_element_by_class_name('states-button-action').click()
+    except:
+     return True
+    music(driver,v)    
     
     
     
@@ -158,7 +203,7 @@ def launch(driver):
         print("launch")
         launch(driver)   
         
-    music(driver,em,md)
+    music(driver,v)
 
 def new():
     Thread(target = driver).start()
