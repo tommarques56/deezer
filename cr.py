@@ -114,6 +114,7 @@ def music(driver,em,md):
         # driver.add_cookie(cookie)
     # sleep(5)
     # driver.refresh()
+    driver.quit()
     
     
     
