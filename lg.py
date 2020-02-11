@@ -138,13 +138,14 @@ def music(driver,v):
 def count(driver):
     
     f = open("/root/login.txt","r")
-    N = random.randrange(1,59)
+    N = random.randrange(0,59)
     lines=f.readlines()
     l=lines[N]
     s=l.split(':')
     em =s[0]
-    md=s[1]
-    
+    mdp=s[1]
+    s2=mdp.split('\n')
+    md=s2[0]
     
     
     print("email : {}  mdp : {}".format(em,md))
@@ -183,11 +184,7 @@ def launch(driver,em,md):
         close(driver)
     except:
         return True
-    driver.get("https://www.deezer.com/fr/album/60566312")
-    try:
-        close(driver)
-    except:
-        return True
+    
     print(driver.title)    
     
   
