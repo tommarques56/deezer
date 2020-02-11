@@ -192,7 +192,7 @@ def launch(driver,em,md):
     play = driver.find_element_by_class_name('states-button-label')
     if error.is_displayed():
         driver.quit()
-    elif driver.current_url = "https://www.deezer.com/fr/":
+    elif driver.current_url() = "https://www.deezer.com/fr/":
         driver.get("https://www.deezer.com/fr/album/60566312")
     else:
         print("error")
