@@ -138,14 +138,13 @@ def music(driver,v):
 def count(driver):
     
     f = open("/root/login.txt","r")
-    N = random.randrange(0,59)
+    N = random.randrange(1,59)
     lines=f.readlines()
-    l=lines[0]
+    l=lines[N]
     s=l.split(':')
     em =s[0]
-    mdp=s[1]
-    s2=mdp.split('\n')
-    md=s2[0]
+    md=s[1]
+    
     
     
     print("email : {}  mdp : {}".format(em,md))
