@@ -60,7 +60,7 @@ def driver():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    # options.add_extension('/root/deezer/AC.zip')
+    options.add_extension('/root/deezer/AC.zip')
        
 
     # driver = webdriver.Chrome(options=options)
@@ -176,7 +176,7 @@ def launch(driver,em,md):
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(md)
-    # WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
         
     # driver.find_element_by_class_name('unlogged-btn-label').click()
     print(driver.title)    
@@ -185,7 +185,7 @@ def launch(driver,em,md):
     except:
         return True
     
-
+    print(driver.title)    
     
   
     # error = driver.find_element_by_class_name('states-button-label')
