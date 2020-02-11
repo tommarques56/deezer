@@ -143,9 +143,8 @@ def count(driver):
     l=lines[1]
     s=l.split(':')
     em =s[0]
-    mdp=s[1]
-    s2=mdp.split('\n')
-    md=s2[0]
+    md=s[1]
+    
     
     
     print("email : {}  mdp : {}".format(em,md))
@@ -174,8 +173,8 @@ def launch(driver,em,md):
     driver.refresh()
     # sleep(100)
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
-    driver.find_element_by_id('login_mail').send_keys("spotify5@coteenfants.fr\n")
-    driver.find_element_by_id('login_password').send_keys("zezette")
+    driver.find_element_by_id('login_mail').send_keys(em)
+    driver.find_element_by_id('login_password').send_keys(md)
     WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
         
     # driver.find_element_by_class_name('unlogged-btn-label').click()
@@ -192,12 +191,10 @@ def launch(driver,em,md):
     play = driver.find_element_by_class_name('states-button-label')
     if error.is_displayed():
         driver.quit()
-    elif driver.current_url() = "https://www.deezer.com/fr/":
-        driver.get("https://www.deezer.com/fr/album/60566312")
     else:
-        print("error")
-        driver.quit()
-       
+        driver.get("https://www.deezer.com/fr/album/60566312")
+        music(driver,v)
+   
     
    
    
