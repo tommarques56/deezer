@@ -115,6 +115,7 @@ def music(driver,em,md):
     # sleep(5)
     # driver.refresh()
     driver.quit()
+    new()
     
     
     
