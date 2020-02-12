@@ -177,7 +177,7 @@ def music(driver,v):
 
     if p%50==0 and pause.is_displayed():
         pause.click()
-        if: play.is_displayed() and v<500:
+        if play.is_displayed() and v<500:
             driver.refresh()
             driver.get("https://www.deezer.com/fr/album/60566312")
         elif play.is_displayed() and v>500:
