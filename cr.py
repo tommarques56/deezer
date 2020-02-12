@@ -175,7 +175,7 @@ def music(driver,v):
         
         
 
-    if p%50=0 and pause.is_displayed():
+    if p%50==0 and pause.is_displayed():
         pause.click()
         if: play.is_displayed() and v<500:
             driver.refresh()
