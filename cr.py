@@ -76,14 +76,13 @@ def close(driver):
 
 def style(driver):
     v=0
-   
-    screen = driver.find_element_by_class_name('onboarding-screen-search-btn')
-    if screen.is_displayed():
-        screen.click()
+
+    if driver.find_element_by_class_name('onboarding-screen-search-btn').is_displayed():
+        driver.find_element_by_class_name('onboarding-screen-search-btn').click()
     else:
         driver.get("https://www.deezer.com/fr/album/60566312")
-        if artist.is_displayed():
-            artist.click()
+        if driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
+            driver.find_element_by_class_name('onboarding-screen-artist-item').click()
             style(driver)
         
 
@@ -130,31 +129,27 @@ def music(driver,v):
     p=0
     driver.implicitly_wait(50)
     
-    play = driver.find_element_by_class_name('states-button-label')
-    random = driver.find_element_by_class_name('svg-icon-shuffle')
-    next = driver.find_element_by_class_name('svg-icon-next')
-    e2 = driver.find_element_by_class_name("slider-counter-current")
-    pause = driver.find_element_by_class_name('states-button-action')
+
     
-    if play.is_displayed():
-        play.click()
+    if driver.find_element_by_class_name('states-button-label').is_displayed():
+        driver.find_element_by_class_name('states-button-label').click()
    
-    if random.is_displayed():
-        random.click()
+    if driver.find_element_by_class_name('svg-icon-shuffle').is_displayed():
+        driver.find_element_by_class_name('svg-icon-shuffle').click()
 
-    if next.is_displayed():
-        next.click()
+    if driver.find_element_by_class_name('svg-icon-next').is_displayed():
+        driver.find_element_by_class_name('svg-icon-next').click()
 
-    if e2.is_displayed():
+    if driver.find_element_by_class_name("slider-counter-current").is_displayed():
         while x<32:
               
-            e = e2.text
+            e = driver.find_element_by_class_name("slider-counter-current").text
             s=e.split(':')
             x=int(s[1])
             sleep(1)
     else:
         sleep(1)
-        if next.is_displayed():
+        if driver.find_element_by_class_name('svg-icon-next').is_displayed():
             sleep(30)
             music(driver,v)
   
@@ -164,8 +159,8 @@ def music(driver,v):
             music(driver,v)
 
             
-    if next.is_displayed():
-        next.click()
+    if driver.find_element_by_class_name('svg-icon-next').is_displayed():
+        driver.find_element_by_class_name('svg-icon-next').click()
         v=v+1
         p=p+1
         print(v)
@@ -175,12 +170,12 @@ def music(driver,v):
         
         
 
-    if p%50==0 and pause.is_displayed():
-        pause.click()
-        if play.is_displayed() and v<500:
+    if p%50==0 and driver.find_element_by_class_name('states-button-action').is_displayed():
+        driver.find_element_by_class_name('states-button-action').click()
+        if driver.find_element_by_class_name('states-button-label').is_displayed() and v<500:
             driver.refresh()
             driver.get("https://www.deezer.com/fr/album/60566312")
-        elif play.is_displayed() and v>500:
+        elif driver.find_element_by_class_name('states-button-label').is_displayed() and v>500:
             driver.quit()
             Thread(target = driver).start()
             
