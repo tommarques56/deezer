@@ -82,16 +82,15 @@ def style(driver):
         screen.click()
     else:
         driver.get("https://www.deezer.com/fr/album/60566312")
-        music(driver,v)
+        if artist.is_displayed():
+            artist.click()
+            style(driver)
+        
 
 
     close(driver)
         
-    try:
-        driver.find_element_by_class_name('sidebar-nav-item')
-    except:
-        style(driver)
-        print("style")
+ 
     driver.get("https://www.deezer.com/fr/album/60566312")    
     
     
@@ -127,51 +126,79 @@ def style(driver):
 def music(driver,v):
     
     p=0
+    x=0
+    p=0
     driver.implicitly_wait(50)
-    try:
-        driver.find_element_by_class_name('states-button-label').click()
-        driver.find_element_by_class_name('svg-icon-shuffle').click()
-        
-        driver.find_element_by_class_name('svg-icon-next').click()
-    except:
-        driver.refresh()
-        close(driver)
-        music(driver,v)
- 
-    while p<200:
-        x=0
+    
+    play = driver.find_element_by_class_name('states-button-label')
+    random = driver.find_element_by_class_name('svg-icon-shuffle')
+    next = driver.find_element_by_class_name('svg-icon-next')
+    e2 = driver.find_element_by_class_name("slider-counter-current")
+    pause = driver.find_element_by_class_name('states-button-action')
+    
+    if play.is_displayed():
+        play.click()
+   
+    if random.is_displayed():
+        random.click()
+
+    if next.is_displayed():
+        next.click()
+
+    if e2.is_displayed():
         while x<32:
-            try:
-                e = driver.find_element_by_class_name("slider-counter-current").text
-                s=e.split(':')
-                x=int(s[1])
-                sleep(1)
-            except:
-                close(driver)
-                music(driver,v)
-                           
-        try:      
-            driver.find_element_by_class_name('svg-icon-next').click()
-        except:
-            sleep(40)
-            driver.find_element_by_class_name('svg-icon-next').click()
+              
+            e = e2.text
+            s=e.split(':')
+            x=int(s[1])
+            sleep(1)
+    else:
+        sleep(1)
+        if next.is_displayed():
+            sleep(30)
+            music(driver,v)
+  
+        else:
+            driver.refresh()
+            driver.get("https://www.deezer.com/fr/album/60566312")
+            music(driver,v)
+
+            
+    if next.is_displayed():
+        next.click()
         v=v+1
-        print(v)
-        
         p=p+1
+        print(v)
+    
+    else:
+        music(driver,v)
         
-    try:
-        driver.find_element_by_class_name('states-button-action').click()
-    except:
-        sleep(40)
-        driver.find_element_by_class_name('svg-icon-next').click()
+        
+
+    if p%50=0 and pause.is_displayed():
+        pause.click()
+        if: play.is_displayed() and v<500:
+            driver.refresh()
+            driver.get("https://www.deezer.com/fr/album/60566312")
+        elif play.is_displayed() and v>500:
+            driver.quit()
+            Thread(target = driver).start()
+            
+            
+            
+    else:
+        music(driver,v)
+        
+
+
     music(driver,v)    
     
     
     
 
 def launch(driver):
-    
+    artist = driver.find_element_by_class_name('onboarding-screen-artist-item')
+    error = driver.find_element_by_id('register_form_global_error')
     v=0
     driver.get("https://www.deezer.com/fr/register")
     driver.implicitly_wait(10)
@@ -194,20 +221,20 @@ def launch(driver):
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
 
-    try:
-        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
+    if artist.is_displayed():
+        artist.click()
         style(driver)
-    except:
-        driver.find_element_by_id('register_form_global_error')
+            
+    elif error.is_displayed():
         driver.delete_all_cookies()
         driver.refresh()
         print("launch")
-        launch(driver)   
+        launch(driver)           
+     
         
     music(driver,v)
 
-def new():
-    Thread(target = driver).start()
+
 
 
 while p<10:
