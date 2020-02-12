@@ -35,6 +35,8 @@ import pickle
 
 import time
 p=0
+artist = driver.find_element_by_class_name('onboarding-screen-artist-item')
+error = driver.find_element_by_id('register_form_global_error')
 def random_char(y):
        return ''.join(random.choice(string.ascii_letters) for x in range(y))
 
@@ -197,8 +199,7 @@ def music(driver,v):
     
 
 def launch(driver):
-    artist = driver.find_element_by_class_name('onboarding-screen-artist-item')
-    error = driver.find_element_by_id('register_form_global_error')
+    
     v=0
     driver.get("https://www.deezer.com/fr/register")
     driver.implicitly_wait(10)
