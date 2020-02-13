@@ -150,6 +150,7 @@ def music(driver,v):
         
     try:
         driver.find_element_by_class_name("slider-counter-current")
+        driver.get("https://www.deezer.com/fr/album/60566312")
     except:
         sleep(5)
         
@@ -169,7 +170,7 @@ def music(driver,v):
   
         except:
             # driver.refresh()
-            # driver.get("https://www.deezer.com/fr/album/60566312")
+            driver.get("https://www.deezer.com/fr/album/60566312")
             music(driver,v)
 
             
@@ -189,8 +190,9 @@ def music(driver,v):
             driver.find_element_by_class_name('states-button-action').click()
             if v<500:
                 try:
-                    driver.refresh()
+                    
                     driver.get("https://www.deezer.com/fr/album/60566312")
+                    music(driver,v)   
                 except:
                     music(driver,v)    
                 
