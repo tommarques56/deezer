@@ -1,4 +1,3 @@
-
 from selenium.webdriver.common.keys import Keys
 import shutil 
 from selenium import webdriver 
@@ -76,22 +75,22 @@ def close(driver):
 
 def style(driver):
     v=0
-
-    try:
-        driver.find_element_by_class_name('onboarding-screen-search-btn').click()
-    except:
+   
+    screen = driver.find_element_by_class_name('onboarding-screen-search-btn')
+    if screen.is_displayed():
+        screen.click()
+    else:
         driver.get("https://www.deezer.com/fr/album/60566312")
-        try:
-            driver.find_element_by_class_name('onboarding-screen-artist-item').click()
-            style(driver)
-        except:
-            style(driver) 
-        
+        music(driver,v)
 
 
     close(driver)
         
- 
+    try:
+        driver.find_element_by_class_name('sidebar-nav-item')
+    except:
+        style(driver)
+        print("style")
     driver.get("https://www.deezer.com/fr/album/60566312")    
     
     
@@ -127,95 +126,50 @@ def style(driver):
 def music(driver,v):
     
     p=0
-    x=0
-    p=0
     driver.implicitly_wait(50)
-    
-
-    
     try:
         driver.find_element_by_class_name('states-button-label').click()
-    except:
-        False
-   
-    try:
         driver.find_element_by_class_name('svg-icon-shuffle').click()
-    except:
-        False
-
-    try:
+        
         driver.find_element_by_class_name('svg-icon-next').click()
     except:
-        False
-        
-    try:
-        driver.find_element_by_class_name("slider-counter-current")
-        driver.get("https://www.deezer.com/fr/album/60566312")
-    except:
-        sleep(5)
-        
-
-    try:
-        while x<32:
-              
-            e = driver.find_element_by_class_name("slider-counter-current").text
-            s=e.split(':')
-            x=int(s[1])
-            sleep(5)
-            
-    except:
-        sleep(1)
-        try:
-            driver.find_element_by_class_name('svg-icon-next')
-            music(driver,v)
-  
-        except:
-            # driver.refresh()
-            driver.get("https://www.deezer.com/fr/album/60566312")
-            music(driver,v)
-
-            
-    try:
-        driver.find_element_by_class_name('svg-icon-next').click()
-        v=v+1
-        p=p+1
-        print(v)
-    
-    except:
+        driver.refresh()
+        close(driver)
         music(driver,v)
-        
-        
-
-    if p%50==0:
-        try:
-            driver.find_element_by_class_name('states-button-action').click()
-            if v<500:
-                try:
-                    
-                    driver.get("https://www.deezer.com/fr/album/60566312")
-                    music(driver,v)   
-                except:
-                    music(driver,v)    
-                
-            else:
-                
-                driver.quit()
-                thread(target = driver).start()
-            
-            
-            
+ 
+    while p<200:
+        x=0
+        while x<32:
+            try:
+                e = driver.find_element_by_class_name("slider-counter-current").text
+                s=e.split(':')
+                x=int(s[1])
+                sleep(1)
+            except:
+                close(driver)
+                music(driver,v)
+                           
+        try:      
+            driver.find_element_by_class_name('svg-icon-next').click()
         except:
-            music(driver,v)
+            sleep(40)
+            driver.find_element_by_class_name('svg-icon-next').click()
+        v=v+1
+        print(v)
         
-
-
+        p=p+1
+        
+    try:
+        driver.find_element_by_class_name('states-button-action').click()
+    except:
+     return True
     music(driver,v)    
     
     
     
 
 def launch(driver):
-
+    
     v=0
     driver.get("https://www.deezer.com/fr/register")
     driver.implicitly_wait(10)
@@ -232,37 +186,32 @@ def launch(driver):
     genre.send_keys(Keys.TAB)
     genre.send_keys(Keys.DOWN*N)
     genre.perform()
-    try:
-        WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
-    except:
-        launch(driver)           
+
+    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
 
-
     try:
         driver.find_element_by_class_name('onboarding-screen-artist-item').click()
         style(driver)
-            
     except:
+        driver.find_element_by_id('register_form_global_error')
         driver.delete_all_cookies()
         driver.refresh()
         print("launch")
-        launch(driver)           
-     
+        launch(driver)   
         
     music(driver,v)
 
-
+def new():
+    Thread(target = driver).start()
 
 
 while p<10:
     Thread(target = driver).start()
     
     p=p+1
-
-
 
 
 
