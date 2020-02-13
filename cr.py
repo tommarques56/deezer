@@ -231,7 +231,7 @@ def launch(driver):
     sleep(5)
 
 
-   try:
+    try:
         driver.find_element_by_class_name('onboarding-screen-artist-item').click()
         style(driver)
             
