@@ -155,7 +155,7 @@ def music(driver,v):
         
 
     try:
-        while x<30:
+        while x<32:
               
             e = driver.find_element_by_class_name("slider-counter-current").text
             s=e.split(':')
@@ -229,8 +229,10 @@ def launch(driver):
     genre.send_keys(Keys.TAB)
     genre.send_keys(Keys.DOWN*N)
     genre.perform()
-
-    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+    try:
+        WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+    except:
+        launch(driver)           
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
