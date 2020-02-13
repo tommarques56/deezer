@@ -161,6 +161,7 @@ def music(driver,v):
             e = driver.find_element_by_class_name("slider-counter-current").text
             s=e.split(':')
             x=int(s[1])
+            sleep(5)
             
     except:
         sleep(1)
