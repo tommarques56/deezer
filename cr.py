@@ -84,6 +84,8 @@ def style(driver):
         try:
             driver.find_element_by_class_name('onboarding-screen-artist-item').click()
             style(driver)
+        except:
+            style(driver) 
         
 
 
@@ -133,12 +135,18 @@ def music(driver,v):
     
     try:
         driver.find_element_by_class_name('states-button-label').click()
+    except:
+        False
    
     try:
         driver.find_element_by_class_name('svg-icon-shuffle').click()
+    except:
+        False
 
     try:
         driver.find_element_by_class_name('svg-icon-next').click()
+    except:
+        False
 
     try:
         while x<32:
@@ -178,10 +186,13 @@ def music(driver,v):
                 try:
                     driver.refresh()
                     driver.get("https://www.deezer.com/fr/album/60566312")
-            elif v>500:
-                try:
-                    driver.quit()
-                    Thread(target = driver).start()
+                except:
+                    music(driver,v)    
+                
+            else:
+                
+                driver.quit()
+                thread(target = driver).start()
             
             
             
