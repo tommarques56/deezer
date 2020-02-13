@@ -77,11 +77,11 @@ def close(driver):
 def style(driver):
     v=0
 
-    if driver.find_element_by_class_name('onboarding-screen-search-btn').is_displayed():
+    try:
         driver.find_element_by_class_name('onboarding-screen-search-btn').click()
-    else:
+    except:
         driver.get("https://www.deezer.com/fr/album/60566312")
-        if driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
+        try:
             driver.find_element_by_class_name('onboarding-screen-artist-item').click()
             style(driver)
         
@@ -131,58 +131,62 @@ def music(driver,v):
     
 
     
-    if driver.find_element_by_class_name('states-button-label').is_displayed():
+    try:
         driver.find_element_by_class_name('states-button-label').click()
    
-    if driver.find_element_by_class_name('svg-icon-shuffle').is_displayed():
+    try:
         driver.find_element_by_class_name('svg-icon-shuffle').click()
 
-    if driver.find_element_by_class_name('svg-icon-next').is_displayed():
+    try:
         driver.find_element_by_class_name('svg-icon-next').click()
 
-    if driver.find_element_by_class_name("slider-counter-current").is_displayed():
+    try:
         while x<32:
               
             e = driver.find_element_by_class_name("slider-counter-current").text
             s=e.split(':')
             x=int(s[1])
             sleep(1)
-    else:
+    except:
         sleep(1)
-        if driver.find_element_by_class_name('svg-icon-next').is_displayed():
+        try:
+            driver.find_element_by_class_name('svg-icon-next').is_displayed():
             sleep(30)
             music(driver,v)
   
-        else:
+        except:
             driver.refresh()
             driver.get("https://www.deezer.com/fr/album/60566312")
             music(driver,v)
 
             
-    if driver.find_element_by_class_name('svg-icon-next').is_displayed():
+    try:
         driver.find_element_by_class_name('svg-icon-next').click()
         v=v+1
         p=p+1
         print(v)
     
-    else:
+    except:
         music(driver,v)
         
         
 
-    if p%50==0 and driver.find_element_by_class_name('states-button-action').is_displayed():
-        driver.find_element_by_class_name('states-button-action').click()
-        if driver.find_element_by_class_name('states-button-label').is_displayed() and v<500:
-            driver.refresh()
-            driver.get("https://www.deezer.com/fr/album/60566312")
-        elif driver.find_element_by_class_name('states-button-label').is_displayed() and v>500:
-            driver.quit()
-            Thread(target = driver).start()
+    if p%50==0:
+        try:
+            driver.find_element_by_class_name('states-button-action').click()
+            if v<500:
+                try:
+                    driver.refresh()
+                    driver.get("https://www.deezer.com/fr/album/60566312")
+            elif v>500:
+                try:
+                    driver.quit()
+                    Thread(target = driver).start()
             
             
             
-    else:
-        music(driver,v)
+        except:
+            music(driver,v)
         
 
 
@@ -214,22 +218,13 @@ def launch(driver):
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
-    myelement = driver.find_element_by_xpath("//a[@id='form1']")
-
-    if myelement.is_displayed():
-        myelement.click()
-    else:
-        print (" ")
 
 
-
-
-
-    if driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
+   try:
         driver.find_element_by_class_name('onboarding-screen-artist-item').click()
         style(driver)
             
-    elif driver.find_element_by_id('register_form_global_error').is_displayed():
+    except:
         driver.delete_all_cookies()
         driver.refresh()
         print("launch")
