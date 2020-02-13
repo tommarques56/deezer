@@ -214,6 +214,16 @@ def launch(driver):
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
+    myelement = driver.find_element_by_xpath("//a[@id='form1']")
+
+    if myelement.is_displayed():
+        myelement.click()
+    else:
+        print (" ")
+
+
+
+
 
     if driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
         driver.find_element_by_class_name('onboarding-screen-artist-item').click()
