@@ -158,7 +158,7 @@ def music(driver,v):
     except:
         sleep(1)
         try:
-            driver.find_element_by_class_name('svg-icon-next').is_displayed():
+            driver.find_element_by_class_name('svg-icon-next')
             sleep(30)
             music(driver,v)
   
