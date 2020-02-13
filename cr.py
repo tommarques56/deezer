@@ -147,19 +147,24 @@ def music(driver,v):
         driver.find_element_by_class_name('svg-icon-next').click()
     except:
         False
+        
+    try:
+        driver.find_element_by_class_name("slider-counter-current")
+    except:
+        sleep(5)
+        
 
     try:
-        while x<32:
+        while x<30:
               
             e = driver.find_element_by_class_name("slider-counter-current").text
             s=e.split(':')
             x=int(s[1])
-            sleep(1)
+            
     except:
         sleep(1)
         try:
             driver.find_element_by_class_name('svg-icon-next')
-            sleep(30)
             music(driver,v)
   
         except:
