@@ -168,8 +168,8 @@ def music(driver,v):
             music(driver,v)
   
         except:
-            driver.refresh()
-            driver.get("https://www.deezer.com/fr/album/60566312")
+            # driver.refresh()
+            # driver.get("https://www.deezer.com/fr/album/60566312")
             music(driver,v)
 
             
