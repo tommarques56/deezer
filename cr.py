@@ -162,7 +162,8 @@ def music(driver,v):
     try:
         driver.find_element_by_class_name('states-button-action').click()
     except:
-     return True
+        sleep(40)
+        driver.find_element_by_class_name('svg-icon-next').click()
     music(driver,v)    
     
     
@@ -212,7 +213,6 @@ while p<10:
     Thread(target = driver).start()
     
     p=p+1
-
 
 
 
