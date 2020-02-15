@@ -60,7 +60,7 @@ def driver():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    options.add_extension('/root/deezer/AC.zip')
+    # options.add_extension('/root/deezer/AC.zip')
        
 
     # driver = webdriver.Chrome(options=options)
@@ -134,17 +134,17 @@ def music(driver,v):
 
     
     try:
-        driver.find_element_by_class_name('states-button-label').click()
+        play = driver.find_element_by_class_name('states-button-label').click()
     except:
         False
    
     try:
-        driver.find_element_by_class_name('svg-icon-shuffle').click()
+        random = driver.find_element_by_class_name('svg-icon-shuffle')
     except:
         False
 
     try:
-        driver.find_element_by_class_name('svg-icon-next').click()
+       next = driver.find_element_by_class_name('svg-icon-next')
     except:
         False
         
@@ -162,7 +162,7 @@ def music(driver,v):
     except:
         sleep(40)
         try:
-            driver.find_element_by_class_name('states-button-action').click()
+            driver.find_element_by_class_name('svg-icon-next').click()
            
         except:
             music(driver,v)    
@@ -184,7 +184,7 @@ def music(driver,v):
     
         
             
-    if v<500:
+    if v>300:
         try:
             driver.find_element_by_class_name('states-button-action').click()
             driver.get("https://www.deezer.com/fr/album/60566312")
@@ -193,9 +193,8 @@ def music(driver,v):
             music(driver,v)    
                 
     else:
-               
-        driver.quit()
-        thread(target = driver).start()
+        music(driver,v)          
+        
 
     music(driver,v)    
     
@@ -221,7 +220,7 @@ def launch(driver):
     genre.send_keys(Keys.DOWN*N)
     genre.perform()
     try:
-        WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+        WebDriverWait(driver, 30).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
     except:
         launch(driver)           
     
@@ -229,11 +228,11 @@ def launch(driver):
     sleep(5)
 
 
-    try:
+    if driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
         driver.find_element_by_class_name('onboarding-screen-artist-item').click()
         style(driver)
             
-    except:
+    else:
         driver.delete_all_cookies()
         driver.refresh()
         print("launch")
