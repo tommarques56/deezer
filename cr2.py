@@ -87,7 +87,7 @@ def style(driver):
         
     elif driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
         driver.find_element_by_class_name('onboarding-screen-artist-item').click()
-        driver.refresh()
+        
         style(driver)
         
     
