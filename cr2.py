@@ -77,27 +77,21 @@ def close(driver):
 
 def style(driver):
     v=0
-    try:
-        button = driver.find_element_by_class_name('onboarding-screen-search-btn')
-    except:
-        False
+ 
         
-    try:
-        artist = driver.find_element_by_class_name('onboarding-screen-artist-item')
-    except:
-        False   
-        
-    if button.is_displayed():
-        button.click()
+    if driver.find_element_by_class_name('onboarding-screen-search-btn').is_displayed():
+        driver.find_element_by_class_name('onboarding-screen-search-btn').click()
         sleep(5)
         driver.get("https://www.deezer.com/fr/album/60566312")    
         close(driver)
-        music(driver,v)
-    elif artist.is_displayed():
-        artist.click()
+        
+    elif driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
+        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
         driver.refresh()
         style(driver)
         
+    
+    style(driver)    
  
   
     
@@ -210,13 +204,10 @@ def launch(driver):
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
    
-    try:
-        artist = driver.find_element_by_class_name('onboarding-screen-artist-item')
-    except:
-        False
 
-    if artist.is_displayed():
-        artist.click()
+
+    if driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
+        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
         style(driver)
             
     else:
