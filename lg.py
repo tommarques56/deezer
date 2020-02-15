@@ -178,24 +178,19 @@ def launch(driver,em,mdp):
     driver.find_element_by_id('login_password').send_keys(mdp)
     WebDriverWait(driver, 300).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))   
     print("yesssss")
-        
-    # driver.find_element_by_class_name('unlogged-btn-label').click()
-    print(driver.title)    
+
+ 
     try:
         close(driver)
     except:
         return True
     
-    print(driver.title)    
+    # print(driver.title)    
     
   
-    error = driver.find_element_by_class_name('states-button-label')
-    play = driver.find_element_by_class_name('states-button-label')
-    if error.is_displayed():
-        driver.quit()
-    else:
-        driver.get("https://www.deezer.com/fr/album/60566312")
-        music(driver,v)
+ 
+    driver.get("https://www.deezer.com/fr/album/60566312")
+    # music(driver,v)
    
     
    
