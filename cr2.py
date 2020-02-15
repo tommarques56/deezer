@@ -222,7 +222,7 @@ def launch(driver):
 
 
 
-while p<10:
+while p<8:
     Thread(target = driver).start()
     
     p=p+1
