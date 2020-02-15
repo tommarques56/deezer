@@ -231,7 +231,10 @@ def launch(driver):
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
    
-
+    try:
+        artist = driver.find_element_by_class_name('onboarding-screen-artist-item')
+    except:
+        False
 
     if artist.is_displayed():
         artist.click()
