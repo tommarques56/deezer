@@ -60,7 +60,8 @@ def driver():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    options.add_extension('/root/deezer/AC.zip')
+    options.add_extension('/root/deezer/AC.zip')*
+    options.add_argument("--start-maximized")
        
 
     # driver = webdriver.Chrome(options=options)
@@ -76,60 +77,38 @@ def close(driver):
 
 def style(driver):
     v=0
-
     try:
-        driver.find_element_by_class_name('onboarding-screen-search-btn').click()
+        button = driver.find_element_by_class_name('onboarding-screen-search-btn')
     except:
-        driver.get("https://www.deezer.com/fr/album/60566312")
-        try:
-            driver.find_element_by_class_name('onboarding-screen-artist-item').click()
-            style(driver)
-        except:
-            style(driver) 
+        False
         
-
-
-    close(driver)
+    try:
+        artist = driver.find_element_by_class_name('onboarding-screen-artist-item')
+    except:
+        False   
+        
+    if button.is_displayed():
+        button.click()
+        sleep(5)
+        driver.get("https://www.deezer.com/fr/album/60566312")    
+        close(driver)
+        music(driver,v)
+    elif artist.is_displayed():
+        artist.click()
+        driver.refresh()
+        style(driver)
         
  
-    driver.get("https://www.deezer.com/fr/album/60566312")    
+  
     
     
-    
-# def music(driver,em,md):
-    
-    # p=0
-    # driver.implicitly_wait(50)
-    
-    # driver.find_element_by_class_name('states-button-label').click()
-    
-    
-    # f = open("/root/login.txt","a+")
-    # f.write("{}:{}\n".format(em,md))
-    # f.close() 
-    # # driver.get("https://www.deezer.com/fr")   
-    # # pickle.dump( driver.get_cookies() , open("/root/cookies.pkl","wb"))
-    # # driver.get("https://www.deezer.com/fr/signout")
-    # # sleep(8)
-    # # driver.get("https://www.deezer.com/fr")
-    # # sleep(5)
-    # # cookies = pickle.load(open("/root/cookies.pkl", "rb"))
-    # # sleep(2)
-    # # for cookie in cookies:
-        # # driver.add_cookie(cookie)
-    # # sleep(5)
-    # # driver.refresh()
-    # driver.quit()
-    # new()
-    
-    
-    
+
 def music(driver,v):
     
     p=0
     x=0
     p=0
-    driver.implicitly_wait(50)
+    
     
 
     
@@ -208,7 +187,7 @@ def launch(driver):
         False
     v=0
     driver.get("https://www.deezer.com/fr/register")
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(50)
 
     em = al()
     md = random_char(15)
