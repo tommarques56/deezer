@@ -49,8 +49,8 @@ def al():
 
 def driver():
     capabilities = {
-        "browserName": "chrome",
-        "version": "79.0",
+        "browserName": "opera",
+        "version": "66.0",
         "enableVNC": True,
         "enableVideo": True
         
@@ -252,7 +252,7 @@ def launch(driver):
 
 
 
-while p<9:
+while p<10:
     Thread(target = driver).start()
     
     p=p+1
