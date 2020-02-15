@@ -60,7 +60,7 @@ def driver():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    options.add_extension('/root/deezer/AC.zip')*
+    options.add_extension('/root/deezer/AC.zip')
     options.add_argument("--start-maximized")
        
 
