@@ -60,7 +60,7 @@ def driver():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    # options.add_extension('/root/deezer/AC.zip')
+    options.add_extension('/root/deezer/AC.zip')
        
 
     # driver = webdriver.Chrome(options=options)
@@ -220,7 +220,7 @@ def launch(driver):
     genre.send_keys(Keys.DOWN*N)
     genre.perform()
     try:
-        WebDriverWait(driver, 30).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+        WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
     except:
         driver.delete_all_cookies()
         driver.refresh()
