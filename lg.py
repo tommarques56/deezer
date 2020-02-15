@@ -174,7 +174,8 @@ def launch(driver,em,md):
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(md)
-    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+    # WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))   
+    sleep(300)
         
     # driver.find_element_by_class_name('unlogged-btn-label').click()
     print(driver.title)    
@@ -202,7 +203,7 @@ def launch(driver,em,md):
 
 
 
-while p<10:
+while p<1:
     Thread(target = driver).start()
     
     p=p+1
