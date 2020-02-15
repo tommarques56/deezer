@@ -51,7 +51,7 @@ def driver():
         "browserName": "chrome",
         "version": "79.0",
         "enableVNC": True,
-        "enableVideo": True
+        "enableVideo": False
         
     }
     ip=socket.gethostbyname(socket.gethostname())
@@ -209,7 +209,7 @@ def new():
     Thread(target = driver).start()
 
 
-while p<10:
+while p<8:
     Thread(target = driver).start()
     
     p=p+1
