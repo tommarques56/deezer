@@ -222,6 +222,8 @@ def launch(driver):
     try:
         WebDriverWait(driver, 30).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
     except:
+        driver.delete_all_cookies()
+        driver.refresh()
         launch(driver)           
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
