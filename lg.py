@@ -1,4 +1,3 @@
-
 from selenium.webdriver.common.keys import Keys
 import shutil 
 from selenium import webdriver 
@@ -138,9 +137,9 @@ def music(driver,v):
 def count(driver):
     
     f = open("/root/login.txt","r")
-    N = random.randrange(0,59)
+    N = random.randrange(0,1)
     lines=f.readlines()
-    l=lines[1]
+    l=lines[N]
     s=l.split(':')
     em =s[0]
     md=s[1]
@@ -200,17 +199,13 @@ def launch(driver,em,md):
    
     
 
-def new():
-    Thread(target = driver).start()
 
 
-while p<1:
+
+while p<10:
     Thread(target = driver).start()
     
     p=p+1
-
-
-
 
 
 
