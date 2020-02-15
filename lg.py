@@ -137,18 +137,20 @@ def music(driver,v):
 def count(driver):
     
     f = open("/root/login.txt","r")
-    N = random.randrange(0,1)
+    N = random.randrange(0,2)
     lines=f.readlines()
     l=lines[N]
     s=l.split(':')
     em =s[0]
     md=s[1]
+    md1=md.split('\n')
+    mdp=md1[0]
     
     
     
-    print("email : {}  mdp : {}".format(em,md))
+    print("email : {}  mdp : {}".format(em,mdp))
     f.close()
-    launch(driver,em,md)
+    launch(driver,em,mdp)
    
     # driver.get("https://www.deezer.com/fr")
     # for cookie in pickle.load(open("/root/QuoraCookies.pkl", "rb")):
@@ -162,7 +164,7 @@ def count(driver):
     
     
 
-def launch(driver,em,md):
+def launch(driver,em,mdp):
     v=0
     
     
@@ -173,7 +175,7 @@ def launch(driver,em,md):
     # sleep(100)
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     driver.find_element_by_id('login_mail').send_keys(em)
-    driver.find_element_by_id('login_password').send_keys(md)
+    driver.find_element_by_id('login_password').send_keys(mdp)
     # WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))   
     sleep(300)
         
