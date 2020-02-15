@@ -202,7 +202,10 @@ def music(driver,v):
     
 
 def launch(driver):
-
+    try:
+        artist = driver.find_element_by_class_name('onboarding-screen-artist-item')
+    except:
+        False
     v=0
     driver.get("https://www.deezer.com/fr/register")
     driver.implicitly_wait(10)
@@ -230,8 +233,8 @@ def launch(driver):
    
 
 
-    if driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
-        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
+    if artist.is_displayed():
+        artist.click()
         style(driver)
             
     else:
