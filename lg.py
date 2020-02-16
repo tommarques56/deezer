@@ -133,13 +133,22 @@ def music(driver,v):
      return True
     music(driver,v)
 
+
+def file_lengthy(fname):
+        with open(fname) as f:
+                for i, l in enumerate(f):
+                        pass
+        return i + 1
+
     
 def count(driver):
     
     f = open("/root/login.txt","r")
     num_lines = sum(1 for line in f)
     N = random.randrange(0,num_lines-1)
-    print(N)
+    print(num_lines)
+    print("Number of lines in the file: ",file_lengthy("test.txt"))
+    sleep(300)
     lines=f.readlines()
     l=lines[N]
     s=l.split(':')
