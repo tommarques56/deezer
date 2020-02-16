@@ -1,3 +1,4 @@
+
 from selenium.webdriver.common.keys import Keys
 import shutil 
 from selenium import webdriver 
@@ -51,7 +52,7 @@ def driver():
         "browserName": "chrome",
         "version": "79.0",
         "enableVNC": True,
-        "enableVideo": True
+        "enableVideo": False
         
     }
     ip=socket.gethostbyname(socket.gethostname())
@@ -101,9 +102,8 @@ def music(driver,v):
         
         driver.find_element_by_class_name('svg-icon-next').click()
     except:
-        driver.refresh()
-        close(driver)
-        music(driver,v)
+        False
+        
  
     while p<200:
         x=0
@@ -137,27 +137,22 @@ def music(driver,v):
 def count(driver):
     
     f = open("/root/login.txt","r")
-    N = random.randrange(0,2)
+    num_lines = sum(1 for line in f)
+    N = random.randrange(0,num_lines-1)
     lines=f.readlines()
-    l=lines[N]
+    l=lines[1]
     s=l.split(':')
     em =s[0]
     md=s[1]
-    md1=md.split('\n')
-    mdp=md1[0]
+    md2=md.split('\n')
+    mdp=md2[0]
     
     
     
     print("email : {}  mdp : {}".format(em,mdp))
     f.close()
     launch(driver,em,mdp)
-   
-    # driver.get("https://www.deezer.com/fr")
-    # for cookie in pickle.load(open("/root/QuoraCookies.pkl", "rb")):
-        # driver.add_cookie(cookie)
-    # sleep(5)
-    # driver.refresh()
-    driver.get("https://www.deezer.com/fr/album/60566312")
+
     
     
     
@@ -166,12 +161,7 @@ def count(driver):
 
 def launch(driver,em,mdp):
     v=0
-    f = open("/root/login.txt","r")
-    num_lines = sum(1 for line in f)
-    print(num_lines)
-    f.close()
-    
-    
+
     driver.get("https://www.deezer.com/fr/login")
     driver.implicitly_wait(10)
         
@@ -180,34 +170,27 @@ def launch(driver,em,mdp):
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
-    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))   
-    print("yesssss")
-
- 
-    try:
-        close(driver)
-    except:
-        return True
-    
-    # print(driver.title)    
-    
-  
+    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
  
     driver.get("https://www.deezer.com/fr/album/60566312")
-    # music(driver,v)
+    music(driver,v)
    
     
    
    
     
 
-
+def new():
+    Thread(target = driver).start()
 
 
 while p<1:
     Thread(target = driver).start()
     
     p=p+1
+
+
+
 
 
 
