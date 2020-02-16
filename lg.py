@@ -105,7 +105,7 @@ def music(driver,v):
         False
         
  
-    while v<3:
+    while v<2:
         x=0
         while x<5:
             try:
@@ -127,15 +127,12 @@ def music(driver,v):
         
         p=p+1
         
-    try:
-        driver.find_element_by_class_name('states-button-action').click()
-        driver.refresh()
-        v=0
-        print("refresk")
-        music(driver,v)
-    except:
-      True
+    driver.find_element_by_class_name('svg-icon-pause').click()
+    driver.refresh()
+    v=0
+    print("refresk")
     music(driver,v)
+  
 
 
 def file_lengthy(fname):
