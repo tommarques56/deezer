@@ -76,36 +76,33 @@ def close(driver):
 def style(driver):
     v=0
    
-    screen = driver.find_element_by_class_name('onboarding-screen-search-btn')
-    if screen.is_displayed():
-        screen.click()
-    else:
+    screen = 
+    try:
+        driver.find_element_by_class_name('onboarding-screen-search-btn').click()
+    except:
         driver.get("https://www.deezer.com/fr/album/60566312")
-        music(driver,v)
+        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
+        style(driver,v)
 
 
     close(driver)
         
-    try:
-        driver.find_element_by_class_name('sidebar-nav-item')
-    except:
-        style(driver)
-        print("style")
+ 
     driver.get("https://www.deezer.com/fr/album/60566312")    
     
     
     
-# def music(driver,em,md):
+def music(driver,em,md):
     
-    # p=0
-    # driver.implicitly_wait(50)
+    p=0
+    driver.implicitly_wait(50)
     
-    # driver.find_element_by_class_name('states-button-label').click()
+    driver.find_element_by_class_name('states-button-label').click()
     
     
-    # f = open("/root/login.txt","a+")
-    # f.write("{}:{}\n".format(em,md))
-    # f.close() 
+    f = open("/root/login.txt","a+")
+    f.write("{}:{}\n".format(em,md))
+    f.close() 
     # # driver.get("https://www.deezer.com/fr")   
     # # pickle.dump( driver.get_cookies() , open("/root/cookies.pkl","wb"))
     # # driver.get("https://www.deezer.com/fr/signout")
@@ -123,48 +120,48 @@ def style(driver):
     
     
     
-def music(driver,v):
+# def music(driver,v):
     
-    p=0
-    driver.implicitly_wait(50)
-    try:
-        driver.find_element_by_class_name('states-button-label').click()
-        driver.find_element_by_class_name('svg-icon-shuffle').click()
+    # p=0
+    # driver.implicitly_wait(50)
+    # try:
+        # driver.find_element_by_class_name('states-button-label').click()
+        # driver.find_element_by_class_name('svg-icon-shuffle').click()
         
-        driver.find_element_by_class_name('svg-icon-next').click()
-    except:
-        driver.refresh()
-        close(driver)
-        music(driver,v)
+        # driver.find_element_by_class_name('svg-icon-next').click()
+    # except:
+        # driver.refresh()
+        # close(driver)
+        # music(driver,v)
  
-    while p<200:
-        x=0
-        while x<32:
-            try:
-                e = driver.find_element_by_class_name("slider-counter-current").text
-                s=e.split(':')
-                x=int(s[1])
-                sleep(1)
-            except:
-                close(driver)
-                music(driver,v)
+    # while p<200:
+        # x=0
+        # while x<32:
+            # try:
+                # e = driver.find_element_by_class_name("slider-counter-current").text
+                # s=e.split(':')
+                # x=int(s[1])
+                # sleep(1)
+            # except:
+                # close(driver)
+                # music(driver,v)
                            
-        try:      
-            driver.find_element_by_class_name('svg-icon-next').click()
-        except:
-            sleep(40)
-            driver.find_element_by_class_name('svg-icon-next').click()
-        v=v+1
-        print(v)
+        # try:      
+            # driver.find_element_by_class_name('svg-icon-next').click()
+        # except:
+            # sleep(40)
+            # driver.find_element_by_class_name('svg-icon-next').click()
+        # v=v+1
+        # print(v)
         
-        p=p+1
+        # p=p+1
         
-    try:
-        driver.find_element_by_class_name('states-button-action').click()
-    except:
-        sleep(40)
-        driver.find_element_by_class_name('svg-icon-next').click()
-    music(driver,v)    
+    # try:
+        # driver.find_element_by_class_name('states-button-action').click()
+    # except:
+        # sleep(40)
+        # driver.find_element_by_class_name('svg-icon-next').click()
+    # music(driver,v)    
     
     
     
@@ -209,7 +206,7 @@ def new():
     Thread(target = driver).start()
 
 
-while p<8:
+while p<1:
     Thread(target = driver).start()
     
     p=p+1
