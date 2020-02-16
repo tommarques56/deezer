@@ -166,7 +166,10 @@ def count(driver):
 
 def launch(driver,em,mdp):
     v=0
-    num_lines = sum(1 for line in open('/root/login.txt', r))
+    f = open("/root/login.txt","r")
+    num_lines = sum(1 for line in f)
+    print(num_lines)
+    f.close()
     
     
     driver.get("https://www.deezer.com/fr/login")
