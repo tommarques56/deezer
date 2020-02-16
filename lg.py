@@ -105,8 +105,8 @@ def al():
 
 def driver():
     capabilities = {
-        "browserName": "opera",
-        "version": "66.0",
+        "browserName": "chrome",
+        "version": "79.0",
         "enableVNC": True,
         "enableVideo": True
         
