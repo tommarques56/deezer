@@ -203,7 +203,7 @@ def launch(driver):
         print("launch")
         launch(driver)   
         
-    music(driver,v)
+    music(driver,em,md)
 
 def new():
     Thread(target = driver).start()
