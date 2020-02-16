@@ -117,7 +117,7 @@ def driver():
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     options.add_extension('/root/deezer/AC.zip')
-    options.add_argument(f'user-agent={user()}')
+    # options.add_argument(f'user-agent={user()}')
     # options.add_argument('--proxy-server=%s' % proxy())
        
 
@@ -243,7 +243,7 @@ def launch(driver,em,mdp):
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
     WebDriverWait(driver, 300).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
-    # Thread(target = driver).start()
+    Thread(target = driver).start()
     driver.get("https://www.deezer.com/fr/album/60566312")
     music(driver,v)
    
