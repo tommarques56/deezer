@@ -153,7 +153,7 @@ def style(driver):
 def music(driver,v):
     
     p=0
-    driver.implicitly_wait(50)
+    driver.implicitly_wait(10)
     try:
         driver.find_element_by_class_name('states-button-label').click()
         driver.find_element_by_class_name('svg-icon-shuffle').click()
@@ -163,35 +163,34 @@ def music(driver,v):
         False
         
  
-    while p<100:
-        x=0
+    while p<5:
         while x<32:
+            
             try:
-                e = driver.find_element_by_class_name("slider-counter-current").text
-                s=e.split(':')
-                x=int(s[1])
-                sleep(1)
+                WebDriverWait(driver, 50).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
             except:
-                close(driver)
-                music(driver,v)
+                driver.refresh()
+                driver.switch_to.alert.accept()     
+            e = driver.find_element_by_class_name("slider-counter-current").text
+            s=e.split(':')
+            x=int(s[1])
+            sleep(1)
+    
                            
-        try:      
-            driver.find_element_by_class_name('svg-icon-next').click()
+        try:
+            WebDriverWait(driver, 50).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
         except:
-            sleep(40)
-            driver.find_element_by_class_name('svg-icon-next').click()
-        v=v+1
-        print(v)
-        
+            driver.refresh()
+            driver.switch_to.alert.accept() 
+            music(driver,v)
+        driver.find_element_by_class_name('svg-icon-next').click()
         p=p+1
-        
     
     driver.refresh()
     driver.switch_to.alert.accept()
-    try:
-        WebDriverWait(driver, 30).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
-    except:
-        driver.get("https://www.deezer.com/fr/album/60566312")
+    
+    WebDriverWait(driver, 30).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
+  
     p=0
     print("refresk")
     music(driver,v)
