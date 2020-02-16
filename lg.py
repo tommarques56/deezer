@@ -105,7 +105,7 @@ def music(driver,v):
         False
         
  
-    while p<5:
+    while v<3:
         x=0
         while x<32:
             try:
@@ -130,6 +130,7 @@ def music(driver,v):
     try:
         driver.find_element_by_class_name('states-button-action').click()
         driver.refresh()
+        v=0
         music(driver,v)
     except:
      return True
@@ -149,7 +150,7 @@ def count(driver):
     num_lines = sum(1 for line in f)
     f.close()
     f = open("/root/login.txt","r+")
-    N = random.randrange(0,251)
+    N = random.randrange(0,num_lines-1)
     print(N)
     lines=f.readlines()
     l=lines[N]
