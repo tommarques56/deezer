@@ -145,10 +145,8 @@ def count(driver):
     
     f = open("/root/login.txt","r")
     num_lines = sum(1 for line in f)
-    N = random.randrange(0,num_lines-1)
-    print(num_lines-1)
-    
-    sleep(300)
+    N = random.randrange(1,num_lines-1)
+    print(N)
     lines=f.readlines()
     l=lines[N]
     s=l.split(':')
