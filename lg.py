@@ -140,7 +140,7 @@ def count(driver):
     num_lines = sum(1 for line in f)
     N = random.randrange(0,num_lines-1)
     lines=f.readlines()
-    l=lines[1]
+    l=lines[N]
     s=l.split(':')
     em =s[0]
     md=s[1]
