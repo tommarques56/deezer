@@ -183,9 +183,12 @@ def music(driver,v):
             driver.find_element_by_class_name('svg-icon-next').click()
             
         except:
-            driver.refresh()
-            driver.switch_to.alert.accept() 
-            music(driver,v)
+            try:
+                driver.refresh()
+                driver.switch_to.alert.accept() 
+                music(driver,v)
+            except:
+                False
         
         p=p+1
         v=v+1 
@@ -255,7 +258,7 @@ def launch(driver,em,mdp):
     except:
         driver.delete_all_cookies()
         driver.refresh()
-        launch(driver)             
+        launch(driver,em,mdp)             
     new()
     driver.get("https://www.deezer.com/fr/album/60566312")
     music(driver,v)
