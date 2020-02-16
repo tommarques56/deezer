@@ -32,7 +32,7 @@ import re
 import pandas as pd
 import os
 import pickle
-
+from datetime import datetime
 import time
 
 
@@ -179,7 +179,7 @@ def music(driver,v):
     
                            
         try:
-              
+            WebDriverWait(driver, 50).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
             driver.find_element_by_class_name('svg-icon-next').click()
             v=v+1 
             print(v)
@@ -202,7 +202,9 @@ def music(driver,v):
   
   
    
-    
+    now = datetime.now()
+    dt_string = now.strftime("%H:%M")
+    print("date and time =", dt_string)	
     music(driver,v)
   
 
