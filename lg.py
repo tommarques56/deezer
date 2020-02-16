@@ -203,9 +203,10 @@ def music(driver,v):
    
     now = datetime.now()
     dt_string = now.strftime("%H:%M")
-    print("date and time =", dt_string)
     v=v+1
     print(v)
+    print("date and time ={} et vues {}".format(dt_string,v))
+
     music(driver,v)
   
 
