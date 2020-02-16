@@ -105,7 +105,7 @@ def music(driver,v):
         False
         
  
-    while p<200:
+    while p<5:
         x=0
         while x<32:
             try:
@@ -129,6 +129,8 @@ def music(driver,v):
         
     try:
         driver.find_element_by_class_name('states-button-action').click()
+        driver.refresh()
+        music(driver,v)
     except:
      return True
     music(driver,v)
