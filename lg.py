@@ -34,7 +34,63 @@ import os
 import pickle
 
 import time
-p=0
+
+
+
+def proxy():
+	j=0
+	h=1
+	url = 'http://api.proxies.lol/?apiKey=fef1cc7a0390468f9fb5797ebe2ba7f3'
+	resp = requests.get(url=url)
+	#print(resp)
+	data = json.loads(resp.text)
+	#print(data)
+	IP = data["ip"]
+	#print(IP)
+	PORT = data["port"]
+	#print(PORT)
+	PROXY = "{}:{}".format(IP,PORT)
+	#print(PROXY)
+	
+	
+			
+			
+	socket.setdefaulttimeout(120)
+		
+	currentProxy = PROXY	
+		
+	if is_bad_proxy(currentProxy):
+		
+		proxy()
+		sleep(1)
+	else:
+		
+		
+		print(currentProxy)
+	return currentProxy
+def is_bad_proxy(pip):    
+    try:
+        proxy_handler = urllib.request.ProxyHandler({'https': pip})
+        opener = urllib.request.build_opener(proxy_handler)
+        opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+        urllib.request.install_opener(opener)
+        req=urllib.request.Request('https://www.deezer.com/fr/register')  # change the URL to test here
+        sock=urllib.request.urlopen(req)
+    except urllib.error.HTTPError as e:
+        print('Error code: ', e.code)
+        return e.code
+    except Exception as detail:
+        print("ERROR:", detail)
+        return True
+
+    return False
+
+def user():
+    ua = UserAgent()
+    userAgent = ua.random
+    print(userAgent)
+    return userAgent
+
 def random_char(y):
        return ''.join(random.choice(string.ascii_letters) for x in range(y))
 
@@ -61,6 +117,8 @@ def driver():
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     options.add_extension('/root/deezer/AC.zip')
+    options.add_argument(f'user-agent={user()}')
+    options.add_argument('--proxy-server=%s' % proxy())
        
 
     # driver = webdriver.Chrome(options=options)
@@ -185,7 +243,7 @@ def launch(driver,em,mdp):
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
     WebDriverWait(driver, 300).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
-    Thread(target = driver).start()
+    # Thread(target = driver).start()
     driver.get("https://www.deezer.com/fr/album/60566312")
     music(driver,v)
    
