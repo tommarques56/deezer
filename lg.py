@@ -105,9 +105,9 @@ def music(driver,v):
         False
         
  
-    while v<2:
+    while p<100:
         x=0
-        while x<5:
+        while x<32:
             try:
                 e = driver.find_element_by_class_name("slider-counter-current").text
                 s=e.split(':')
@@ -130,8 +130,9 @@ def music(driver,v):
     
     driver.refresh()
     driver.switch_to.alert.accept()
-
-    v=0
+    WebDriverWait(driver, 30).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
+    
+    p=0
     print("refresk")
     music(driver,v)
   
@@ -184,7 +185,7 @@ def launch(driver,em,mdp):
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
     WebDriverWait(driver, 300).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
- 
+    Thread(target = driver).start()
     driver.get("https://www.deezer.com/fr/album/60566312")
     music(driver,v)
    
