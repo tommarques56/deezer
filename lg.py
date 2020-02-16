@@ -181,12 +181,13 @@ def music(driver,v):
         try:
             WebDriverWait(driver, 50).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
             driver.find_element_by_class_name('svg-icon-next').click()
-             
+            v=v+1 
+            print(v)
         except:
             driver.refresh()
             driver.switch_to.alert.accept() 
             music(driver,v)
-        print(v)
+        
         p=p+1
     try:
         driver.refresh()
@@ -216,7 +217,7 @@ def count(driver):
     f.close()
     f = open("/root/login.txt","r+")
     N = random.randrange(0,num_lines-1)
-    print(N)
+    
     lines=f.readlines()
     l=lines[N]
     s=l.split(':')
