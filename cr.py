@@ -118,7 +118,8 @@ def music(driver,em,md):
         # # driver.add_cookie(cookie)
     # # sleep(5)
     # # driver.refresh()
-    # driver.quit()
+    driver.quit()
+    
     new()
     
     
@@ -206,7 +207,7 @@ def launch(driver):
     music(driver,em,md)
 
 def new():
-    driver.quit()
+    
     Thread(target = driver).start()
     sleep(5)
 
