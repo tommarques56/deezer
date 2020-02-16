@@ -129,6 +129,7 @@ def music(driver,v):
         
     
     driver.refresh()
+    genre = ActionChains(driver) 
     genre.send_keys(Keys.ENTER)
     genre.perform()
 
