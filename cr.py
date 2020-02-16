@@ -209,7 +209,8 @@ def launch(driver):
 def new():
     
     Thread(target = driver).start()
-    sleep(5)
+    
+    print("ok")
 
 
 while p<5:
