@@ -129,7 +129,7 @@ def music(driver,v):
         
     
     driver.refresh()
-    driver.alert().accept()
+    driver.switch_to.alert.accept()
 
     v=0
     print("refresk")
