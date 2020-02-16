@@ -206,6 +206,7 @@ def launch(driver):
     music(driver,em,md)
 
 def new():
+    driver.quit()
     Thread(target = driver).start()
     sleep(5)
 
