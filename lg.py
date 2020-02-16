@@ -131,6 +131,7 @@ def music(driver,v):
         driver.find_element_by_class_name('states-button-action').click()
         driver.refresh()
         v=0
+        print("refresk")
         music(driver,v)
     except:
       True
