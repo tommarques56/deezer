@@ -127,8 +127,11 @@ def music(driver,v):
         
         p=p+1
         
-    driver.find_element_by_class_name('svg-icon-pause').click()
+    
     driver.refresh()
+    genre.send_keys(Keys.ENTER)
+    genre.perform()
+
     v=0
     print("refresk")
     music(driver,v)
