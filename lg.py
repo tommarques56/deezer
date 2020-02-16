@@ -143,7 +143,7 @@ def file_lengthy(fname):
     
 def count(driver):
     
-    f = open("/root/login.txt","r")
+    f = open("/root/login.txt","rw")
     num_lines = sum(1 for line in f)
     N = random.randrange(0,251)
     print(N)
