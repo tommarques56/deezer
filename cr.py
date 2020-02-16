@@ -119,7 +119,7 @@ def music(driver,em,md):
     # # sleep(5)
     # # driver.refresh()
     # driver.quit()
-    # new()
+    new()
     
     
     
@@ -207,11 +207,12 @@ def launch(driver):
 
 def new():
     Thread(target = driver).start()
+    sleep(5)
 
 
-while p<1:
+while p<5:
     Thread(target = driver).start()
-    
+    sleep(5)
     p=p+1
 
 
