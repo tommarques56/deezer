@@ -76,18 +76,21 @@ def close(driver):
 def style(driver):
     v=0
    
-    screen = 
-    try:
-        driver.find_element_by_class_name('onboarding-screen-search-btn').click()
-    except:
+    screen = driver.find_element_by_class_name('onboarding-screen-search-btn')
+    if screen.is_displayed():
+        screen.click()
+    else:
         driver.get("https://www.deezer.com/fr/album/60566312")
-        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
-        style(driver,v)
+        style(driver)
 
 
     close(driver)
         
- 
+    try:
+        driver.find_element_by_class_name('sidebar-nav-item')
+    except:
+        style(driver)
+        print("style")
     driver.get("https://www.deezer.com/fr/album/60566312")    
     
     
@@ -210,10 +213,6 @@ while p<1:
     Thread(target = driver).start()
     
     p=p+1
-
-
-
-
 
 
 
