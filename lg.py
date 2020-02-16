@@ -153,6 +153,7 @@ def style(driver):
 def music(driver,v):
     
     p=0
+    x=0
     driver.implicitly_wait(10)
     try:
         driver.find_element_by_class_name('states-button-label').click()
