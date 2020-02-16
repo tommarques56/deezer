@@ -118,7 +118,7 @@ def driver():
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     options.add_extension('/root/deezer/AC.zip')
     options.add_argument(f'user-agent={user()}')
-    options.add_argument('--proxy-server=%s' % proxy())
+    # options.add_argument('--proxy-server=%s' % proxy())
        
 
     # driver = webdriver.Chrome(options=options)
