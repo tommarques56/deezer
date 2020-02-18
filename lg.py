@@ -248,7 +248,7 @@ def count(driver):
 
 def launch(driver,em,mdp):
     v=0
-
+    m=0
     driver.get("https://www.deezer.com/fr/login")
     driver.implicitly_wait(10)
         
@@ -263,7 +263,9 @@ def launch(driver,em,mdp):
         driver.delete_all_cookies()
         driver.refresh()
         launch(driver,em,mdp)             
-    new()
+    if m<=6:
+        new()
+        m=m+1
     driver.get("https://www.deezer.com/fr/album/60566312")
     music(driver,v)
    
