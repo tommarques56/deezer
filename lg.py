@@ -257,13 +257,15 @@ def launch(driver,em,mdp):
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
+    
+    
     try:
         WebDriverWait(driver, 300).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))  
     except:
         driver.delete_all_cookies()
         driver.refresh()
         launch(driver,em,mdp)             
-
+    new()
     driver.get("https://www.deezer.com/fr/album/60566312")
     music(driver,v)
    
@@ -277,10 +279,11 @@ def new():
   
 
 p=0
-while p<5:
+while p<1:
     Thread(target = driver).start()
     Thread(target = driver).start()
-    sleep(90)
+    Thread(target = driver).start()
+    Thread(target = driver).start()    
     p=p+1
 
 
