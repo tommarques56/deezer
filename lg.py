@@ -229,7 +229,7 @@ def count(driver):
     lines=f.readlines()
     l=lines[N]
     s=l.split(':')
-    em ="tom@gmail.com"
+    em =s[0]
     md=s[1]
     md2=md.split('\n')
     mdp=md2[0]
@@ -254,6 +254,7 @@ def capt(driver,em,mdp):
     
             m=m+1
         print("error")   
+        sleep(20)
         m=301    
     
     
