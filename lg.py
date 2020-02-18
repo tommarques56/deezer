@@ -277,11 +277,10 @@ def new():
   
 
 p=0
-while p<1:
+while p<5:
     Thread(target = driver).start()
     Thread(target = driver).start()
-    Thread(target = driver).start()
-    Thread(target = driver).start()
+    sleep(90)
     p=p+1
 
 
