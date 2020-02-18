@@ -241,7 +241,19 @@ def count(driver):
     launch(driver,em,mdp)
 
     
+def capt(driver,em,md):
+    while m<300
+        while driver.find_element_by_id("login_error").size() = 0:
+            try:    
+                driver.find_element_by_class_name('logo-deezer-black')
+                m=301
+                
+            except:
+                sleep(1)
     
+            m=m+1
+        print("error")   
+        m=301    
     
     
     
@@ -257,21 +269,8 @@ def launch(driver,em,mdp):
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
-    
-    
+    capt(driver,em,md)
 
-         
- 
-    try:
-        WebDriverWait(driver, 5).until(lambda x: x.find_element_by_class_name('logo-deezer-black')) 
-    except:
-        try:
-            WebDriverWait(driver, 10).until(lambda x: x.find_element_by_id('login_error'))  
-            print("account")
- 
-        except:
-            driver.quit()
-            print("error") 
  
  
  
@@ -288,12 +287,9 @@ def new():
   
 
 p=0
-while p<2:
+while p<1:
     Thread(target = driver).start()
-    Thread(target = driver).start()
-    Thread(target = driver).start()
-    Thread(target = driver).start()    
-    Thread(target = driver).start()  
+   
     sleep(90)
     p=p+1
 
