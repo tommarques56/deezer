@@ -246,13 +246,14 @@ def capt(driver,em,mdp):
     t=0
     while m<300:    
         try:
-            driver.find_element_by_id("login_error")
-            t=False
+            
+            driver.find_element_by_class_name('logo-deezer-black')
+            t=True
             m=301
         except:
             try:
-                driver.find_element_by_class_name('logo-deezer-black')
-                t=True
+                driver.find_element_by_id("login_error")
+                t=False
                 m=301
             except:
                 sleep(1)
