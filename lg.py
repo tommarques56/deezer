@@ -263,7 +263,7 @@ def launch(driver,em,mdp):
          
  
     try:
-        WebDriverWait(driver, 300).until(lambda x: x.find_element_by_class_name('logo-deezer-black')) 
+        WebDriverWait(driver, 5).until(lambda x: x.find_element_by_class_name('logo-deezer-black')) 
     except:
         try:
             WebDriverWait(driver, 10).until(lambda x: x.find_element_by_id('login_error'))  
