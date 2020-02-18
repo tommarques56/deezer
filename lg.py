@@ -259,13 +259,22 @@ def launch(driver,em,mdp):
     driver.find_element_by_id('login_password').send_keys(mdp)
     
     
+
+         
+ 
     try:
-        WebDriverWait(driver, 300).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))  
+        WebDriverWait(driver, 300).until(lambda x: x.find_element_by_class_name('logo-deezer-black')) 
     except:
-        driver.delete_all_cookies()
-        driver.refresh()
-        launch(driver,em,mdp)             
-    new()
+        try:
+            WebDriverWait(driver, 10).until(lambda x: x.find_element_by_id('login_error'))  
+            print("account")
+ 
+        except:
+            driver.quit()
+            print("error") 
+ 
+ 
+ 
     driver.get("https://www.deezer.com/fr/album/60566312")
     music(driver,v)
    
@@ -279,11 +288,13 @@ def new():
   
 
 p=0
-while p<1:
+while p<2:
     Thread(target = driver).start()
     Thread(target = driver).start()
     Thread(target = driver).start()
     Thread(target = driver).start()    
+    Thread(target = driver).start()  
+    sleep(90)
     p=p+1
 
 
