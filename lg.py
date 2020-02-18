@@ -243,6 +243,7 @@ def count(driver):
     
 def capt(driver,em,mdp):
     m=0
+    print(driver.find_element_by_id("login_error").size)
     while m<300:
         while driver.find_element_by_id("login_error").size == 0:
             try:    
