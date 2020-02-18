@@ -116,7 +116,7 @@ def driver():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    options.add_extension('/root/deezer/AC.zip')
+    # options.add_extension('/root/deezer/AC.zip')
     # options.add_argument(f'user-agent={user()}')
     # options.add_argument('--proxy-server=%s' % proxy())
        
@@ -243,7 +243,7 @@ def count(driver):
     
 def capt(driver,em,mdp):
     m=0
-    print(driver.find_element_by_id("login_error").size)
+    print(len(driver.find_element_by_id("login_error")))
     while m<300:
         while driver.find_element_by_id("login_error").size == 0:
             try:    
