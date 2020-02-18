@@ -263,9 +263,7 @@ def launch(driver,em,mdp):
         driver.delete_all_cookies()
         driver.refresh()
         launch(driver,em,mdp)             
-    if m<=6:
-        new()
-        m=m+1
+
     driver.get("https://www.deezer.com/fr/album/60566312")
     music(driver,v)
    
