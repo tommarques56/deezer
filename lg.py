@@ -244,7 +244,7 @@ def count(driver):
 def capt(driver,em,md):
     m=0
     while m<300:
-        while driver.find_element_by_id("login_error").size() = 0:
+        while driver.find_element_by_id("login_error").size() == 0:
             try:    
                 driver.find_element_by_class_name('logo-deezer-black')
                 m=301
