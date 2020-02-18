@@ -108,7 +108,7 @@ def driver():
         "browserName": "opera",
         "version": "66.0",
         "enableVNC": True,
-        "enableVideo": False
+        "enableVideo": True
         
     }
     ip=socket.gethostbyname(socket.gethostname())
