@@ -246,20 +246,28 @@ def capt(driver,em,mdp):
     t=0
     while m<300:    
         try:
-            try:
-                driver.find_element_by_class_name('logo-deezer-black')
-                
-                t=True
-                m=301
-            except:
-                driver.find_element_by_class_name("index-form-error")
-                t=False
-                m=301                
+            driver.find_element_by_class_name('logo-deezer-black')
+            t=True
+            m=301
+        
         except:
 
             sleep(1)
             m=m+1
-        print(t)
+            
+        try:
+            driver.find_element_by_class_name('index-form-error')
+            t=False
+            m=301
+        
+        except:
+            sleep(1)
+            m=m+1            
+            
+            
+            
+            
+    print(t)
 
 def launch(driver,em,mdp):
     v=0
