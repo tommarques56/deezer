@@ -243,23 +243,21 @@ def count(driver):
     
 def capt(driver,em,mdp):
     m=0
-    print(len(driver.find_elements_by_class_name("index-form-error")))
-    while m<300:
-        while driver.find_element_by_id("login_error").size == 0:
-            try:    
+  
+    while m<300:    
+        try:
+            driver.find_element_by_id("login_error")
+            print("error")
+            m=301
+        except:
+            try:
                 driver.find_element_by_class_name('logo-deezer-black')
+                print("ok")
                 m=301
-                
             except:
                 sleep(1)
-    
-            m=m+1
-        print("error")   
-        sleep(20)
-        m=301    
-    
-    
-    
+                m=m+1
+        print("big error")
 
 def launch(driver,em,mdp):
     v=0
