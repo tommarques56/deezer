@@ -229,7 +229,7 @@ def count(driver):
     lines=f.readlines()
     l=lines[N]
     s=l.split(':')
-    em =s[0]
+    em ="tom@gmail.com"
     md=s[1]
     md2=md.split('\n')
     mdp=md2[0]
@@ -241,10 +241,10 @@ def count(driver):
     launch(driver,em,mdp)
 
     
-def capt(driver,em,md):
+def capt(driver,em,mdp):
     m=0
     while m<300:
-        while driver.find_element_by_id("login_error").size() == 0:
+        while driver.find_element_by_id("login_error").size == 0:
             try:    
                 driver.find_element_by_class_name('logo-deezer-black')
                 m=301
