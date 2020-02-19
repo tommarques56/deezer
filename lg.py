@@ -154,7 +154,7 @@ def music(driver,v):
     
     p=0
     x=0
-    driver.implicitly_wait(30)
+    
     try:
         driver.find_element_by_class_name('states-button-label').click()
         driver.find_element_by_class_name('svg-icon-shuffle').click()
@@ -289,13 +289,15 @@ def launch(driver,em,mdp):
     driver.find_element_by_id('login_password').send_keys(mdp)
     capt(driver,em,mdp)
     
-    new()
+    
  
  
  
     driver.get("https://www.deezer.com/fr/album/60566312")
     close(driver)
+    new()
     music(driver,v)
+    
    
     
    
@@ -310,9 +312,7 @@ p=0
 while p<1:
     Thread(target = driver).start()
     Thread(target = driver).start()
-    Thread(target = driver).start()   
-    
-    Thread(target = driver).start()
+
     p=p+1
 
 
