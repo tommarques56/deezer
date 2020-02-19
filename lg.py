@@ -158,6 +158,7 @@ def music(driver,v):
     try:
         driver.find_element_by_class_name('states-button-label').click()
         driver.find_element_by_class_name('svg-icon-shuffle').click()
+        close(driver)
         
         driver.find_element_by_class_name('svg-icon-next').click()
     except:
@@ -259,6 +260,7 @@ def capt(driver,em,mdp):
             if driver.find_element_by_class_name('index-form-error').is_displayed():
                 t=False
                 m=301
+                driver.close()
                 driver.quit()
                 new()
         
@@ -283,11 +285,13 @@ def launch(driver,em,mdp):
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
     capt(driver,em,mdp)
+    
     new()
  
  
  
     driver.get("https://www.deezer.com/fr/album/60566312")
+    close(driver)
     music(driver,v)
    
     
