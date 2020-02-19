@@ -262,6 +262,7 @@ def capt(driver,em,mdp):
                 m=301
                 driver.delete_all_cookies()
                 driver.refresh()
+                print("new")
                 count(driver)
                 
                 
