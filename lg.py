@@ -262,7 +262,7 @@ def capt(driver,em,mdp):
                 m=301
                 driver.close()
                 driver.quit()
-                new()
+                
         
         except:
             sleep(1)
