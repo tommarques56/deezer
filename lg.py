@@ -229,10 +229,10 @@ def count(driver):
     lines=f.readlines()
     l=lines[N]
     s=l.split(':')
-    em ="spotify5@coteenfants.fr"
+    em =s[0]
     md=s[1]
     md2=md.split('\n')
-    mdp="zezette"
+    mdp=md2[0]
     
     
     
