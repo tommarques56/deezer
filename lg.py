@@ -262,8 +262,8 @@ def capt(driver,em,mdp):
                 m=301
                 driver.delete_all_cookies()
                 driver.refresh()
-        
-                launch(driver,em,mdp)
+                count(driver)
+                
                 
         
         except:
