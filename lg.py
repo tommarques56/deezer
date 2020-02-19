@@ -154,7 +154,7 @@ def music(driver,v):
     
     p=0
     x=0
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(30)
     try:
         driver.find_element_by_class_name('states-button-label').click()
         driver.find_element_by_class_name('svg-icon-shuffle').click()
