@@ -260,8 +260,10 @@ def capt(driver,em,mdp):
             if driver.find_element_by_class_name('index-form-error').is_displayed():
                 t=False
                 m=301
-                driver.close()
-                driver.quit()
+                driver.delete_all_cookies()
+                driver.refresh()
+        
+                launch(driver,em,mdp)
                 
         
         except:
