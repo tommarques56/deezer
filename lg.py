@@ -259,6 +259,8 @@ def capt(driver,em,mdp):
             if driver.find_element_by_class_name('index-form-error').is_displayed():
                 t=False
                 m=301
+                driver.quit()
+                new()
         
         except:
             sleep(1)
@@ -281,7 +283,7 @@ def launch(driver,em,mdp):
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
     capt(driver,em,mdp)
-
+    new()
  
  
  
@@ -300,7 +302,10 @@ def new():
 p=0
 while p<1:
     Thread(target = driver).start()
-
+    Thread(target = driver).start()
+    Thread(target = driver).start()   
+    
+    Thread(target = driver).start()
     p=p+1
 
 
