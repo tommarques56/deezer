@@ -169,7 +169,7 @@ def music(driver,v):
         while x<32:
             
             try:
-                WebDriverWait(driver, 50).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
+                WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
             except:
                 driver.refresh()
                 driver.switch_to.alert.accept()     
@@ -180,7 +180,7 @@ def music(driver,v):
     
                            
         try:
-            WebDriverWait(driver, 50).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
+            WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
             driver.find_element_by_class_name('svg-icon-next').click()
             
         except:
@@ -198,7 +198,7 @@ def music(driver,v):
         driver.switch_to.alert.accept()
     except:
         music(driver,v)
-    WebDriverWait(driver, 30).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
+    WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
   
   
    
