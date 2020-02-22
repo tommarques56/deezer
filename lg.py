@@ -305,10 +305,10 @@ def launch(driver,em,mdp,n):
     
 def delete():
 
-    with open("l.txt", "r") as infile:
+    with open("/root/l.txt", "r") as infile:
         lines = infile.readlines()
 
-    with open("l.txt", "w") as outfile:
+    with open("/root/l.txt", "w") as outfile:
         for pos, line in enumerate(lines):
             if pos != 5:
                 outfile.write(line)
