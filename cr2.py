@@ -1,4 +1,3 @@
-
 from selenium.webdriver.common.keys import Keys
 import shutil 
 from selenium import webdriver 
@@ -32,9 +31,65 @@ import re
 import pandas as pd
 import os
 import pickle
-
+from datetime import datetime
 import time
-p=0
+
+
+
+def proxy():
+	j=0
+	h=1
+	url = 'http://api.proxies.lol/?apiKey=fef1cc7a0390468f9fb5797ebe2ba7f3'
+	resp = requests.get(url=url)
+	#print(resp)
+	data = json.loads(resp.text)
+	#print(data)
+	IP = data["ip"]
+	#print(IP)
+	PORT = data["port"]
+	#print(PORT)
+	PROXY = "{}:{}".format(IP,PORT)
+	#print(PROXY)
+	
+	
+			
+			
+	socket.setdefaulttimeout(120)
+		
+	currentProxy = PROXY	
+		
+	if is_bad_proxy(currentProxy):
+		
+		proxy()
+		sleep(1)
+	else:
+		
+		
+		print(currentProxy)
+	return currentProxy
+def is_bad_proxy(pip):    
+    try:
+        proxy_handler = urllib.request.ProxyHandler({'https': pip})
+        opener = urllib.request.build_opener(proxy_handler)
+        opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+        urllib.request.install_opener(opener)
+        req=urllib.request.Request('https://www.deezer.com/fr/register')  # change the URL to test here
+        sock=urllib.request.urlopen(req)
+    except urllib.error.HTTPError as e:
+        print('Error code: ', e.code)
+        return e.code
+    except Exception as detail:
+        print("ERROR:", detail)
+        return True
+
+    return False
+
+def user():
+    ua = UserAgent()
+    userAgent = ua.random
+    print(userAgent)
+    return userAgent
+
 def random_char(y):
        return ''.join(random.choice(string.ascii_letters) for x in range(y))
 
@@ -61,12 +116,13 @@ def driver():
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     options.add_extension('/root/deezer/AC.zip')
-    options.add_argument("--start-maximized")
+    # options.add_argument(f'user-agent={user()}')
+    # options.add_argument('--proxy-server=%s' % proxy())
        
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
-    launch(driver)
+    count(driver)
 
 def close(driver):
     try:
@@ -77,161 +133,178 @@ def close(driver):
 
 def style(driver):
     v=0
- 
+   
+    driver.find_element_by_class_name('onboarding-screen-search-btn').click()
+
+
+    close(driver)
         
-    if driver.find_element_by_class_name('onboarding-screen-search-btn').is_displayed():
-        driver.find_element_by_class_name('onboarding-screen-search-btn').click()
-        sleep(5)
-        driver.get("https://www.deezer.com/fr/album/60566312")    
-        close(driver)
-        
-    elif driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
-        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
-        
+    try:
+        driver.find_element_by_class_name('sidebar-nav-item')
+    except:
         style(driver)
-        
-    
-    style(driver)    
- 
-  
+        print("style")
+    driver.get("https://www.deezer.com/fr/album/60566312")    
     
     
 
+    
 def music(driver,v):
     
     p=0
     x=0
-    p=0
-    
-    
-
-    
+    driver.implicitly_wait(10)
     try:
-        play = driver.find_element_by_class_name('states-button-label').click()
-    except:
-        False
-   
-    try:
-        random = driver.find_element_by_class_name('svg-icon-shuffle')
-    except:
-        False
-
-    try:
-       next = driver.find_element_by_class_name('svg-icon-next')
+        driver.find_element_by_class_name('states-button-label').click()
+        driver.find_element_by_class_name('svg-icon-shuffle').click()
+        
+        driver.find_element_by_class_name('svg-icon-next').click()
     except:
         False
         
-    
-        
-
-    try:
+ 
+    while p<5:
         while x<32:
-              
+            
+            try:
+                WebDriverWait(driver, 50).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
+            except:
+                driver.refresh()
+                driver.switch_to.alert.accept()     
             e = driver.find_element_by_class_name("slider-counter-current").text
             s=e.split(':')
             x=int(s[1])
-            sleep(5)
-            
-    except:
-        sleep(40)
+            sleep(1)
+    
+                           
         try:
+            WebDriverWait(driver, 50).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
             driver.find_element_by_class_name('svg-icon-next').click()
-           
-        except:
-            music(driver,v)    
-        driver.get("https://www.deezer.com/fr/album/60566312")
-        music(driver,v)
-
             
-    try:
-        driver.find_element_by_class_name('svg-icon-next').click()
-        v=v+1
+        except:
+            try:
+                driver.refresh()
+                driver.switch_to.alert.accept() 
+                music(driver,v)
+            except:
+                False
+        
         p=p+1
-        print(v)
-    
+       
+    try:
+        driver.refresh()
+        driver.switch_to.alert.accept()
     except:
         music(driver,v)
-        
-        
-
-    
-        
-            
-    if v>300:
-        try:
-            driver.find_element_by_class_name('states-button-action').click()
-            driver.get("https://www.deezer.com/fr/album/60566312")
-            music(driver,v)   
-        except:
-            music(driver,v)    
-                
-    else:
-        music(driver,v)          
-        
-
-    music(driver,v)    
-    
-    
-    
-
-def launch(driver):
-    try:
-        artist = driver.find_element_by_class_name('onboarding-screen-artist-item')
-    except:
-        False
-    v=0
-    driver.get("https://www.deezer.com/fr/register")
-    driver.implicitly_wait(50)
-
-    em = al()
-    md = random_char(15)
-    driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
-    driver.find_element_by_xpath('//*[@id="register_form_mail_input"]').send_keys(em)
-    driver.find_element_by_xpath('//*[@id="register_form_username_input"]').send_keys(random_char(9))
-    driver.find_element_by_xpath('//*[@id="register_form_password_input"]').send_keys(md)
-    genre = ActionChains(driver) 
-    genre.send_keys(Keys.TAB)
-    genre.send_keys(Keys.DOWN)
-    genre.send_keys(Keys.TAB)
-    genre.send_keys(Keys.DOWN*N)
-    genre.perform()
-    try:
-        WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
-    except:
-        driver.delete_all_cookies()
-        driver.refresh()
-        launch(driver)           
-    
-    driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
+    WebDriverWait(driver, 30).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
+  
+  
    
+    now = datetime.now()
+    dt_string = now.strftime("%H:%M")
+    v=v+1
+   
+    print("date and time ={} et vues {}".format(dt_string,v))
 
-
-    if driver.find_element_by_class_name('onboarding-screen-artist-item').is_displayed():
-        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
-        style(driver)
-            
-    else:
-        driver.delete_all_cookies()
-        driver.refresh()
-        print("launch")
-        launch(driver)           
-     
-        
     music(driver,v)
+  
 
 
+def file_lengthy(fname):
+        with open(fname) as f:
+                for i, l in enumerate(f):
+                        pass
+        return i + 1
 
-
-while p<8:
-    Thread(target = driver).start()
     
+def count(driver):
+   
+    f = open("/root/login.txt","r+")
+    num_lines = sum(1 for line in f)
+    f.close()
+    f = open("/root/login.txt","r+")
+    N = random.randrange(0,num_lines-1)
+    
+    lines=f.readlines()
+    l=lines[N]
+    s=l.split(':')
+    # em =s[0]
+    em="tom@gmail.com"
+    md=s[1]
+    md2=md.split('\n')
+    mdp=md2[0]
+    
+    
+    
+    print("email : {}  mdp : {}".format(em,mdp))
+    f.close()
+    launch(driver,em,mdp)
+
+    
+    
+def capt(driver,em,md):
+    while m<300
+        while driver.find_element_by_id("login_error").size() = 0:
+            try:    
+                driver.find_element_by_class_name('logo-deezer-black')
+                m=301
+                
+            except:
+                sleep(1)
+    
+            m=m+1
+        print("error")   
+        m=301
+    
+
+def launch(driver,em,mdp):
+    v=0
+    m=1
+    driver.get("https://www.deezer.com/fr/login")
+    driver.implicitly_wait(10)
+        
+    driver.refresh()
+    # sleep(100)
+    driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
+    driver.find_element_by_id('login_mail').send_keys(em)
+    driver.find_element_by_id('login_password').send_keys(mdp)
+    capt(driver,em,md)
+
+    
+
+         
+ 
+    try:
+        
+    except:
+        try:
+            WebDriverWait(driver, 10).until(lambda x: x.find_element_by_id('login_error'))  
+            print("account")
+ 
+        except:
+            driver.quit()
+            print("error") 
+ 
+ 
+ 
+    driver.get("https://www.deezer.com/fr/album/60566312")
+    music(driver,v)
+   
+    
+   
+   
+    
+
+def new():
+    Thread(target = driver).start()
+  
+
+p=0
+while p<2:
+    Thread(target = driver).start()
+   
+    sleep(90)
     p=p+1
-
-
-
-
-
-
 
 
 
