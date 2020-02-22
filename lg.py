@@ -262,9 +262,7 @@ def capt(driver,em,mdp,n):
                 m=301
                 driver.delete_all_cookies()
                 driver.refresh()
-                f = open("/root/login.txt","w+")
-                lines=f.readlines()
-                l=lines[n]
+                delete(n)
                 print("new")
                 count(driver)
                 
@@ -303,18 +301,19 @@ def launch(driver,em,mdp,n):
     
    
     
-def delete():
+def delete(n):
 
-    with open("/root/l.txt", "r") as infile:
+    with open("/root/login.txt", "r") as infile:
         lines = infile.readlines()
 
-    with open("/root/l.txt", "w") as outfile:
+    with open("/root/login.txt", "w") as outfile:
         for pos, line in enumerate(lines):
-            if pos != 5:
+            if pos != n:
                 outfile.write(line)
 
 
-   
+    infile.close()
+    outfile.close()
    
     
 
@@ -324,11 +323,11 @@ def new():
 
 p=0
 while p<1:
-    # Thread(target = driver).start()
-    # Thread(target = driver).start()
+    Thread(target = driver).start()
+    Thread(target = driver).start()
 
-    # p=p+1
-    delete()
+    p=p+1
+
 
 
 
