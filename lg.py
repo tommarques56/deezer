@@ -116,7 +116,7 @@ def driver():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    options.add_extension('/root/deezer/AC.zip')
+    options.add_extension('/root/deezer/azcaptcha')
     # options.add_argument(f'user-agent={user()}')
     # options.add_argument('--proxy-server=%s' % proxy())
        
