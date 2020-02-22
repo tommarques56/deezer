@@ -1,0 +1,80 @@
+{
+  "manifest_version": 2,
+  "default_locale": "en",
+
+  "oauth2": {
+    "client_id": "796456314853-5am5cmf50murdtgp24623j89c0hbie43.apps.googleusercontent.com",
+    "scopes": [
+      "profile"
+    ]
+  },
+  
+  "applications": {
+    "gecko": {
+      "id": "{488609b5-5ca6-4c62-8523-11f3e1db851c}",
+      "update_url": "https://azcaptcha.com/addon/update_manifest.json"
+    }
+  },
+
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "short_name": "__MSG_appShortName__",
+  "version": "0.3101",
+    
+  
+  
+
+  "icons": {
+    "16": "/img/azcaptcha-logo/16.png",
+    "48": "/img/azcaptcha-logo/48.png",
+    "128": "/img/azcaptcha-logo/128.png"
+  },
+
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
+  "options_page": "options.html",
+
+  "browser_action": {
+    "default_icon": {
+      "16": "/img/azcaptcha-logo/16.png",
+      "32": "/img/azcaptcha-logo/32.png"
+    },
+    "default_popup": "options.html",
+    "default_title": "Show my balance"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "match_about_blank": true,
+      "js": ["/js/content_scripts.js"],
+      "css": ["/css/content_scripts.css"],
+      "all_frames": true
+    }
+  ],
+
+  "background": {
+    "scripts": ["/js/config_ac_api_key.js", "/js/background.js"],
+    "persistent": true
+  },
+
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "identity",
+    "identity.email",
+    "\u003Call_urls>",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  
+  "web_accessible_resources": [
+    "/img/*",
+    "/css/*",
+    "/sounds/*",
+    "/js/funcaptcha_object_inteceptor.js"
+  ]
+}
