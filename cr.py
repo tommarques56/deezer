@@ -93,19 +93,6 @@ def style(driver):
         print("style")
     driver.get("https://www.deezer.com/fr/album/60566312")    
     
-def delete():
-
-    with open("l.txt", "r") as infile:
-        lines = infile.readlines()
-
-    with open("l.txt", "w") as outfile:
-        for pos, line in enumerate(lines):
-            if pos != 5:
-                outfile.write(line)
-
-
-
-
     
     
 def music(driver,em,md):
@@ -226,11 +213,10 @@ def new():
     print("ok")
 
 
-while p<1:
-    # Thread(target = driver).start()
-    # sleep(5)
-    # p=p+1
-    delete()
+while p<3:
+    Thread(target = driver).start()
+    sleep(5)
+    p=p+1
 
 
 

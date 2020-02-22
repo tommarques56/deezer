@@ -239,10 +239,10 @@ def count(driver):
     
     print("email : {}  mdp : {}".format(em,mdp))
     f.close()
-    launch(driver,em,mdp)
+    launch(driver,em,mdp,n)
 
     
-def capt(driver,em,mdp):
+def capt(driver,em,mdp,n):
     m=0
     t=0
     while m<300:    
@@ -262,6 +262,9 @@ def capt(driver,em,mdp):
                 m=301
                 driver.delete_all_cookies()
                 driver.refresh()
+                f = open("/root/login.txt","w+")
+                lines=f.readlines()
+                l=lines[n]
                 print("new")
                 count(driver)
                 
@@ -276,7 +279,7 @@ def capt(driver,em,mdp):
             
     print(t)
 
-def launch(driver,em,mdp):
+def launch(driver,em,mdp,n):
     v=0
     m=0
     driver.get("https://www.deezer.com/fr/login")
@@ -287,7 +290,7 @@ def launch(driver,em,mdp):
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
-    capt(driver,em,mdp)
+    capt(driver,em,mdp,n)
     
     
  
@@ -300,6 +303,17 @@ def launch(driver,em,mdp):
     
    
     
+def delete():
+
+    with open("l.txt", "r") as infile:
+        lines = infile.readlines()
+
+    with open("l.txt", "w") as outfile:
+        for pos, line in enumerate(lines):
+            if pos != 5:
+                outfile.write(line)
+
+
    
    
     
@@ -310,10 +324,11 @@ def new():
 
 p=0
 while p<1:
-    Thread(target = driver).start()
-    Thread(target = driver).start()
+    # Thread(target = driver).start()
+    # Thread(target = driver).start()
 
-    p=p+1
+    # p=p+1
+    delete()
 
 
 
