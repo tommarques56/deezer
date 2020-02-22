@@ -213,7 +213,7 @@ def new():
     print("ok")
 
 
-while p<3:
+while p<2:
     Thread(target = driver).start()
     sleep(5)
     p=p+1
