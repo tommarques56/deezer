@@ -331,6 +331,7 @@ def delete(N):
 
 def new():
     # Thread(target = driver).start()
+    True
   
 
 p=0
