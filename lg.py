@@ -108,7 +108,7 @@ def driver():
         "browserName": "chrome",
         "version": "79.0",
         "enableVNC": True,
-        "enableVideo": False
+        "enableVideo": True
         
     }
     ip=socket.gethostbyname(socket.gethostname())
@@ -330,13 +330,13 @@ def delete(N):
     
 
 def new():
-    Thread(target = driver).start()
+    # Thread(target = driver).start()
   
 
 p=0
 while p<1:
     Thread(target = driver).start()
-    Thread(target = driver).start()
+    
 
     p=p+1
 
