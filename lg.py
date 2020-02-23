@@ -149,11 +149,15 @@ def style(driver):
     
  
 def l(driver):
+    genre = ActionChains(driver) 
+    genre.send_keys(Keys.SPACE)
+   
+    genre.perform()
     try:
         driver.find_element_by_class_name('svg-icon-next').click()
-        driver.find_element_by_class_name('states-button-label').click()
+       
         driver.find_element_by_class_name('svg-icon-shuffle').click()
-        driver.find_element_by_class_name('svg-icon-play').click()
+       
         driver.find_element_by_class_name('svg-icon-next').click()
 
         
@@ -161,10 +165,7 @@ def l(driver):
     except:
         False
 
-    genre = ActionChains(driver) 
-    genre.send_keys(Keys.SPACE)
-   
-    genre.perform()
+
 
 
 
