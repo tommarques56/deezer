@@ -166,7 +166,7 @@ def music(driver,v):
         
  
 
-    while x<32 && p<10:
+    while x<32 and p<10:
             
         try:
             WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
