@@ -154,6 +154,7 @@ def l(driver):
         driver.find_element_by_class_name('states-button-label').click()
         driver.find_element_by_class_name('svg-icon-shuffle').click()
         driver.find_element_by_class_name('svg-icon-play').click()
+        driver.find_element_by_class_name('svg-icon-next').click()
 
         
         
