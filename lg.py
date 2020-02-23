@@ -171,13 +171,14 @@ def music(driver,v):
             
             try:
                 WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
+                e = driver.find_element_by_class_name("slider-counter-current").text
+                s=e.split(':')
+                x=int(s[1])
+                sleep(1)
             except:
                 driver.refresh()
                 driver.switch_to.alert.accept()     
-            e = driver.find_element_by_class_name("slider-counter-current").text
-            s=e.split(':')
-            x=int(s[1])
-            sleep(1)
+
     
                            
         try:
@@ -197,9 +198,10 @@ def music(driver,v):
     try:
         driver.refresh()
         driver.switch_to.alert.accept()
+        WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
     except:
         music(driver,v)
-    WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
+    
   
 
 
