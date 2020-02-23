@@ -147,36 +147,39 @@ def style(driver):
         print("style")
     driver.get("https://www.deezer.com/fr/album/60566312")    
     
-    
+ 
+def l(driver)
+    try:
+        driver.find_element_by_class_name('svg-icon-next').click()
+        driver.find_element_by_class_name('states-button-label').click()
+        driver.find_element_by_class_name('svg-icon-shuffle').click()
+
+        
+        
+    except:
+        False
+
+ 
 
     
 def music(driver,v):
     
     p=0
     x=0
-    
-    try:
-        driver.find_element_by_class_name('svg-icon-next').click()
-        driver.find_element_by_class_name('states-button-label').click()
-        driver.find_element_by_class_name('svg-icon-shuffle').click()
-        close(driver)
-        
-        
-    except:
-        False
-        
+    l(driver)
  
     while p<5:
         x=0
         while x<31:
             
             try:
-                WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
+                WebDriverWait(driver, 10).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
                 e = driver.find_element_by_class_name("slider-counter-current").text
                 s=e.split(':')
                 x=int(s[1])
                 sleep(1)
             except:
+                l(driver)
                 driver.refresh()
                 driver.switch_to.alert.accept() 
                 music(driver,v)
@@ -184,7 +187,7 @@ def music(driver,v):
     
                            
         try:
-            WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
+            WebDriverWait(driver, 10).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
             driver.find_element_by_class_name('svg-icon-next').click()
             
         except:
