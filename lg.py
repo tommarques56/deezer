@@ -191,7 +191,7 @@ def music(driver,v):
                 driver.refresh()
                 try:
                     driver.switch_to.alert.accept() 
-                except
+                except:
                     music(driver,v)
                 music(driver,v)   
     
@@ -211,7 +211,7 @@ def music(driver,v):
         
         try:
             driver.switch_to.alert.accept() 
-        except
+        except:
             music(driver,v)
         WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
     except:
