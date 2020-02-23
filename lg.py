@@ -174,6 +174,7 @@ def music(driver,v):
     p=0
     x=0
     l(driver)
+    print("1")
     
  
     while p<5:
@@ -186,8 +187,9 @@ def music(driver,v):
                 s=e.split(':')
                 x=int(s[1])
                 sleep(1)
+                print("2")
             except:
-                
+                print("3")
                 driver.refresh()
                 try:
                     driver.switch_to.alert.accept() 
@@ -197,29 +199,35 @@ def music(driver,v):
     
                            
         try:
+            print("4")
             WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
             driver.find_element_by_class_name('svg-icon-next').click()
             
         except:
+            print("5")
             music(driver,v)
 
         
         p=p+1
        
     try:
+        print("6")
         driver.refresh()
         
         try:
+            print("7")
             driver.switch_to.alert.accept() 
         except:
+            print("8")
             music(driver,v)
         WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
     except:
+        print("9")
         music(driver,v)
     
   
 
-
+    print("10")
     music(driver,v)
   
 
