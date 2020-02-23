@@ -148,7 +148,7 @@ def style(driver):
     driver.get("https://www.deezer.com/fr/album/60566312")    
     
  
-def l(driver)
+def l(driver):
     try:
         driver.find_element_by_class_name('svg-icon-next').click()
         driver.find_element_by_class_name('states-button-label').click()
