@@ -184,7 +184,7 @@ def music(driver,v):
         while x<31:
             
             try:
-                WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
+                WebDriverWait(driver, 10).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
                 e = driver.find_element_by_class_name("slider-counter-current").text
                 s=e.split(':')
                 x=int(s[1])
