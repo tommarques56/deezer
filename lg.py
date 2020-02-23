@@ -153,7 +153,7 @@ def style(driver):
 def music(driver,v):
     
     p=0
-    x=0
+    
     
     try:
         driver.find_element_by_class_name('states-button-label').click()
@@ -165,21 +165,22 @@ def music(driver,v):
         False
         
  
-
-    while x<32 and p<10:
-            
-        try:
-            WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
-            e = driver.find_element_by_class_name("slider-counter-current").text
-            s=e.split(':')
-            x=int(s[1])
-            WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
-            driver.find_element_by_class_name('svg-icon-next').click()
-            p=p+1
-        except:
-            driver.refresh()
-            driver.switch_to.alert.accept() 
-            music(driver,v)
+    while p<10:
+        x=0
+        while x<32:
+               
+            try:
+                WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
+                e = driver.find_element_by_class_name("slider-counter-current").text
+                s=e.split(':')
+                x=int(s[1])
+                WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
+                driver.find_element_by_class_name('svg-icon-next').click()
+                p=p+1
+            except:
+                driver.refresh()
+                driver.switch_to.alert.accept() 
+                music(driver,v)
 
 
     try:
