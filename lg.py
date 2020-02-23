@@ -153,13 +153,20 @@ def l(driver):
         driver.find_element_by_class_name('svg-icon-next').click()
         driver.find_element_by_class_name('states-button-label').click()
         driver.find_element_by_class_name('svg-icon-shuffle').click()
+        driver.find_element_by_class_name('svg-icon-play').click()
 
         
         
     except:
         False
 
- 
+    genre = ActionChains(driver) 
+    genre.send_keys(Keys.SPACE)
+   
+    genre.perform()
+
+
+
 
     
 def music(driver,v):
@@ -167,27 +174,30 @@ def music(driver,v):
     p=0
     x=0
     l(driver)
+    
  
     while p<5:
         x=0
         while x<31:
             
             try:
-                WebDriverWait(driver, 10).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
+                WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
                 e = driver.find_element_by_class_name("slider-counter-current").text
                 s=e.split(':')
                 x=int(s[1])
                 sleep(1)
             except:
-                l(driver)
+                
                 driver.refresh()
-                driver.switch_to.alert.accept() 
-                music(driver,v)
-
+                try:
+                    driver.switch_to.alert.accept() 
+                except
+                    music(driver,v)
+                music(driver,v)   
     
                            
         try:
-            WebDriverWait(driver, 10).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
+            WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
             driver.find_element_by_class_name('svg-icon-next').click()
             
         except:
@@ -198,7 +208,11 @@ def music(driver,v):
        
     try:
         driver.refresh()
-        driver.switch_to.alert.accept()
+        
+        try:
+            driver.switch_to.alert.accept() 
+        except
+            music(driver,v)
         WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
     except:
         music(driver,v)
