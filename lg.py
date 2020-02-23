@@ -108,7 +108,7 @@ def driver():
         "browserName": "chrome",
         "version": "79.0",
         "enableVNC": True,
-        "enableVideo": True
+        "enableVideo": False
         
     }
     ip=socket.gethostbyname(socket.gethostname())
