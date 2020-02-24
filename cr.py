@@ -181,7 +181,9 @@ def send_captcha(site_key):
     while request.text.split('|')[0] != "OK":
         sleep(2)
         request = get(get_url) 
-    
+        if request.text.split('|')[0] == "ERROR_CAPTCHA_UNSOLVABLE":
+            driver.quit()
+            new()
     t = request.text.split('|')[1]
     
     return t    
@@ -206,8 +208,8 @@ def launch(driver):
     genre.send_keys(Keys.DOWN*N)
     genre.perform()
 
-    site_key = driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey")
-    response = send_captcha(site_key)
+    
+    response = send_captcha(driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey"))
     
     driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
     sleep(1)
