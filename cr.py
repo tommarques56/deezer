@@ -197,7 +197,11 @@ def launch(driver):
 
     em = al()
     md = random_char(15)
-    driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
+    try:
+        driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
+    except:
+        driver.quit()
+        new()
     driver.find_element_by_xpath('//*[@id="register_form_mail_input"]').send_keys(em)
     driver.find_element_by_xpath('//*[@id="register_form_username_input"]').send_keys(random_char(9))
     driver.find_element_by_xpath('//*[@id="register_form_password_input"]').send_keys(md)
