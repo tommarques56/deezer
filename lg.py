@@ -267,10 +267,26 @@ def count(driver):
     
 
     
-def send_captcha():
+# def send_captcha():
+    
+    # api_key = "t8jzfb2xcjfwhw4qkgxmc9y7qn3ymvdh"
+    # send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&version=v3&action=verify&min_score=0.2&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/login".format(api_key)
+    # request = get(send_url)
+    # id = request.text.split('|')[1]  
+    # get_url = "http://azcaptcha.com/res.php?key={}&action=get&id={}".format(api_key,id)
+    # request = get(get_url) 
+    # while request.text.split('|')[0] != "OK":
+        # sleep(2)
+        # request = get(get_url) 
+    
+    # t = request.text.split('|')[1]
+    
+    # return t  
+
+def send_captcha(site_key,driver):
     
     api_key = "t8jzfb2xcjfwhw4qkgxmc9y7qn3ymvdh"
-    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&version=v3&action=verify&min_score=0.2&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/login".format(api_key)
+    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey={}&pageurl=https://www.deezer.com/fr/register?appear=1&here=now".format(api_key,site_key)
     request = get(send_url)
     id = request.text.split('|')[1]  
     get_url = "http://azcaptcha.com/res.php?key={}&action=get&id={}".format(api_key,id)
@@ -278,10 +294,12 @@ def send_captcha():
     while request.text.split('|')[0] != "OK":
         sleep(2)
         request = get(get_url) 
-    
+        if request.text.split('|')[0] == "ERROR_CAPTCHA_UNSOLVABLE":
+            driver.quit()
+            new()
     t = request.text.split('|')[1]
     
-    return t       
+    return t        
     
 
 def launch(driver,em,mdp,N):
