@@ -264,40 +264,24 @@ def count(driver):
     launch(driver,em,mdp,N)
 
     
-def capt(driver,em,mdp,N):
-    m=0
-    t=0
-    while m<300:    
-        try:
-            if driver.find_element_by_class_name('logo-deezer-black').is_displayed:
-                t=True
-                m=301
-        
-        except:
 
-            sleep(1)
-            m=m+1
-            
-        try:
-            if driver.find_element_by_class_name('index-form-error').is_displayed():
-                t=False
-                m=301
-                driver.delete_all_cookies()
-                driver.refresh()
-                delete(N)
-                print("new")
-                count(driver)
-                
-                
-        
-        except:
-            sleep(1)
-            m=m+1            
-            
-            
-            
-            
-    print(t)
+    
+def send_captcha(site_key):
+    
+    api_key = "t8jzfb2xcjfwhw4qkgxmc9y7qn3ymvdh"
+    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey={}&pageurl=https://www.deezer.com/fr/register?appear=1&here=now".format(api_key,site_key)
+    request = get(send_url)
+    id = request.text.split('|')[1]  
+    get_url = "http://azcaptcha.com/res.php?key={}&action=get&id={}".format(api_key,id)
+    request = get(get_url) 
+    while request.text.split('|')[0] != "OK":
+        sleep(2)
+        request = get(get_url) 
+    
+    t = request.text.split('|')[1]
+    
+    return t       
+    
 
 def launch(driver,em,mdp,N):
     v=0
@@ -310,7 +294,9 @@ def launch(driver,em,mdp,N):
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
-    capt(driver,em,mdp,N)
+    response = send_captcha(driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey"))
+    
+    driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
     
     
  
