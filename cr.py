@@ -208,7 +208,7 @@ def launch(driver):
 
     site_key = driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey")
     response = send_captcha(site_key)
-    print(response)
+    
     driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
     sleep(1)
     
