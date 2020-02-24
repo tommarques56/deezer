@@ -316,7 +316,7 @@ def launch(driver,em,mdp,N):
     response = send_captcha(driver)
     
     driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
-    
+    sleep(2)
     
  
  
