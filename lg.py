@@ -289,7 +289,7 @@ def send_captcha(driver):
     send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/register?appear=1&here=now".format(api_key)
     request = get(send_url)
     while request.text == "ERROR_NO_SLOT_AVAILABLE":
-        sleep(500)
+        sleep(30)
         driver.refresh()
     id = request.text.split('|')[1]  
     get_url = "http://azcaptcha.com/res.php?key={}&action=get&id={}".format(api_key,id)
