@@ -352,7 +352,7 @@ def delete(N):
     
 
 def new():
-    # Thread(target = driver).start()
+    Thread(target = driver).start()
     True
 
   
@@ -360,7 +360,7 @@ def new():
 p=0
 while p<1:
     Thread(target = driver).start()
-    # Thread(target = driver).start()    
+    Thread(target = driver).start()    
 
     p=p+1
 
