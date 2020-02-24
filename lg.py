@@ -286,7 +286,7 @@ def count(driver):
 def send_captcha(driver):
     
     api_key = "t8jzfb2xcjfwhw4qkgxmc9y7qn3ymvdh"
-    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/register?appear=1&here=now".format(api_key)
+    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/login".format(api_key)
     request = get(send_url)
     while request.text == "ERROR_NO_SLOT_AVAILABLE":
         sleep(30)
