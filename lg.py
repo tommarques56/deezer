@@ -291,6 +291,7 @@ def send_captcha(driver):
     id = request.text.split('|')[1]  
     get_url = "http://azcaptcha.com/res.php?key={}&action=get&id={}".format(api_key,id)
     request = get(get_url) 
+    print(request)
     while request.text.split('|')[0] != "OK":
         sleep(2)
         request = get(get_url) 
