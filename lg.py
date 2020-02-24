@@ -283,10 +283,10 @@ def count(driver):
     
     # return t  
 
-def send_captcha(site_key,driver):
+def send_captcha(driver):
     
     api_key = "t8jzfb2xcjfwhw4qkgxmc9y7qn3ymvdh"
-    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/register?appear=1&here=now".format(api_key,site_key)
+    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/register?appear=1&here=now".format(api_key)
     request = get(send_url)
     id = request.text.split('|')[1]  
     get_url = "http://azcaptcha.com/res.php?key={}&action=get&id={}".format(api_key,id)
@@ -313,7 +313,7 @@ def launch(driver,em,mdp,N):
     driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
-    response = send_captcha()
+    response = send_captcha(driver)
     
     driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
     
