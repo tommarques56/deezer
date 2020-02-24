@@ -229,12 +229,12 @@ def launch(driver):
 
 def new():
     
-    # Thread(target = driver).start()
+    Thread(target = driver).start()
     
     print("ok")
 
 
-while p<1:
+while p<3:
     Thread(target = driver).start()
     sleep(5)
     p=p+1
