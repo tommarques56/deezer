@@ -53,7 +53,7 @@ def driver():
         "browserName": "chrome",
         "version": "79.0",
         "enableVNC": True,
-        "enableVideo": False
+        "enableVideo": True
         
     }
     ip=socket.gethostbyname(socket.gethostname())
@@ -61,7 +61,7 @@ def driver():
        
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
-    options.add_extension('/root/deezer/az.zip')
+    # options.add_extension('/root/deezer/az.zip')
        
 
     # driver = webdriver.Chrome(options=options)
