@@ -288,10 +288,11 @@ def send_captcha(driver):
     api_key = "t8jzfb2xcjfwhw4qkgxmc9y7qn3ymvdh"
     send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/register?appear=1&here=now".format(api_key)
     request = get(send_url)
+    print(request)
     id = request.text.split('|')[1]  
     get_url = "http://azcaptcha.com/res.php?key={}&action=get&id={}".format(api_key,id)
     request = get(get_url) 
-    print(request)
+    
     while request.text.split('|')[0] != "OK":
         sleep(2)
         request = get(get_url) 
