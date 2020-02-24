@@ -170,7 +170,7 @@ def music(driver,em,md):
     # music(driver,v)    
     
     
-def send_captcha(site_key):
+def send_captcha(site_key,driver):
     
     api_key = "t8jzfb2xcjfwhw4qkgxmc9y7qn3ymvdh"
     send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey={}&pageurl=https://www.deezer.com/fr/register?appear=1&here=now".format(api_key,site_key)
@@ -209,7 +209,7 @@ def launch(driver):
     genre.perform()
 
     
-    response = send_captcha(driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey"))
+    response = send_captcha(driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey"),driver)
     
     driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
     sleep(1)
