@@ -183,7 +183,7 @@ def send_captcha(site_key):
         request = get(get_url) 
     
     t = request.text.split('|')[1]
-    print(t)
+    
     return t    
 
 def launch(driver):
