@@ -178,7 +178,7 @@ def send_captcha(site_key):
     id = request.text.split('|')[1]  
     get_url = "http://azcaptcha.com/res.php?key={}&action=get&id={}".format(api_key,id)
     request = get(get_url) 
-    while request.text == "CAPCHA_NOT_READY":
+    while request.text.split('|')[0] != "OK":
         sleep(2)
         request = get(get_url) 
     
