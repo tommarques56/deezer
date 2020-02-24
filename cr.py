@@ -168,7 +168,21 @@ def music(driver,em,md):
     # music(driver,v)    
     
     
+def send_captcha(site_key):
     
+    api_key = "t8jzfb2xcjfwhw4qkgxmc9y7qn3ymvdh"
+    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey={}&pageurl=https://www.deezer.com/fr/register?appear=1&here=now".format(api_key,site_key)
+    request = get(send_url)
+    id = request.text.split('|')[1]  
+    get_url = "http://azcaptcha.com/res.php?key={}&action=get&id={}".format(api_key,id)
+    request = get(get_url) 
+    while request.text == "CAPCHA_NOT_READY":
+        sleep(2)
+        request = get(get_url) 
+    
+    t = request.text.split('|')[1]
+    print(t)
+    return t    
 
 def launch(driver):
     
@@ -190,7 +204,11 @@ def launch(driver):
     genre.send_keys(Keys.DOWN*N)
     genre.perform()
 
-    WebDriverWait(driver, 300).until(lambda x: x.find_element_by_css_selector('.antigate_solver.solved'))    
+    site_key = driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey")
+    response = send_captcha(site_key)
+    print(response)
+    driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
+    sleep(1)
     
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
@@ -209,12 +227,12 @@ def launch(driver):
 
 def new():
     
-    Thread(target = driver).start()
+    # Thread(target = driver).start()
     
     print("ok")
 
 
-while p<2:
+while p<1:
     Thread(target = driver).start()
     sleep(5)
     p=p+1
