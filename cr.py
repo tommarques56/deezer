@@ -174,6 +174,7 @@ def launch(driver):
     
     v=0
     driver.get("https://www.deezer.com/fr/register")
+    driver.refresh()
     driver.implicitly_wait(10)
 
     em = al()
