@@ -1,3 +1,4 @@
+
 from selenium.webdriver.common.keys import Keys
 import shutil 
 from selenium import webdriver 
@@ -31,8 +32,9 @@ import re
 import pandas as pd
 import os
 import pickle
-
+from datetime import datetime
 import time
+from requests import post, get
 p=0
 def random_char(y):
        return ''.join(random.choice(string.ascii_letters) for x in range(y))
