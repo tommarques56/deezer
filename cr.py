@@ -53,7 +53,7 @@ def driver():
         "browserName": "chrome",
         "version": "79.0",
         "enableVNC": True,
-        "enableVideo": True
+        "enableVideo": False
         
     }
     ip=socket.gethostbyname(socket.gethostname())
@@ -129,9 +129,8 @@ def music(driver,v):
     p=0
     x=0
     l(driver)
-    print("1")
     
-    new()
+    
     while p<5:
         x=0
         while x<31:
@@ -157,7 +156,8 @@ def music(driver,v):
             
             WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
             driver.find_element_by_class_name('svg-icon-next').click()
-            
+            v=v+1
+            print(v)
         except:
             
             music(driver,v)
@@ -170,7 +170,7 @@ def music(driver,v):
         driver.refresh()
         
         try:
-            print("7")
+            
             driver.switch_to.alert.accept() 
         except:
             
@@ -182,7 +182,7 @@ def music(driver,v):
     
   
 
-    print(v)
+    
     music(driver,v)    
    
     
@@ -244,14 +244,14 @@ def launch(driver):
     except:
         driver.quit()
         new()
-        
+    new()    
     music(driver,v)
 
 def new():
     
     Thread(target = driver).start()
     
-    print("ok")
+
 
 def l(driver):
     genre = ActionChains(driver) 
