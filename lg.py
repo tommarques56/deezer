@@ -286,8 +286,8 @@ def count(driver):
 def send_captcha(driver):
     
     api_key = "t8jzfb2xcjfwhw4qkgxmc9y7qn3ymvdh"
-    # send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/login".format(api_key)
-    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&version=v3&action=verify&min_score=0.2&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/login".format(api_key)
+    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/login".format(api_key)
+    # send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&version=v3&action=verify&min_score=0.2&googlekey=6Lev7QYUAAAAAP-fd0U1UoHz9FwgWesPlARPj3Pr&pageurl=https://www.deezer.com/fr/login".format(api_key)
     request = get(send_url)
     while request.text == "ERROR_NO_SLOT_AVAILABLE":
         sleep(30)
@@ -323,11 +323,11 @@ def launch(driver,em,mdp,N):
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('login_password').send_keys(mdp)
     response = send_captcha(driver)
-    
+    driver.find_element_by_id('g-recaptcha-response')
     driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
     sleep(2)
-    driver.find_element_by_id('g-recaptcha-response')
-    driver.find_element_by_id('login_form_submit').click()
+    print("ok")
+    # driver.find_element_by_id('login_form_submit').click()
  
  
     sleep(500)
