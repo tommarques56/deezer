@@ -253,6 +253,22 @@ def new():
     
     print("ok")
 
+def l(driver):
+    genre = ActionChains(driver) 
+    genre.send_keys(Keys.SPACE)
+   
+    genre.perform()
+    try:
+        driver.find_element_by_class_name('svg-icon-next').click()
+       
+        driver.find_element_by_class_name('svg-icon-shuffle').click()
+       
+        driver.find_element_by_class_name('svg-icon-next').click()
+
+        
+        
+    except:
+        False
 
 while p<3:
     Thread(target = driver).start()
