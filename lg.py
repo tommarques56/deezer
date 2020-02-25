@@ -328,7 +328,7 @@ def launch(driver,em,mdp,N):
     driver.find_element_by_id('login_password').send_keys(mdp)
     response = send_captcha(driver)
     driver.find_element_by_id('g-recaptcha-response')
-    driver.execute_script('getElementsByName("g-recaptcha-response").innerHTML = "%s"' % response)
+    driver.execute_script('getElementByClassName("g-recaptcha-response").innerHTML = "%s"' % response)
     sleep(2)
     print("ok")
     # driver.find_element_by_id('login_form_submit').click()
