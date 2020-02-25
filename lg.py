@@ -296,7 +296,7 @@ def send_captcha(driver):
     request = get(get_url) 
     
     while request.text.split('|')[0] != "OK":
-        sleep(2)
+        sleep(10)
         request = get(get_url) 
         if request.text.split('|')[0] == "ERROR_CAPTCHA_UNSOLVABLE":
             driver.quit()
@@ -325,6 +325,7 @@ def launch(driver,em,mdp,N):
     
     driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
     sleep(2)
+    driver.find_element_by_id('g-recaptcha-response')
     driver.find_element_by_id('login_form_submit').click()
  
  
