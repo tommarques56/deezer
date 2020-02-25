@@ -109,7 +109,7 @@ def driver():
         "browserName": "chrome",
         "version": "79.0",
         "enableVNC": True,
-        "enableVideo": False
+        "enableVideo": True
         
     }
     ip=socket.gethostbyname(socket.gethostname())
@@ -302,6 +302,7 @@ def send_captcha(driver):
             driver.quit()
             new()
     t = request.text.split('|')[1]
+    print(t)
     
     return t        
     
@@ -352,7 +353,7 @@ def delete(N):
     
 
 def new():
-    Thread(target = driver).start()
+    # Thread(target = driver).start()
     True
 
   
