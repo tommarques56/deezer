@@ -311,10 +311,11 @@ def send_captcha(driver):
 def launch(driver,em,mdp,N):
     v=0
     m=0
+    driver.implicitly_wait(10)
     driver.get("https://www.deezer.com/fr/album/60566312")
     driver.find_element_by_class_name('states-button-label').click()
     sleep(35)
-    driver.implicitly_wait(10)
+    
         
     driver.refresh()
     # sleep(100)
