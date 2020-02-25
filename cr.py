@@ -97,77 +97,94 @@ def style(driver):
     
     
     
-def music(driver,em,md):
-    
-    p=0
-    driver.implicitly_wait(50)
-    
-    driver.find_element_by_class_name('states-button-label').click()
-    
-    
-    f = open("/root/login.txt","a+")
-    f.write("{}:{}\n".format(em,md))
-    f.close() 
-    # # driver.get("https://www.deezer.com/fr")   
-    # # pickle.dump( driver.get_cookies() , open("/root/cookies.pkl","wb"))
-    # # driver.get("https://www.deezer.com/fr/signout")
-    # # sleep(8)
-    # # driver.get("https://www.deezer.com/fr")
-    # # sleep(5)
-    # # cookies = pickle.load(open("/root/cookies.pkl", "rb"))
-    # # sleep(2)
-    # # for cookie in cookies:
-        # # driver.add_cookie(cookie)
-    # # sleep(5)
-    # # driver.refresh()
-    driver.quit()
-    
-    new()
-    
-    
-    
-# def music(driver,v):
+# def music(driver,em,md):
     
     # p=0
     # driver.implicitly_wait(50)
-    # try:
-        # driver.find_element_by_class_name('states-button-label').click()
-        # driver.find_element_by_class_name('svg-icon-shuffle').click()
-        
-        # driver.find_element_by_class_name('svg-icon-next').click()
-    # except:
-        # driver.refresh()
-        # close(driver)
-        # music(driver,v)
+    
+    # driver.find_element_by_class_name('states-button-label').click()
+    
+    
+    # # f = open("/root/login.txt","a+")
+    # # f.write("{}:{}\n".format(em,md))
+    # # f.close() 
+    # # # driver.get("https://www.deezer.com/fr")   
+    # # # pickle.dump( driver.get_cookies() , open("/root/cookies.pkl","wb"))
+    # # # driver.get("https://www.deezer.com/fr/signout")
+    # # # sleep(8)
+    # # # driver.get("https://www.deezer.com/fr")
+    # # # sleep(5)
+    # # # cookies = pickle.load(open("/root/cookies.pkl", "rb"))
+    # # # sleep(2)
+    # # # for cookie in cookies:
+        # # # driver.add_cookie(cookie)
+    # # # sleep(5)
+    # # # driver.refresh()
+    # driver.quit()
+    
+    # new()
+    
+def music(driver,v):
+    
+    p=0
+    x=0
+    l(driver)
+    print("1")
+    
  
-    # while p<200:
-        # x=0
-        # while x<32:
-            # try:
-                # e = driver.find_element_by_class_name("slider-counter-current").text
-                # s=e.split(':')
-                # x=int(s[1])
-                # sleep(1)
-            # except:
-                # close(driver)
-                # music(driver,v)
+    while p<5:
+        x=0
+        while x<31:
+            
+            try:
+                WebDriverWait(driver, 10).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
+                e = driver.find_element_by_class_name("slider-counter-current").text
+                s=e.split(':')
+                x=int(s[1])
+                sleep(4)
+                print("2")
+            except:
+                print("3")
+                driver.refresh()
+                try:
+                    driver.switch_to.alert.accept() 
+                except:
+                    music(driver,v)
+                music(driver,v)   
+    
                            
-        # try:      
-            # driver.find_element_by_class_name('svg-icon-next').click()
-        # except:
-            # sleep(40)
-            # driver.find_element_by_class_name('svg-icon-next').click()
-        # v=v+1
-        # print(v)
+        try:
+            print("4")
+            WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
+            driver.find_element_by_class_name('svg-icon-next').click()
+            
+        except:
+            print("5")
+            music(driver,v)
+
         
-        # p=p+1
+        p=p+1
+       
+    try:
+        print("6")
+        driver.refresh()
         
-    # try:
-        # driver.find_element_by_class_name('states-button-action').click()
-    # except:
-        # sleep(40)
-        # driver.find_element_by_class_name('svg-icon-next').click()
-    # music(driver,v)    
+        try:
+            print("7")
+            driver.switch_to.alert.accept() 
+        except:
+            print("8")
+            music(driver,v)
+        WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
+    except:
+        print("9")
+        music(driver,v)
+    
+  
+
+    print("10")
+    music(driver,v)    
+   
     
     
 def send_captcha(site_key,driver):
@@ -228,7 +245,7 @@ def launch(driver):
         driver.quit()
         new()
         
-    music(driver,em,md)
+    music(driver,v)
 
 def new():
     
