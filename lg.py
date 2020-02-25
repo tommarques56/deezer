@@ -313,16 +313,17 @@ def launch(driver,em,mdp,N):
     m=0
     driver.implicitly_wait(10)
     driver.get("https://www.deezer.com/fr/album/60566312")
+    try:
+        driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
+    except:
+        True
     driver.find_element_by_class_name('states-button-label').click()
     sleep(35)
     
         
     driver.refresh()
     # sleep(100)
-    try:
-        driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
-    except:
-        True
+
     driver.find_element_by_id('login_mail').send_keys(em)
     driver.find_element_by_id('password').send_keys(mdp)
     response = send_captcha(driver)
