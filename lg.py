@@ -321,7 +321,7 @@ def launch(driver,em,mdp,N):
     sleep(35)
     
         
-    driver.refresh()
+    # driver.refresh()
     # sleep(100)
 
     driver.find_element_by_id('login_mail').send_keys(em)
