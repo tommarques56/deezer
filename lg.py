@@ -325,7 +325,7 @@ def launch(driver,em,mdp,N):
     # sleep(100)
 
     driver.find_element_by_id('login_mail').send_keys(em)
-    driver.find_element_by_id('password').send_keys(mdp)
+    driver.find_element_by_id('login_password').send_keys(mdp)
     response = send_captcha(driver)
     driver.find_element_by_id('g-recaptcha-response')
     driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
