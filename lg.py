@@ -328,7 +328,7 @@ def launch(driver,em,mdp,N):
     driver.find_element_by_id('login_form_submit').click()
  
  
- 
+    sleep(500)
     driver.get("https://www.deezer.com/fr/album/60566312")
     close(driver)
     new()
@@ -361,7 +361,7 @@ def new():
 p=0
 while p<1:
     Thread(target = driver).start()
-    Thread(target = driver).start()    
+    # Thread(target = driver).start()    
 
     p=p+1
 
