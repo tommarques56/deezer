@@ -82,7 +82,7 @@ def style(driver):
     if screen.is_displayed():
         screen.click()
     else:
-        driver.get("https://www.deezer.com/fr/album/60566312")
+        driver.get("https://www.deezer.com/fr/album/60651472")
         style(driver)
 
 
@@ -93,7 +93,7 @@ def style(driver):
     except:
         style(driver)
         print("style")
-    driver.get("https://www.deezer.com/fr/album/60566312")    
+    driver.get("https://www.deezer.com/fr/album/60651472")    
     
     
     
