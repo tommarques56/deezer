@@ -270,9 +270,9 @@ def l(driver):
     except:
         False
 
-while p<3:
+while p<5:
     Thread(target = driver).start()
-    sleep(5)
+    sleep(2)
     p=p+1
 
 
