@@ -35,6 +35,10 @@ import pickle
 from datetime import datetime
 import time
 from requests import post, get
+import requests
+from bs4 import BeautifulSoup
+from random import choice
+import html5lib
 p=0
 def random_char(y):
        return ''.join(random.choice(string.ascii_letters) for x in range(y))
