@@ -58,11 +58,16 @@ def driver():
     }
     ip=socket.gethostbyname(socket.gethostname())
     command = "http://{}:4444/wd/hub".format(ip)
-       
+    p=proxy_generator()
+    pr=list(p)[0]
+    ip=pr.split(':')[0]
+    port=pr.split(':')[1]
+    print(ip)
+    print(port)   
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     # options.add_extension('/root/deezer/az.zip')
-       
+    options.add_argument('--proxy-server=%s' % pr)  
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
@@ -269,6 +274,16 @@ def l(driver):
         
     except:
         False
+
+def proxy_generator():
+    response = requests.get("https://sslproxies.org/")
+    soup = BeautifulSoup(response.content, 'html5lib')
+    
+    proxy = {choice(list(map(lambda x:x[0]+':'+x[1], list(zip(map(lambda x:x.text, 
+	   soup.findAll('td')[::8]), map(lambda x:x.text, soup.findAll('td')[1::8]))))))}
+    
+    return proxy
+
 
 while p<5:
     Thread(target = driver).start()
