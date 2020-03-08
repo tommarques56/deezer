@@ -81,6 +81,7 @@ def driver():
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
+    sleep(30)
     launch(driver)
 
 def close(driver):
