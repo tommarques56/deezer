@@ -35,7 +35,19 @@ import pickle
 from datetime import datetime
 import time
 from requests import post, get
+from torrequest import TorRequest
 p=0
+
+def proxi():
+    
+    tr=TorRequest()
+    tr.reset_identity() #Reset Tor
+    response= tr.get('http://ipecho.net/plain')
+    print ("New Ip Address",response.text)
+    ip = response.text
+    return ip
+
+
 def random_char(y):
        return ''.join(random.choice(string.ascii_letters) for x in range(y))
 
@@ -58,11 +70,11 @@ def driver():
     }
     ip=socket.gethostbyname(socket.gethostname())
     command = "http://{}:4444/wd/hub".format(ip)
-       
+    
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     # options.add_extension('/root/deezer/az.zip')
-       
+    options.add_argument('--proxy-server=%s' % proxi())  
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
@@ -274,7 +286,3 @@ while p<3:
     Thread(target = driver).start()
     sleep(5)
     p=p+1
-
-
-
-
