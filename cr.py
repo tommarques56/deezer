@@ -70,8 +70,10 @@ def driver():
     }
     ip=socket.gethostbyname(socket.gethostname())
     command = "http://{}:4444/wd/hub".format(ip)
-    proxy = proxi()
-    print(proxy)
+    # proxy = proxi()
+    # print(proxy)
+    torexe = os.popen(r'tor')
+    proxy = "socks5://localhost:9050"
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     # options.add_extension('/root/deezer/az.zip')
