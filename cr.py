@@ -72,13 +72,11 @@ def driver():
     command = "http://{}:4444/wd/hub".format(ip)
     # proxy = proxi()
     # print(proxy)
-    torexe = os.popen(r'tor')
-    proxy = "socks5://localhost:9150"
-    print(proxy)
+ 
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     # options.add_extension('/root/deezer/az.zip')
-    options.add_argument('--proxy-server=%s' % proxy)  
+    options.add_argument('--proxy-server="socks://127.0.0.1:9050"')  
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
