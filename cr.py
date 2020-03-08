@@ -70,11 +70,12 @@ def driver():
     }
     ip=socket.gethostbyname(socket.gethostname())
     command = "http://{}:4444/wd/hub".format(ip)
-    
+    proxy = proxi()
+    print(proxy)
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     # options.add_extension('/root/deezer/az.zip')
-    options.add_argument('--proxy-server=%s' % proxi())  
+    options.add_argument('--proxy-server=%s' % proxy)  
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
