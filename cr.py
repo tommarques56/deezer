@@ -74,6 +74,7 @@ def driver():
     # print(proxy)
     torexe = os.popen(r'tor')
     proxy = "socks5://localhost:9050"
+    print(proxy)
     options = webdriver.ChromeOptions()
     # options.add_extension('D:\\androiddeezerapp\\AC.zip')
     # options.add_extension('/root/deezer/az.zip')
