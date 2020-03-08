@@ -81,6 +81,7 @@ def driver():
 
     # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
+    driver.get("https://www.deezer.com/register")
     sleep(30)
     launch(driver)
 
