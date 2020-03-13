@@ -112,8 +112,8 @@ def driver():
     options.add_argument(f'user-agent={"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36"}')
     options.add_argument("--start-maximized")   
 
-    driver = webdriver.Chrome(options=options)
-    # driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
+    # driver = webdriver.Chrome(options=options)
+    driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
    
 
     launch(driver)
