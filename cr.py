@@ -180,8 +180,8 @@ def music(driver,v):
     x=0
     l(driver)
     
-    
-    while p<25:
+    A = random.randrange(18,45)
+    while p<A:
         x=0
         while x<31:
             
