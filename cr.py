@@ -175,7 +175,11 @@ def style(driver):
     # new()
     
 def music(driver,v):
-    
+    try:
+        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
+        
+    except:
+        False    
     p=0
     x=0
     l(driver)
@@ -314,8 +318,8 @@ def launch(driver):
 def new():
   
     Thread(target = driver).start()
-  
-
+    Thread(target = driver).start()  
+    Thread(target = driver).start()
 
 def l(driver):
     genre = ActionChains(driver) 
@@ -333,7 +337,11 @@ def l(driver):
         
     except:
         False
-
+    try:
+        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
+        
+    except:
+        False      
 while p<5:
     Thread(target = driver).start()
     sleep(3)
