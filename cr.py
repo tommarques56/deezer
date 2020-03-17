@@ -265,7 +265,7 @@ def launch(driver):
     driver.get("https://www.deezer.com/register")
     try:
         
-        WebDriverWait(driver, 15).until(lambda x: x.find_element_by_class_name('logo-deezer'))  
+        WebDriverWait(driver, 4).until(lambda x: x.find_element_by_class_name('logo-deezer'))  
         
     except:
         driver.quit()
