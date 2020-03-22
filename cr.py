@@ -99,7 +99,7 @@ def driver():
         "browserName": "chrome",
         "version": "79.0",
         "enableVNC": True,
-        "enableVideo": False
+        "enableVideo": True
         
     }
     ip=socket.gethostbyname(socket.gethostname())
@@ -112,7 +112,7 @@ def driver():
     options.add_argument(f'user-agent={"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36"}')
     options.add_argument("--start-maximized")   
 
-    #driver = webdriver.Chrome(options=options)
+    # driver = webdriver.Chrome(options=options)
     driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
    
 
@@ -298,11 +298,11 @@ def launch(driver):
     genre.perform()
 
     
-    response = send_captcha(driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey"),driver)
+    # response = send_captcha(driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey"),driver)
     
-    driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
-    sleep(1)
-    
+    # driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
+    # sleep(1)
+    input("Press Enter to continue...")
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
 
@@ -317,9 +317,7 @@ def launch(driver):
 
 def new():
   
-    Thread(target = driver).start()
-    Thread(target = driver).start()
-    Thread(target = driver).start()
+    True
     
 def l(driver):
     genre = ActionChains(driver) 
@@ -342,7 +340,7 @@ def l(driver):
         
     except:
         False      
-while p<3:
+while p<1:
     Thread(target = driver).start()
     sleep(5)
     p=p+1
