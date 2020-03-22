@@ -303,6 +303,7 @@ def launch(driver):
     driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
     sleep(1)
     # input("Press Enter to continue...")
+    print("ok")
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
 
@@ -317,7 +318,10 @@ def launch(driver):
 
 def new():
   
-    True
+    Thread(target = driver).start()
+    Thread(target = driver).start()
+    Thread(target = driver).start()
+
     
 def l(driver):
     genre = ActionChains(driver) 
@@ -340,7 +344,7 @@ def l(driver):
         
     except:
         False      
-while p<1:
+while p<3:
     Thread(target = driver).start()
     sleep(5)
     p=p+1
