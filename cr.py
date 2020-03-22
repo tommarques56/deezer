@@ -298,11 +298,11 @@ def launch(driver):
     genre.perform()
 
     
-    # response = send_captcha(driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey"),driver)
+    response = send_captcha(driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey"),driver)
     
-    # driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
-    # sleep(1)
-    input("Press Enter to continue...")
+    driver.execute_script('document.getElementById("g-recaptcha-response").innerHTML = "%s"' % response)
+    sleep(1)
+    # input("Press Enter to continue...")
     driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
     sleep(5)
 
