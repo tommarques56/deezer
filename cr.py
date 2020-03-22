@@ -319,8 +319,7 @@ def launch(driver):
 def new():
   
     Thread(target = driver).start()
-    Thread(target = driver).start()
-    Thread(target = driver).start()
+
 
     
 def l(driver):
@@ -346,5 +345,5 @@ def l(driver):
         False      
 while p<3:
     Thread(target = driver).start()
-    sleep(5)
+    sleep(15)
     p=p+1
