@@ -319,10 +319,7 @@ def launch(driver):
 def new():
   
     Thread(target = driver).start()
-  
-    Thread(target = driver).start()
-  
-    Thread(target = driver).start()
+
     
 def l(driver):
     genre = ActionChains(driver) 
