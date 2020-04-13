@@ -283,7 +283,7 @@ def launch(driver):
     em = al()
     md = random_char(15)
     try:
-        driver.find_element_by_xpath('/html/body/div[4]/div/div[2]/button[1]').click()
+        driver.find_element_by_class_name('cookie-btn-label').click()
     except:
         driver.quit()
         new()
@@ -319,7 +319,7 @@ def launch(driver):
 def new():
   
     Thread(target = driver).start()
-    Thread(target = driver).start()
+
     
 def l(driver):
     genre = ActionChains(driver) 
@@ -342,7 +342,7 @@ def l(driver):
         
     except:
         False      
-while p<3:
+while p<6:
     Thread(target = driver).start()
     sleep(15)
     p=p+1
