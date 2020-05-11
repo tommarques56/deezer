@@ -35,7 +35,27 @@ from datetime import datetime
 import time
 from requests import post, get
 p=0
+def l(driver):
+    genre = ActionChains(driver) 
+    genre.send_keys(Keys.SPACE)
+   
+    genre.perform()
+    try:
+        driver.find_element_by_class_name('svg-icon-next').click()
+       
+        driver.find_element_by_class_name('svg-icon-shuffle').click()
+       
+        driver.find_element_by_class_name('svg-icon-next').click()
 
+        
+        
+    except:
+        False
+    try:
+        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
+        
+    except:
+        False 
 
 def proxy():
     j=0
@@ -112,8 +132,8 @@ def driver():
     options.add_argument(f'user-agent={"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36"}')
     options.add_argument("--start-maximized")   
 
-    # driver = webdriver.Chrome(options=options)
-    driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
+    driver = webdriver.Chrome(options=options)
+    # driver = webdriver.Remote(command_executor=command, desired_capabilities=capabilities, options=options)
    
 
     launch(driver)
@@ -174,77 +194,14 @@ def style(driver):
     
     # new()
     
-def music(driver,v):
-    try:
-        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
-        
-    except:
-        False    
-    p=0
-    x=0
-    l(driver)
-    
-    A = random.randrange(200,300)
-    while p<A:
-        x=0
-        while x<31:
-            
-            try:
-                WebDriverWait(driver, 10).until(lambda x: x.find_element_by_class_name('slider-counter-current'))
-                e = driver.find_element_by_class_name("slider-counter-current").text
-                s=e.split(':')
-                x=int(s[1])
-                sleep(2)
-                
-            except:
-                
-                driver.refresh()
-                try:
-                    driver.switch_to.alert.accept() 
-                except:
-                    music(driver,v)
-                music(driver,v)   
-    
-                           
-        try:
-            
-            WebDriverWait(driver, 40).until(lambda x: x.find_element_by_class_name('svg-icon-next'))  
-            driver.find_element_by_class_name('svg-icon-next').click()
-            v=v+1
-            print(v)
-        except:
-            
-            music(driver,v)
-
-        
-        p=p+1
-       
-    try:
-        
-        driver.refresh()
-        
-        try:
-            
-            driver.switch_to.alert.accept() 
-        except:
-            
-            music(driver,v)
-        WebDriverWait(driver, 20).until(lambda x: x.find_element_by_class_name('logo-deezer-black'))    
-    except:
-        
-        music(driver,v)
-    
   
-
-    
-    music(driver,v)    
    
     
     
 def send_captcha(site_key,driver):
     
     api_key = "t8jzfb2xcjfwhw4qkgxmc9y7qn3ymvdh"
-    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey={}&pageurl=https://www.deezer.com/fr/register?appear=1&here=now".format(api_key,site_key)
+    send_url = "https://azcaptcha.com/in.php?key={}&method=userrecaptcha&googlekey=6LdaGwcTAAAAAJfb0xQdr3FqU4ZzfAc_QZvIPby5&pageurl=https://www.spotify.com/fr/signup/?appear=1&here=now".format(api_key)
     request = get(send_url)
     id = request.text.split('|')[1]  
     get_url = "http://azcaptcha.com/res.php?key={}&action=get&id={}".format(api_key,id)
@@ -262,10 +219,10 @@ def send_captcha(site_key,driver):
 def launch(driver):
     
     v=0
-    driver.get("https://www.deezer.com/register")
+    driver.get("https://www.spotify.com/fr/signup/")
     try:
         
-        WebDriverWait(driver, 10).until(lambda x: x.find_element_by_class_name('logo-deezer'))  
+        WebDriverWait(driver, 10).until(lambda x: x.find_element_by_class_name('spotify-logo'))  
         
     except:
         driver.quit()
@@ -277,26 +234,24 @@ def launch(driver):
         True
         
 
-    driver.refresh()
+
     driver.implicitly_wait(10)
 
     em = al()
     md = random_char(15)
-    try:
-        driver.find_element_by_class_name('cookie-btn-label').click()
-    except:
-        driver.quit()
-        new()
-    driver.find_element_by_xpath('//*[@id="register_form_mail_input"]').send_keys(em)
-    driver.find_element_by_xpath('//*[@id="register_form_username_input"]').send_keys(random_char(9))
-    driver.find_element_by_xpath('//*[@id="register_form_password_input"]').send_keys(md)
+
+    driver.find_element_by_xpath('//*[@id="register-email"]').send_keys(em)
+    driver.find_element_by_xpath('//*[@id="register-confirm-email"]').send_keys(em)
+    driver.find_element_by_xpath('//*[@id="register-password"]').send_keys(random_char(9))
+    driver.find_element_by_xpath('//*[@id="register-displayname"]').send_keys("ELBZ")
+    driver.find_element_by_xpath('//*[@id="register-dob-day"]').send_keys("30")
     genre = ActionChains(driver) 
-    genre.send_keys(Keys.TAB)
-    genre.send_keys(Keys.DOWN)
     genre.send_keys(Keys.TAB)
     genre.send_keys(Keys.DOWN*N)
     genre.perform()
-
+    driver.find_element_by_xpath('//*[@id="register-dob-year"]').send_keys("1998")
+    driver.find_element_by_xpath('//*[@id="register-neutral"]').click()
+    
     
     response = send_captcha(driver.find_element_by_class_name("g-recaptcha").get_attribute("data-sitekey"),driver)
     
@@ -304,49 +259,76 @@ def launch(driver):
     sleep(1)
     # input("Press Enter to continue...")
     print("ok")
-    driver.find_element_by_xpath('//*[@id="register_form_submit"]').click()  
+    driver.find_element_by_xpath('//*[@id="register-button-email-submit"]').click()  
     sleep(5)
 
-    try:
-        driver.find_element_by_class_name('onboarding-screen-artist-item').click()
-        style(driver)
-    except:
-        driver.quit()
-        new()
+    driver.get("https://open.spotify.com/album/24QJU9OuDaW1T4MG3vldj6")
     new()    
     music(driver,v)
 
 def new():
   
-    Thread(target = driver).start()
-    Thread(target = driver).start()    
-    Thread(target = driver).start()    
+    # Thread(target = driver).start()
+    # Thread(target = driver).start()    
+    # Thread(target = driver).start()  
+    True
     
     
 
+def music(driver,v):
+     
+    p=0
+    x=0
+    l(driver)
     
-def l(driver):
-    genre = ActionChains(driver) 
-    genre.send_keys(Keys.SPACE)
-   
-    genre.perform()
-    try:
-        driver.find_element_by_class_name('svg-icon-next').click()
-       
-        driver.find_element_by_class_name('svg-icon-shuffle').click()
-       
-        driver.find_element_by_class_name('svg-icon-next').click()
+    A = random.randrange(5,10)
+    while p<A:
+        x=0
+        # while x<31:
+            
+            # try:
+                # WebDriverWait(driver, 10).until(lambda x: x.find_element_by_xpath('/html/body/div[3]/div/div[3]/div[3]/footer/div/div[2]/div/div[2]/div[2]/div/div'))
+                # e = driver.find_element_by_xpath('/html/body/div[3]/div/div[3]/div[3]/footer/div/div[2]/div/div[2]/div[2]/div/div').text
+                # s=e.split(':')
+                # x=int(s[1])
+                # sleep(2)
+                
+            # except:
+                
+                # print("nonnn")
+                # music(driver,v)   
+    
+                           
+        try:
+            sleep(35)
+            WebDriverWait(driver, 40).until(lambda x: x.find_element_by_xpath('/html/body/div[3]/div/div[3]/div[3]/footer/div/div[2]/div/div[1]/div[4]/button'))  
+            driver.find_element_by_xpath('/html/body/div[3]/div/div[3]/div[3]/footer/div/div[2]/div/div[1]/div[4]/button').click()
+            v=v+1
+            print(v)
+        except:
+            
+            music(driver,v)
 
         
-        
-    except:
-        False
+        p=p+1
+       
     try:
-        driver.find_element_by_xpath('//*[@id="modal-close"]').click() #close offre d'essai 9.99
         
+        driver.refresh()
+        WebDriverWait(driver, 20).until(lambda x: x.find_element_by_xpath('/html/body/div[3]/div/div[3]/div[2]/nav/div[1]/a[1]/svg'))    
     except:
-        False      
-while p<6:
+        
+        music(driver,v)
+    
+  
+
+    
+    music(driver,v)  
+
+
+    
+     
+while p<1:
     Thread(target = driver).start()
     sleep(15)
     p=p+1
